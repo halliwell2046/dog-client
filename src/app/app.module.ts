@@ -14,6 +14,7 @@ import { OwnerSidebarComponent } from './owner-dashboard/owner-sidebar/owner-sid
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatInputModule} from '@angular/material';
 
 
 @NgModule({
@@ -27,13 +28,15 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     RecentRequestsComponent,
     RequestWalkComponent,
     OwnerSidebarComponent
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
