@@ -11,10 +11,9 @@ import { DogCardsComponent } from './owner-dashboard/dog-cards/dog-cards.compone
 import { RecentRequestsComponent } from './owner-dashboard/recent-requests/recent-requests.component';
 import { RequestWalkComponent } from './owner-dashboard/request-walk/request-walk.component';
 import { OwnerSidebarComponent } from './owner-dashboard/owner-sidebar/owner-sidebar.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatInputModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
+
 
 
 @NgModule({
@@ -34,9 +33,7 @@ import {MatInputModule} from '@angular/material';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatInputModule
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
