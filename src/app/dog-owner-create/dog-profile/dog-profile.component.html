@@ -1,1 +1,31 @@
-<p>dog-profile works!</p>
+<h2>Tell Us About Your Dog!</h2>
+<p>We'll need a few details about your pet.  You may add a bio with important information to help us take care of your dog.  Add a photo link from your social media if you like.</p>
+
+<div class="pet-form">
+    <mat-form-field>
+        <input matInput placeholder="Your dogs name">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Breed">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Age">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Weight">
+    </mat-form-field>
+    <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">Male</mat-radio-button>
+            <mat-radio-button value="2">Female</mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field>
+            <input matInput placeholder="Add Photo URL">
+    </mat-form-field>
+    <mat-form-field>
+            <input matInput placeholder="Bio">
+    </mat-form-field>    
+</div>
+<div>
+        <button class="update" mat-button>Update</button>
+        <button class="next" mat-button>Next</button>
+</div>

@@ -1,0 +1,25 @@
+mat-radio-button{
+    margin-left: 5px;
+    }
+
+.pet-form {
+    display: flex;
+    flex-direction: column;
+    }
+
+.pet-form > * {
+    width: 100%;
+    }
+
+.update {
+    border: 1px solid red;
+    background-color: red;
+    color: white;
+    margin: 5px;
+}
+
+.next {
+    border: 1px solid red;
+    color: red;
+    margin: 5px;
+}
