@@ -1,1 +1,9 @@
-<p>navbar works!</p>
+<div layout="row" layout-align="center center" class="container">
+  <mat-toolbar>
+    <img class="logo" src="../../assets/doggo-logo.png">
+    <span class="fill-remain-space"></span>
+    <div *ngIf="token">
+      <span><button mat-stroked-button (click)='logOut()' color="secondary">logout</button></span>
+    </div>
+  </mat-toolbar>
+</div>

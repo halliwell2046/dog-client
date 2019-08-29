@@ -1,0 +1,9 @@
+.dogCards {
+display: flex;
+justify-content: center;
+
+}
+
+.example-card {
+margin: 20px;
+}
