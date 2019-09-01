@@ -1,14 +1,15 @@
 import { NgModule } from "@angular/core";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCheckboxModule } from "@angular/material/checkbox";
-import { MatInputModule } from "@angular/material";
+import { MatInputModule, MatSelectModule } from "@angular/material";
+import {MatGridListModule} from '@angular/material/grid-list';
 
 const material = [
   MatInputModule,
   MatCheckboxModule,
   MatButtonModule,
-  BrowserAnimationsModule
+  MatGridListModule,
+  MatSelectModule
 ];
 @NgModule({
   declarations: [],

@@ -1,3 +1,27 @@
-.addressh1 {
-    color: red;
+/* .fill-remaining-space{
+    flex: 1 1 auto;
+} */
+
+/* .form-container{
+    width:100%;
+    padding:5%;
+} */
+
+.form-container{
+    display:flex;
+    flex-direction: column;
 }
+
+.form-container > * {
+    width: 100%;
+  }
+
+  .add-bottom-padding{
+      padding-bottom: 10%;
+      display:flex;
+      margin-left: auto;
+  }
+
+  .same-line-fields{
+      margin-right:15px;
+  }

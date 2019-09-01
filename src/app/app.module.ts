@@ -13,7 +13,8 @@ import { RequestWalkComponent } from './owner-dashboard/request-walk/request-wal
 import { OwnerSidebarComponent } from './owner-dashboard/owner-sidebar/owner-sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-
+import { DogOwnerService } from './dog-owner-create/dog-owner.service';
+import {ReactiveFormsModule} from  '@angular/forms'
 
 
 @NgModule({
@@ -26,16 +27,17 @@ import { MaterialModule } from './material/material.module';
     DogCardsComponent,
     RecentRequestsComponent,
     RequestWalkComponent,
-    OwnerSidebarComponent
+    OwnerSidebarComponent,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [DogOwnerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
