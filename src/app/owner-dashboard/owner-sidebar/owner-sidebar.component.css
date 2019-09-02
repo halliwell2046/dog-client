@@ -1,0 +1,22 @@
+.mat-grid-tile {
+  background: #e6e7e8;
+  align-content: flex-start;
+}
+
+.tab {
+  background-color: red;
+  text-align: center;
+  color: white;
+  font-size: 1.8rem;
+  font-family: Roboto;
+  margin: 0;
+  padding-bottom: 5px;
+}
+
+.portrait {
+  border-radius: 50%;
+  border: 5px solid white;
+  max-width: 200px;
+  width: 50%;
+  padding-top: 0%;
+}

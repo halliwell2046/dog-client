@@ -13,6 +13,7 @@ import { RequestWalkComponent } from './owner-dashboard/request-walk/request-wal
 import { OwnerSidebarComponent } from './owner-dashboard/owner-sidebar/owner-sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.component';
 
 
 
@@ -28,6 +29,7 @@ import { MaterialModule } from './material/material.module';
     RecentRequestsComponent,
     RequestWalkComponent,
     OwnerSidebarComponent,
+    OwnerDashboardComponent,
   
     
   ],
