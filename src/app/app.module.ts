@@ -16,6 +16,8 @@ import { MaterialModule } from './material/material.module';
 import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.component';
 
 
+import { DogOwnerService } from './dog-owner-create/dog-owner.service';
+import {ReactiveFormsModule} from  '@angular/forms'
 
 
 @NgModule({
@@ -29,17 +31,17 @@ import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.compo
     RecentRequestsComponent,
     RequestWalkComponent,
     OwnerSidebarComponent,
-    OwnerDashboardComponent,
-  
+    OwnerDashboardComponent
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [DogOwnerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

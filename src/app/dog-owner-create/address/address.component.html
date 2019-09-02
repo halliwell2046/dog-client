@@ -1,28 +1,31 @@
-<h1 class="addressh1">Welcome John, please create your <span style="font-weight:700;">dog owner</span> profile.</h1>
-<p class="ptext">Please enter your contact information and the location for your walker to meet your dog.</p>
-
-<div class="address-form">
-    <mat-form-field>
-        <input matInput placeholder="Address">
+<h1 class="addressh1">Welcome John, please create your <span style="font-weight: 700;">dog owner</span> profile.</h1>
+<p style='font-family: Roboto'>
+  Please enter your contact information and the location for you walker to meet
+  your dog.
+</p>
+<form [formGroup]="service.form" class="form-container">
+  <mat-form-field>
+    <input formControlName="street" matInput placeholder="Street" />
+  </mat-form-field>
+  <div>
+    <mat-form-field class="same-line-fields">
+      <input formControlName="city" matInput placeholder="City" />
     </mat-form-field>
-    
-    <br>
-    
-    <mat-form-field>
-        <input matInput placeholder="City">
+    <mat-form-field class="same-line-fields">
+      <mat-select formControlName="state" placeholder="State">
+        <ng-container *ngFor="let state of statesArray; index as i">
+          <mat-option value="{{ i }}">{{ state }}</mat-option>
+        </ng-container>
+      </mat-select>
     </mat-form-field>
-
     <mat-form-field>
-        <input matInput placeholder="ST">
+      <input formControlName="zipcode" matInput placeholder="Zip Code" />
     </mat-form-field>
-
-    <mat-form-field>
-        <input matInput placeholder="Zip">
-    </mat-form-field>
-    
-    <br>
-
-    <mat-form-field>
-        <input matInput placeholder="Phone #">
-    </mat-form-field>
-</div>
+  </div>
+  <mat-form-field>
+        <input formControlName="phoneNumber" matInput placeholder="Phone Number" type='tel' pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/>
+      </mat-form-field>
+  <div class="add-bottom-padding">
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </div>
+</form>
