@@ -1,7 +1,7 @@
 <div class="dogCards">
 <div *ngFor="let pet of petData">
 
-<mat-card class="example-card"  style="width: 22rem;">
+<mat-card class="example-card"  style="width: 14rem;">
   <mat-card-header>
 
     <!-- Note: want to use *ngIf / Else to show paw-pink.png if {{pet.gender}} == F, else show paw-blue.png. -->
@@ -11,7 +11,7 @@
   </mat-card-header>
   <img mat-card-image class="dogpic" src="{{pet.petPic}}" alt="Photo of a dog">
   <mat-card-content>
-    <p style="font-size: 18px;">
+    <p style="font-size: 15px;">
       {{pet.bio}}
     </p>
   </mat-card-content>
