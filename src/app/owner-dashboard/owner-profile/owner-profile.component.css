@@ -1,0 +1,35 @@
+.tab {
+    background-color: #ed1c24;
+    text-align: center;
+    color: white;
+    font-size: 1.8rem;
+    font-family: Roboto;
+    margin: 0;
+    padding-bottom: 5px;
+    width: 200px;
+  }
+
+  .grid{
+        display: grid;
+        grid-template-columns: 1em 1fr 1fr 1em;
+        width: 100%;
+        grid-gap: 25px;
+        grid-template-rows: auto auto auto;
+     
+  }
+
+  .address-group{
+      grid-column: 2/3;
+      grid-row: 1/2;
+
+  }
+
+  .owner-table-group{
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+.pet-add-group{
+    grid-column: 3/4;
+    grid-row: 1/3;
+}

@@ -17,7 +17,7 @@
   }
 
   .add-bottom-padding{
-      padding-bottom: 10%;
+      /* padding-bottom: 10%; */
       display:flex;
       margin-left: auto;
   }
@@ -25,13 +25,3 @@
   .same-line-fields{
       margin-right:15px;
   }
-/* 
-  .addressh1 {
-      font-family: Roboto;
-      font-weight: 400;
-      color: #ed1c24;
-  }
-
-  .ptext {
-      font-family: Roboto;
-  } */

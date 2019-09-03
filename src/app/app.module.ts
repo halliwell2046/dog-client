@@ -17,7 +17,8 @@ import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.compo
 
 
 import { DogOwnerService } from './dog-owner-create/dog-owner.service';
-import {ReactiveFormsModule} from  '@angular/forms'
+import {ReactiveFormsModule} from  '@angular/forms';
+import { OwnerProfileComponent } from './owner-dashboard/owner-profile/owner-profile.component'
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {ReactiveFormsModule} from  '@angular/forms'
     RecentRequestsComponent,
     RequestWalkComponent,
     OwnerSidebarComponent,
-    OwnerDashboardComponent
+    OwnerDashboardComponent,
+    OwnerProfileComponent
     
   ],
   imports: [
