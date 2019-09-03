@@ -33,3 +33,28 @@
     grid-column: 3/4;
     grid-row: 1/3;
 }
+
+
+@media only screen and (max-width: 768px) {
+
+    .grid{
+        display: grid;
+        grid-template-columns: 1em auto 1em;
+        width: 100%;
+        grid-gap: 25px;
+        grid-template-rows: auto auto auto auto;
+     
+  }
+
+  .owner-table-group{
+    grid-column: 2/3;
+    grid-row: 3/4;
+}
+
+.pet-add-group{
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+
+}

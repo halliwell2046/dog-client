@@ -6,24 +6,33 @@
 <form [formGroup]="service.form" class="form-container">
   <mat-form-field>
     <input formControlName="street" matInput placeholder="Street" />
+    <mat-error>Must supply address</mat-error>
   </mat-form-field>
   <div>
     <mat-form-field class="same-line-fields">
       <input formControlName="city" matInput placeholder="City" />
+      <mat-error>City is Required</mat-error>
+
     </mat-form-field>
     <mat-form-field class="same-line-fields">
       <mat-select formControlName="state" placeholder="State">
         <ng-container *ngFor="let state of statesArray; index as i">
           <mat-option value="{{ i }}">{{ state }}</mat-option>
         </ng-container>
+        <mat-error>Select state is required</mat-error>
+
       </mat-select>
     </mat-form-field>
     <mat-form-field>
       <input formControlName="zipcode" matInput placeholder="Zip Code" />
+      <mat-error>Zipcode Error</mat-error>
+
     </mat-form-field>
   </div>
   <mat-form-field>
-        <input formControlName="phoneNumber" matInput placeholder="Phone Number" type='tel' pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/>
+        <input formControlName="phoneNumber" matInput placeholder="Phone Number" />
+        <mat-error>Phone number must have 10 digits</mat-error>
+
       </mat-form-field>
   <div class="add-bottom-padding">
     <button mat-raised-button style="background-color:#ed1c24; color: white" type="submit">submit</button>
