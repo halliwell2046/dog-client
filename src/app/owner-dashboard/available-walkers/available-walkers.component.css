@@ -15,10 +15,3 @@ h1 {
     color: white;
     font-weight: bold;
 }
-
-.search {
-    border: 1px solid red;
-    color: red;
-    margin: 5px;
-    float: right;
-}

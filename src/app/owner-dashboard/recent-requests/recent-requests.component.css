@@ -1,0 +1,17 @@
+table {
+    width: 100%;
+}
+
+th {
+    background-color: lightgray;
+    color: black;
+    font-weight: bold;
+}
+
+h1 {
+    width: 100%;
+    text-align: center;
+    background-color: gray;
+    color: white;
+    font-weight: bold;
+}
