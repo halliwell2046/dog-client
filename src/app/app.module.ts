@@ -14,6 +14,9 @@ import { OwnerSidebarComponent } from './owner-dashboard/owner-sidebar/owner-sid
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.component';
+import { AvailableWalkersComponent } from './owner-dashboard/available-walkers/available-walkers.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
 
 
 import { DogOwnerService } from './dog-owner-create/dog-owner.service';
@@ -33,7 +36,10 @@ import { OwnerProfileComponent } from './owner-dashboard/owner-profile/owner-pro
     RequestWalkComponent,
     OwnerSidebarComponent,
     OwnerDashboardComponent,
-    OwnerProfileComponent
+    OwnerProfileComponent,
+    AvailableWalkersComponent,
+    SignupComponent,
+    LoginComponent
     
   ],
   imports: [
