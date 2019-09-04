@@ -1,2 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.red-button {
+  background-color:#ed1c24; 
+  color: white;
+}
+
+.ptext {
+  font-family: Roboto, sans-serif;
+}

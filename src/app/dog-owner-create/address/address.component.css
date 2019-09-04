@@ -1,12 +1,13 @@
 .addressh1 {
     color:#ed1c24;
-    font-family: Roboto;
+    font-family: Roboto, sans-serif;
     font-weight: 400;
     line-height: 1.2;
  }
  .ptext {
-    font-family: Roboto;
+    font-family: Roboto, sans-serif;
  }
+ 
 .form-container{
     display:flex;
     flex-direction: column;

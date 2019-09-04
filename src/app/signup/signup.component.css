@@ -6,9 +6,10 @@ h3 {
 
 mat-radio-button{
     margin-left: 5px;
+    margin-top: 5px;
     }
     
-div {
+form {
     text-align: center;
     border: solid black 1px;
     padding: 5px;
