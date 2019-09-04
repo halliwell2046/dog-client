@@ -17,7 +17,7 @@
     <mat-form-field class="same-line-fields">
       <mat-select formControlName="state" placeholder="State">
         <ng-container *ngFor="let state of statesArray; index as i">
-          <mat-option value="{{ i }}">{{ state }}</mat-option>
+          <mat-option value="{{ state }}">{{ state }}</mat-option>
         </ng-container>
         <mat-error>Select state is required</mat-error>
 
