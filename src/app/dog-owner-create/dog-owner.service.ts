@@ -13,9 +13,7 @@ export class DogOwnerService {
     street: new FormControl('', Validators.required),
     city: new FormControl('',Validators.required),
     state: new FormControl('', Validators.required),
-    zipcode: new FormControl('', Validators.required, Validators.minLength(5)),
-    phoneNumber: new FormControl('', Validators.required, Validators.minLength(10))
-
-
+    zipcode: new FormControl('', [Validators.required, Validators.minLength(5)]),
+    phoneNumber: new FormControl('', [Validators.required, Validators.minLength(10)])
   })
 }

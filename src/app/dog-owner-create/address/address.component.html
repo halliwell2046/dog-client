@@ -3,7 +3,7 @@
   Please enter your contact information and the location for you walker to meet
   your dog.
 </p>
-<form [formGroup]="service.form" class="form-container">
+<form [formGroup]="service.form" class="form-container" (ngSubmit)="onSubmit()">
   <mat-form-field>
     <input formControlName="street" matInput placeholder="Street" />
     <mat-error>Must supply address</mat-error>
