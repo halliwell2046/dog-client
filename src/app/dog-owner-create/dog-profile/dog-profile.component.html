@@ -1,31 +1,37 @@
 <h2 class="tellUs">Tell Us About Your Dog!</h2>
 <p class="ptext">We'll need a few details about your pet.  You may add a bio with important information to help us take care of your dog.  Add a photo link from your social media if you like.</p>
 
-<div class="pet-form">
+<form [formGroup]="service.profileForm" class="form-container">
+<div class="profile-form">
     <mat-form-field>
-        <input matInput placeholder="Your dog's name">
+        <input formControlName="name" matInput placeholder="Your Dog's Name" />
+    <mat-error>Must supply name</mat-error>
     </mat-form-field>
     <mat-form-field>
-        <input matInput placeholder="Breed">
+        <input formControlName="breed" matInput placeholder="Breed" />
+    <mat-error>Must supply breed</mat-error>
     </mat-form-field>
     <mat-form-field>
-        <input matInput placeholder="Age">
+        <input formControlName="age" matInput placeholder="Age" />
+    <mat-error>Must supply age</mat-error>
     </mat-form-field>
     <mat-form-field>
-        <input matInput placeholder="Weight">
+        <input formControlName="weight" matInput placeholder="Approximate Weight" />
+    <mat-error>Must supply weight</mat-error>
     </mat-form-field>
     <mat-radio-group aria-label="Select an option">
             <mat-radio-button class="leftRadio" value="1">Male</mat-radio-button>
             <mat-radio-button class="rightRadio" value="2">Female</mat-radio-button>
     </mat-radio-group>
     <mat-form-field>
-            <input matInput placeholder="Add Photo URL">
+        <input formControlName="photourl" matInput placeholder="Photo URL" />
     </mat-form-field>
     <mat-form-field>
-            <input matInput placeholder="Bio">
+        <input formControlName="bio" matInput placeholder="Bio" />
     </mat-form-field>    
 </div>
 <div>
         <button class="red-button" mat-button>add a dog</button>
         <button class="white-button" mat-button>next</button>
 </div>
+</form>

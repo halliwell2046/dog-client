@@ -1,12 +1,14 @@
 <h3>A community of professional belly scratchers and ball tossers who'll spoil your dog as if it were our own.</h3>
 <div>
+        <form [formGroup]="service.loginForm" class="form-container">
     <mat-form-field>
-        <input matInput placeholder="Email (Username)">
+            <input formControlName="email" matInput placeholder="Email (Username)" />
+            <mat-error>Must supply Username</mat-error>
     </mat-form-field>
     <mat-form-field>
-        <input matInput placeholder="Password">
-    </mat-form-field>  
-</div>
-<div>
+            <input formControlName="password" matInput placeholder="Password" />
+            <mat-error>Must supply password</mat-error>
+    </mat-form-field>  <br>
     <button class="submit" (click)="onClickMe" mat-button>Submit</button>
+</form>
 </div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, Form } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +17,26 @@ export class DogOwnerService {
     phoneNumber: new FormControl('', [Validators.required, Validators.minLength(10)])
 
 
+  })
+
+  profileForm: FormGroup = new FormGroup({
+    name: new FormControl('', Validators.required),
+    breed: new FormControl('', Validators.required),
+    age: new FormControl('', Validators.required),
+    weight: new FormControl('', Validators.required),
+    photourl: new FormControl('', Validators.required),
+    bio: new FormControl('', Validators.required)
+  })
+
+  loginForm: FormGroup = new FormGroup({
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
+  })
+
+  signupForm: FormGroup = new FormGroup({
+    firstname: new FormControl('', Validators.required),
+    lastname: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
   })
 }
