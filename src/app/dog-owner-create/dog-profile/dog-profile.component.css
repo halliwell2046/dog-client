@@ -17,7 +17,6 @@ mat-radio-button{
 }
 
 
-
 .pet-form > * {
     width: 100%;
     }
@@ -34,4 +33,5 @@ mat-radio-button{
     font-family: Roboto, sans-serif;
     font-weight: 800;
     line-height: 1.2;
+    margin-bottom: 0px;
  }

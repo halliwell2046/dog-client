@@ -7,7 +7,7 @@
  .ptext {
     font-family: Roboto, sans-serif;
  }
- 
+
 .form-container{
     display:flex;
     flex-direction: column;
@@ -20,9 +20,19 @@
   .add-bottom-padding{
       /* padding-bottom: 10%; */
       display:flex;
-      margin-left: auto;
   }
 
-  .same-line-fields{
-      margin-right:15px;
+  .same-line-fields-1{
+      margin-right:10px;
+      width: 60%;
   }
+
+  .same-line-fields-2{
+    margin-right:10px;
+    width: 15%;
+}
+
+.same-line-fields-3{
+    margin-right:0px;
+    width: 20%;
+}

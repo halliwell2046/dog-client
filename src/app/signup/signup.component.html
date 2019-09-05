@@ -1,22 +1,21 @@
-<h3>A community of professional belly scratchers and ball tossers who'll spoil your dog as if it were our own.</h3>
-<div>
-    <mat-form-field>
-        <input matInput placeholder="First Name">
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput placeholder="Last Name">
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput placeholder="Email">
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput placeholder="Password">
-    </mat-form-field><br>
-    <mat-radio-group aria-label="Choose One">Choose One:
-            <mat-radio-button value="1">Dog Owner</mat-radio-button>
-            <mat-radio-button value="2">Dog Walker</mat-radio-button>
-    </mat-radio-group>  
-</div>
-<div>
-    <button class="submit" (click)="onClickMe" mat-button>Submit</button>
+<div class="container">
+  <mat-form-field>
+    <input matInput placeholder="First Name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Last Name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Email">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Password">
+  </mat-form-field><br>
+  <mat-radio-group class="userType" aria-label="Choose One">Choose One:
+    <mat-radio-button value="1">Dog Owner</mat-radio-button>
+    <mat-radio-button value="2">Dog Walker</mat-radio-button>
+  </mat-radio-group>
+  <div>
+    <button class="red-button" (click)="onClickMe" mat-button>submit</button>
+  </div>
 </div>

@@ -8,6 +8,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import {MatTableModule} from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 const material = [
@@ -21,7 +22,8 @@ const material = [
   MatRadioModule,
   MatTableModule,
   MatGridListModule,
-  MatSelectModule
+  MatSelectModule,
+  MatTabsModule
 ];
 @NgModule({
   declarations: [],

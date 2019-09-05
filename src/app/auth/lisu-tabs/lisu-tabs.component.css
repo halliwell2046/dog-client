@@ -1,0 +1,45 @@
+.introh1 {
+  color:black;
+  font-family: Roboto, sans-serif;
+  font-size: 2.5em;
+  font-weight: 200;
+  line-height: 1.2;
+  text-align: center;
+  margin: 0% 5% 5% 5%;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  width: 100%;
+  grid-gap: 10px;
+}
+
+.leftDog {
+grid-column: 1/2;
+margin-right:20%;
+}
+
+.auth {
+  grid-column: 2/3;
+  
+}
+
+.rightDog {
+grid-column: 3/4;
+margin-left:20%;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.mat-tab-label{
+  font-size: 14px !important;
+} 
+
+.constrain {
+  width: 300px;
+}
+

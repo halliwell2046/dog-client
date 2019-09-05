@@ -1,18 +1,16 @@
-h3 {
-    text-align: center;
-    margin-left: 500px;
-    margin-right: 500px;
-}
+
 div {
     text-align: center;
-    border: solid black 1px;
-    padding: 5px;
-    margin-left: 500px;
-    margin-right: 500px;
+    padding-top: 35px;
+
 }
-.submit {
+/* .submit {
     border: 1px solid red;
     background-color: red;
     color: white;
     margin: 5px;
+} */
+
+.container > * {
+    width: 100%;
 }
