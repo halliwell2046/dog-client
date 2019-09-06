@@ -22,7 +22,8 @@ import { LoginComponent } from './login/login.component';
 import { DogOwnerService } from './dog-owner-create/dog-owner.service';
 import {ReactiveFormsModule} from  '@angular/forms';
 import { OwnerProfileComponent } from './owner-dashboard/owner-profile/owner-profile.component';
-import { LisuTabsComponent } from './auth/lisu-tabs/lisu-tabs.component'
+import { LisuTabsComponent } from './auth/lisu-tabs/lisu-tabs.component';
+import { WalkerCardsComponent } from './walker-cards/walker-cards.component'
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { LisuTabsComponent } from './auth/lisu-tabs/lisu-tabs.component'
     AvailableWalkersComponent,
     SignupComponent,
     LoginComponent,
-    LisuTabsComponent
+    LisuTabsComponent,
+    WalkerCardsComponent
     
   ],
   imports: [

@@ -1,0 +1,9 @@
+.dogCards {
+  display: flex;
+  flex-wrap: wrap;
+  
+  }
+  
+  .example-card {
+  margin: 20px;
+  }

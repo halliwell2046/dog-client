@@ -14,6 +14,7 @@ import { AvailableWalkersComponent } from "./owner-dashboard/available-walkers/a
 import { SignupComponent } from "./signup/signup.component";
 import { LoginComponent } from "./login/login.component";
 import { LisuTabsComponent } from './auth/lisu-tabs/lisu-tabs.component';
+import { WalkerCardsComponent } from './walker-cards/walker-cards.component';
 
 const routes: Routes = [
   { path: "", component: AddressComponent },
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: "available", component: AvailableWalkersComponent },
   { path: "signup", component: SignupComponent },
   { path: "login", component: LoginComponent },
-  { path: "lisu", component: LisuTabsComponent }
+  { path: "lisu", component: LisuTabsComponent },
+  { path: "review", component: WalkerCardsComponent }
 ];
 
 @NgModule({
