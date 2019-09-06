@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'tracy', component: OwnerDashboardComponent},
   { path: 'alice', component: DogProfileComponent},
   { path: 'alice2', component: DogTableComponent },
-  {path: 'rob', component: OwnerProfileComponent}
+  {path: 'rob', component: OwnerProfileComponent},
   { path: 'recent', component: RecentRequestsComponent },
   { path: 'request', component: RequestWalkComponent },
   { path: 'available', component: AvailableWalkersComponent },
