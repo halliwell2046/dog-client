@@ -15,9 +15,12 @@ div {
     color: white;
     margin: 5px;
 } */
-
+.main-container{
+    max-width: 500px;
+}
 .container > * {
     width: 100%;
+
 }
 
 .userType {

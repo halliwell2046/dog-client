@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lisu-tabs.component.css']
 })
 export class LisuTabsComponent implements OnInit {
-
+value: number = 0
   constructor() { }
 
   ngOnInit() {
