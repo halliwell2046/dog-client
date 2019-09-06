@@ -1,17 +1,18 @@
 <h1 class="introh1">A community of professional belly scratchers and ball tossers who'll spoil your dog as if it were our own.</h1>
 <div class="grid">
   
-  <div class="leftDog"> <img src="../../../assets/leftDog.jpg"></div>
+  <div class="leftDog" *ngIf = 'value===0'> <img src="../../../assets/leftDog.jpg"></div>
 
-  <mat-tab-group mat-align-tabs="center" class="auth" animationDuration="0ms">
+  <mat-tab-group mat-align-tabs="center" class="auth" animationDuration="0ms"[(selectedIndex)]="value">
     <mat-tab label="Log In"><app-login></app-login></mat-tab>
     <div class="constrain">
       <mat-tab label="Sign Up"><app-signup></app-signup></mat-tab>
     </div>
+    
   
   </mat-tab-group>
   
-  <div class="rightDog"> <img src="../../../assets/rightDog.jpg"></div>
+  <div class="rightDog" *ngIf = "value===1"> <img src="../../../assets/rightDog.jpg"></div>
 
 </div>
   

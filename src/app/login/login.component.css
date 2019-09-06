@@ -11,6 +11,9 @@ div {
     margin: 5px;
 } */
 
+/* .main-container{
+    max-width: 100px;
+} */
 .container > * {
     width: 100%;
 }
