@@ -1,0 +1,24 @@
+.grid{
+    display: grid;
+    grid-template-columns: 200px auto;
+    width: 100%;
+    grid-gap: 10px;
+    grid-template-rows: auto auto auto auto;
+  }
+ 
+  .one {
+    background-color:  #e6e7e8;
+    grid-row: 1/-1;
+  }
+ 
+  .two {
+   grid-column: 2/-1;
+   grid-row: 1/2; 
+  }
+ 
+  .blue-button {
+    color: blue;
+    border: solid 1px blue;
+    float: right;
+}
+  

@@ -17,6 +17,9 @@ import { ReviewWalkerComponent } from './review-walker/review-walker.component';
 import { WalkerCreateComponent } from './walker-create/walker-create.component';
 import { WalkerBioComponent } from './walker-bio/walker-bio.component';
 import { WalkerCreateDashboardComponent } from './walker-create-dashboard/walker-create-dashboard.component';
+import { WlkrOwnrviewComponent } from './dog-owner-create/wlkr-ownrview/wlkr-ownrview.component';
+import { WalkerSidebarComponent } from './walker-sidebar/walker-sidebar.component';
+import { OwnrWalkerviewComponent } from './ownr-walkerview/ownr-walkerview.component';
 
 
 const routes: Routes = [
@@ -35,7 +38,10 @@ const routes: Routes = [
   { path: "review-walker", component: ReviewWalkerComponent },
   { path: "walkeraddress", component: WalkerCreateComponent},
   { path: "walkerbio", component: WalkerBioComponent},
-  { path: "walkerdash", component: WalkerCreateDashboardComponent }
+  { path: "walkerdash", component: WalkerCreateDashboardComponent },
+  { path: "walkerownerview", component: WlkrOwnrviewComponent},
+  { path: "walkersidebar", component: WalkerSidebarComponent},
+  { path: "ownerwalkerview", component: OwnrWalkerviewComponent }
 ];
 
 @NgModule({

@@ -28,7 +28,10 @@ import { WalkerCardsComponent } from './walker-cards/walker-cards.component';
 import { ReviewWalkerComponent } from './review-walker/review-walker.component'
 import { WalkerCreateComponent } from './walker-create/walker-create.component';
 import { WalkerCreateDashboardComponent } from './walker-create-dashboard/walker-create-dashboard.component';
-import { WalkerBioComponent } from './walker-bio/walker-bio.component'
+import { WalkerBioComponent } from './walker-bio/walker-bio.component';
+import { WlkrOwnrviewComponent } from './dog-owner-create/wlkr-ownrview/wlkr-ownrview.component';
+import { WalkerSidebarComponent } from './walker-sidebar/walker-sidebar.component';
+import { OwnrWalkerviewComponent } from './ownr-walkerview/ownr-walkerview.component'
 
 
 @NgModule({
@@ -52,7 +55,10 @@ import { WalkerBioComponent } from './walker-bio/walker-bio.component'
     ReviewWalkerComponent,
     WalkerCreateComponent,
     WalkerCreateDashboardComponent,
-    WalkerBioComponent
+    WalkerBioComponent,
+    WlkrOwnrviewComponent,
+    WalkerSidebarComponent,
+    OwnrWalkerviewComponent
     
   ],
   imports: [
