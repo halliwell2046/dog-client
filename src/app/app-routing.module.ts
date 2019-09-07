@@ -21,10 +21,10 @@ import { WalkerCreateDashboardComponent } from './walker-create-dashboard/walker
 
 const routes: Routes = [
   { path: "", component: AddressComponent },
-  { path: "tracy", component: OwnerDashboardComponent },
+  { path: "ownerdash", component: OwnerDashboardComponent },
   { path: "alice", component: DogProfileComponent },
   { path: "alice2", component: DogTableComponent },
-  { path: "rob", component: OwnerProfileComponent },
+  { path: "profile", component: OwnerProfileComponent },
   { path: "recent", component: RecentRequestsComponent },
   { path: "request", component: RequestWalkComponent },
   { path: "available", component: AvailableWalkersComponent },
@@ -32,10 +32,10 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "lisu", component: LisuTabsComponent },
   { path: "walker-card", component: WalkerCardsComponent },
-  { path: "review-walker", component: ReviewWalkerComponent }
+  { path: "review-walker", component: ReviewWalkerComponent },
   { path: "walkeraddress", component: WalkerCreateComponent},
   { path: "walkerbio", component: WalkerBioComponent},
-  { path: "walkerdash", component: WalkerCreateDashboardComponent },
+  { path: "walkerdash", component: WalkerCreateDashboardComponent }
 ];
 
 @NgModule({
