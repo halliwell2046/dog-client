@@ -20,13 +20,28 @@ export class DogOwnerService {
   })
 
   profileForm: FormGroup = new FormGroup({
-    name: new FormControl('', Validators.required),
+    petName: new FormControl('', Validators.required),
     breed: new FormControl('', Validators.required),
     age: new FormControl('', Validators.required),
     weight: new FormControl('', Validators.required),
     photourl: new FormControl('', Validators.required),
-    bio: new FormControl('', Validators.required)
-  })
+    bio: new FormControl('', Validators.required),
+    gender: new FormControl('')
+  }) 
+
+  InitializeProfileFormGroup(){
+    this.profileForm.setValue(
+      {
+        petName: '',
+    breed: '',
+    age: '',
+    weight: '',
+    photourl: '',
+    bio: '',
+    gender: ''
+      }
+    )
+  }
 
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('', Validators.required),

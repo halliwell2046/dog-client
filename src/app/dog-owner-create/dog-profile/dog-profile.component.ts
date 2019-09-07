@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DogOwnerService } from '../dog-owner.service';
+import { DoggoService } from 'src/app/doggo.service';
 
 @Component({
   selector: 'app-dog-profile',
@@ -9,9 +10,35 @@ import { DogOwnerService } from '../dog-owner.service';
 export class DogProfileComponent implements OnInit {
 
 
-  constructor(private service: DogOwnerService) { }
+  constructor(
+    private service: DogOwnerService,
+    private doggoService: DoggoService
+  ) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+
+  onSubmit() {
+    this.doggoService
+      .petAdd(this.service.profileForm.value)
+      .subscribe((data: any) => {
+
+          this.doggoService.ownerPetData()
+          
+       
+      }, (err)=> console.log(err));
+    // console.warn(this.service.form.value);
   }
+
+  clearForm(){
+   this.service.profileForm.reset()
+   this.service.InitializeProfileFormGroup()
+  }
+
+
+test(){
+  console.log(this.service.profileForm.value)
+}
+  
 
 }

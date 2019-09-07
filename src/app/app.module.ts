@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.compo
 import { AvailableWalkersComponent } from './owner-dashboard/available-walkers/available-walkers.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
+// import { DogOwnerDashComponent } from './dog-owner-dash/dog-owner-dash.component';
 
 
 import { DogOwnerService } from './dog-owner-create/dog-owner.service';
@@ -49,7 +51,9 @@ import { LisuTabsComponent } from './auth/lisu-tabs/lisu-tabs.component'
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+     HttpClientModule
+
   ],
   providers: [DogOwnerService],
   bootstrap: [AppComponent]

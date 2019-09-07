@@ -1,12 +1,10 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { AddressComponent } from "./dog-owner-create/address/address.component";
-import { DogCardsComponent } from "./owner-dashboard/dog-cards/dog-cards.component";
-import { OwnerSidebarComponent } from "./owner-dashboard/owner-sidebar/owner-sidebar.component";
-import { OwnerDashboardComponent } from "./owner-dashboard/owner-dashboard.component";
-import { DogProfileComponent } from "./dog-owner-create/dog-profile/dog-profile.component";
-import { DogTableComponent } from "./dog-owner-create/dog-table/dog-table.component";
-import { OwnerProfileComponent } from "./owner-dashboard/owner-profile/owner-profile.component";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { AddressComponent } from './dog-owner-create/address/address.component';
+import { OwnerDashboardComponent} from './owner-dashboard/owner-dashboard.component'
+import { DogProfileComponent } from './dog-owner-create/dog-profile/dog-profile.component';
+import { DogTableComponent } from './dog-owner-create/dog-table/dog-table.component';
+import { OwnerProfileComponent } from './owner-dashboard/owner-profile/owner-profile.component';
 
 import { RecentRequestsComponent } from "./owner-dashboard/recent-requests/recent-requests.component";
 import { RequestWalkComponent } from "./owner-dashboard/request-walk/request-walk.component";
