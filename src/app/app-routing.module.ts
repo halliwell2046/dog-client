@@ -15,6 +15,7 @@ import { SignupComponent } from "./signup/signup.component";
 import { LoginComponent } from "./login/login.component";
 import { LisuTabsComponent } from './auth/lisu-tabs/lisu-tabs.component';
 import { WalkerCardsComponent } from './walker-cards/walker-cards.component';
+import { RequestWalkComponent } from './owner-dashboard/request-walk/request-walk.component'
 
 const routes: Routes = [
   { path: "", component: AddressComponent },
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path: "signup", component: SignupComponent },
   { path: "login", component: LoginComponent },
   { path: "lisu", component: LisuTabsComponent },
-  { path: "review", component: WalkerCardsComponent }
+  { path: "walker-card", component: WalkerCardsComponent },
+  { path: "request-walk", component: RequestWalkComponent }
 ];
 
 @NgModule({

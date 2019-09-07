@@ -23,7 +23,7 @@ export class DogCardsComponent implements OnInit {
       weight : 40,
       userId : 1,
       petPic : "../../assets/dachsund.jpg",
-      id : 1,
+      id : 2,
       age : 2,
       gender : "f",
       petName : "Charlotte",
@@ -31,15 +31,15 @@ export class DogCardsComponent implements OnInit {
       bio: "Despite their size, dachshunds are known for their courageous nature and will take on animals much larger than themselves. As family dogs, dachshunds are loyal companions and good watchdogs."
     },
     {
-      weight : 40,
+      weight : 50,
       userId : 1,
-      petPic : "../../assets/dachsund.jpg",
-      id : 1,
-      age : 2,
-      gender : "f",
-      petName : "Charlotte",
-      breed : "Dachsund" ,
-      bio: "Despite their size, dachshunds are known for their courageous nature and will take on animals much larger than themselves. As family dogs, dachshunds are loyal companions and good watchdogs."
+      petPic : "../../assets/basset.jpg",
+      id : 3,
+      age : 4,
+      gender : "m",
+      petName : "Chandler",
+      breed : "Hound" ,
+      bio: "The basset hound is a friendly, easygoing dog. They tend to be good with other dogs and other pets in general. Bassets are people-oriented. They are not easy to train as they are quite stubborn."
     }
   ]
   constructor() { }

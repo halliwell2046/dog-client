@@ -7,7 +7,11 @@ export interface AvailalbeWalkers {
 }
 
 const ELEMENT_DATA: AvailalbeWalkers[] = [
-  {id: 1, walker: 'Jill Farmington', rating: '****', request: 'yes or no' }
+  {id: 1, walker: 'Jill Farmington', rating: '* * * *', request: 'yes or no' },
+  {id: 2, walker: 'Alice Frazier', rating: '* * * *', request: 'yes or no' },
+  {id: 3, walker: 'Rob VanArsdall', rating: '* * * *', request: 'yes or no' },
+  {id: 4, walker: 'Tracy Smart', rating: '* * * *', request: 'yes or no' },
+
 ];
 
 @Component({

@@ -4,7 +4,8 @@
 }
 
 .logo {
-  height: 100px;
+  height: 75px;
+  margin-left: -10px;
 }
 
 .fill-remain-space {
