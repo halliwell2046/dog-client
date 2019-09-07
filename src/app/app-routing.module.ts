@@ -15,7 +15,7 @@ import { SignupComponent } from "./signup/signup.component";
 import { LoginComponent } from "./login/login.component";
 import { LisuTabsComponent } from './auth/lisu-tabs/lisu-tabs.component';
 import { WalkerCardsComponent } from './walker-cards/walker-cards.component';
-import { RequestWalkComponent } from './owner-dashboard/request-walk/request-walk.component'
+import { ReviewWalkerComponent } from './review-walker/review-walker.component';
 
 const routes: Routes = [
   { path: "", component: AddressComponent },
@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "lisu", component: LisuTabsComponent },
   { path: "walker-card", component: WalkerCardsComponent },
-  { path: "request-walk", component: RequestWalkComponent }
+  { path: "review-walker", component: ReviewWalkerComponent }
 ];
 
 @NgModule({
