@@ -13,6 +13,10 @@ import { RequestWalkComponent } from "./owner-dashboard/request-walk/request-wal
 import { AvailableWalkersComponent } from "./owner-dashboard/available-walkers/available-walkers.component";
 import { SignupComponent } from "./signup/signup.component";
 import { LoginComponent } from "./login/login.component";
+import { WalkerCreateComponent } from './walker-create/walker-create.component';
+import { WalkerBioComponent } from './walker-bio/walker-bio.component';
+import { WalkerCreateDashboardComponent } from './walker-create-dashboard/walker-create-dashboard.component';
+
 
 const routes: Routes = [
   { path: "", component: AddressComponent },
@@ -24,7 +28,10 @@ const routes: Routes = [
   { path: "request", component: RequestWalkComponent },
   { path: "available", component: AvailableWalkersComponent },
   { path: "signup", component: SignupComponent },
-  { path: "login", component: LoginComponent }
+  { path: "login", component: LoginComponent },
+  { path: "walkeraddress", component: WalkerCreateComponent},
+  { path: "walkerbio", component: WalkerBioComponent},
+  { path: "walkerdash", component: WalkerCreateDashboardComponent },
 ];
 
 @NgModule({

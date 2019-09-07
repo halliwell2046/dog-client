@@ -1,0 +1,18 @@
+  .form-container > * {
+    width: 100%;
+  }
+
+  .grid{
+    display: grid;
+    grid-template-columns: 1em 1fr 1fr 1em;
+    width: 100%;
+    grid-gap: 30px;
+    grid-template-rows: auto auto auto;
+ 
+}
+  
+.blue-button {
+    color: blue;
+    border: solid 1px blue;
+    float: right;
+}

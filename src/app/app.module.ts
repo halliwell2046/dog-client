@@ -21,7 +21,10 @@ import { LoginComponent } from './login/login.component';
 
 import { DogOwnerService } from './dog-owner-create/dog-owner.service';
 import {ReactiveFormsModule} from  '@angular/forms';
-import { OwnerProfileComponent } from './owner-dashboard/owner-profile/owner-profile.component'
+import { OwnerProfileComponent } from './owner-dashboard/owner-profile/owner-profile.component';
+import { WalkerCreateComponent } from './walker-create/walker-create.component';
+import { WalkerCreateDashboardComponent } from './walker-create-dashboard/walker-create-dashboard.component';
+import { WalkerBioComponent } from './walker-bio/walker-bio.component'
 
 
 @NgModule({
@@ -39,7 +42,10 @@ import { OwnerProfileComponent } from './owner-dashboard/owner-profile/owner-pro
     OwnerProfileComponent,
     AvailableWalkersComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    WalkerCreateComponent,
+    WalkerCreateDashboardComponent,
+    WalkerBioComponent
     
   ],
   imports: [
