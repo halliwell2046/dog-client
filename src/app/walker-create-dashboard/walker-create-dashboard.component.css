@@ -1,0 +1,22 @@
+.grid{
+    display: grid;
+    grid-template-columns: 200px auto;
+    width: 100%;
+    grid-gap: 10px;
+    grid-template-rows: auto auto auto auto;
+ 
+  }
+ 
+  .one {
+    grid-column: 2/3;
+   
+  }
+ 
+  .two {
+   grid-column: 3/4;
+   /* grid-row: 1/2;  */
+  }
+ 
+ 
+ 
+  

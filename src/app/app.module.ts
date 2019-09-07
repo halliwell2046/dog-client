@@ -26,6 +26,9 @@ import { OwnerProfileComponent } from './owner-dashboard/owner-profile/owner-pro
 import { LisuTabsComponent } from './auth/lisu-tabs/lisu-tabs.component';
 import { WalkerCardsComponent } from './walker-cards/walker-cards.component';
 import { ReviewWalkerComponent } from './review-walker/review-walker.component'
+import { WalkerCreateComponent } from './walker-create/walker-create.component';
+import { WalkerCreateDashboardComponent } from './walker-create-dashboard/walker-create-dashboard.component';
+import { WalkerBioComponent } from './walker-bio/walker-bio.component'
 
 
 @NgModule({
@@ -46,7 +49,10 @@ import { ReviewWalkerComponent } from './review-walker/review-walker.component'
     LoginComponent,
     LisuTabsComponent,
     WalkerCardsComponent,
-    ReviewWalkerComponent
+    ReviewWalkerComponent,
+    WalkerCreateComponent,
+    WalkerCreateDashboardComponent,
+    WalkerBioComponent
     
   ],
   imports: [
