@@ -17,10 +17,22 @@
  }
 
  .three { 
- 
+  grid-column: 2/-1;
+  grid-row: 2/3; 
+  padding: 20px;
 }
 
 .four {
+  grid-column: 2/-1;
+  grid-row: 3/4;
+  padding: 20px;
+
+}
+
+.five {
+  grid-column: 2/-1;
+  grid-row: 4/5;
+  padding: 20px;
 
 }
  
