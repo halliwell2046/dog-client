@@ -12,21 +12,33 @@ export class DogProfileComponent implements OnInit {
 
   constructor(
     private service: DogOwnerService,
-    private addingPet: DoggoService
+    private doggoService: DoggoService
   ) {}
 
   ngOnInit() {}
+
+
   onSubmit() {
-    this.addingPet
+    this.doggoService
       .petAdd(this.service.profileForm.value)
       .subscribe((data: any) => {
 
-          this.addingPet.ownerPetData()
+          this.doggoService.ownerPetData()
+          
        
       }, (err)=> console.log(err));
     // console.warn(this.service.form.value);
   }
 
+  clearForm(){
+   this.service.profileForm.reset()
+   this.service.InitializeProfileFormGroup()
+  }
+
+
+test(){
+  console.log(this.service.profileForm.value)
+}
   
 
 }

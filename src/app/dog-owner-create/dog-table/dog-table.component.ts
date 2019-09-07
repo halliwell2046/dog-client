@@ -21,13 +21,24 @@ import { DoggoService } from "src/app/doggo.service";
 })
 export class DogTableComponent implements OnInit {
 
-  displayedColumns: string[] = ["name", "breed", "age", "weight", "sex"];
+  displayedColumns: string[] = ["name", "breed", "age", "weight", "sex", "action"];
 
   // petDataSource: Object = this.gettingPetData.petDataSource
 
-  constructor(private gettingPetData: DoggoService) {}
+  constructor(private doggoService: DoggoService) {}
+
+  data;
   ngOnInit() {
-    this.gettingPetData.ownerPetData()
+    this.doggoService.ownerPetData()
+
+    this.doggoService.cast.subscribe(pet=> this.data = pet)
+  }
+
+  deleteDog(id){
+    // this.doggoService.petDataSource=[]
+    this.doggoService.deletePetData(id)
+      
+  
   }
 }
 

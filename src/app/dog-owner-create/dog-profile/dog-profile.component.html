@@ -31,6 +31,8 @@
     </mat-form-field>    
 </div>
 <div>
-        <button class="red-button" mat-button type='submit'>add a dog</button>
-        <button class="white-button" mat-button>next</button>
+        <button class="red-button" mat-button type='submit'[disabled]='service.profileForm.invalid'>add a dog</button>
+        <button class="white-button" type='button' (click)="clearForm()"mat-button>next</button>
+        <button class="white-button" type='button' (click)="test()"mat-button>TEST</button>
+
 </div> </form>

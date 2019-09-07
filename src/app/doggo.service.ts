@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHandler, HttpHeaders } from "@angular/common/http";
+import {BehaviorSubject} from 'rxjs/internal/BehaviorSubject'
 
 @Injectable({
   providedIn: "root"
@@ -13,6 +14,7 @@ export class DoggoService {
   ownerAddingPetURL: string ='http://localhost:3000/owner/create';
   
   getPetURL: string =`http://localhost:3000/owner/${this.userID}`
+  deletePet: string = 'http://localhost:3000/owner/delete/'
 
 
   //SIGNUP
@@ -27,7 +29,10 @@ export class DoggoService {
   // .user.password
 
   constructor(private http: HttpClient) {}
-  petDataSource: Object = []
+  // petDataSource: Object = []
+
+  petDataSource = new BehaviorSubject <any>([])
+  cast = this.petDataSource.asObservable()
 
   addressUpdate(addressData) {
     const body = {
@@ -52,9 +57,12 @@ export class DoggoService {
         breed: formData.breed,
         age: formData.age,
         weight: formData.weight,
-        gender: formData.gender
+        gender: formData.gender,
+        bio: formData.bio
       }
     };
+
+    console.log(formData.gender)
 
     const reqHeaders = new HttpHeaders({ "Content-Type": "application/json" });
     return this.http.post(this.ownerAddingPetURL, body, { headers: reqHeaders });
@@ -62,9 +70,24 @@ export class DoggoService {
 
 
   ownerPetData() {
-
+console.log('😀')
     const reqHeaders = new HttpHeaders({ "Content-Type": "application/json" });
     return this.http.get(this.getPetURL, { headers: reqHeaders })
-    .subscribe(pets=> this.petDataSource = pets)
+    // .subscribe(pets=> this.petDataSource = pets)
+    .subscribe(pet => {
+      console.log(pet)
+      this.petDataSource.next(pet)
+    })
   }
+
+
+deletePetData(id) {
+console.log('this works')
+  const reqHeaders = new HttpHeaders({ "Content-Type": "application/json" });
+   this.http.delete(this.deletePet+id, { headers: reqHeaders }).subscribe(() => {
+    console.log('this works2')
+    this.ownerPetData()
+  })
+
+}
 }
