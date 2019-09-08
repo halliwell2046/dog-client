@@ -1,25 +1,40 @@
 <div class="main-container">
-
-  <div class="container">
-    <mat-form-field>
-      <input matInput placeholder="First Name" />
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Last Name" />
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Email" />
-    </mat-form-field>
-    <mat-form-field> <input matInput placeholder="Password" /> 
-    </mat-form-field>
-    <mat-radio-group class="userType" aria-label="Choose One"
-    >Choose One:
-    <mat-radio-button value="1">Dog Owner</mat-radio-button>
-    <mat-radio-button value="2">Dog Walker</mat-radio-button>
-  </mat-radio-group>
-  <div>
-    <button class="red-button" (click)="(onClickMe)" mat-button>submit</button>
-  </div>
-</div>
-
+  <form
+    [formGroup]="service.signupForm"
+    class="form-container"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="container">
+      <mat-form-field>
+        <input formControlName="firstname" matInput placeholder="First Name" />
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="lastname" matInput placeholder="Last Name" />
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="email" matInput placeholder="Email" />
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="password" matInput placeholder="Password" />
+      </mat-form-field>
+      <mat-radio-group
+        formControlName="accountType"
+        class="userType"
+        aria-label="Choose One"
+        >Choose One:
+        <mat-radio-button value="owner">Dog Owner</mat-radio-button>
+        <mat-radio-button value="walker">Dog Walker</mat-radio-button>
+      </mat-radio-group>
+      <div>
+        <button
+          class="red-button"
+          type="submit"
+          [disabled]="service.signupForm.invalid"
+          mat-button
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
 </div>

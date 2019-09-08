@@ -52,7 +52,8 @@ export class DogOwnerService {
     firstname: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required)
+    password: new FormControl('', Validators.required),
+    accountType: new FormControl('',Validators.required)
   })
 
   walkerForm: FormGroup = new FormGroup({

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DoggoService } from 'src/app/doggo.service';
 
 @Component({
   selector: 'app-lisu-tabs',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LisuTabsComponent implements OnInit {
 value: number = 0
-  constructor() { }
-
+  constructor(private doggoService:DoggoService) { }
+token:string = undefined
   ngOnInit() {
+    this.doggoService.token.subscribe((sessionToken)=> this.token=sessionToken)
+
   }
 
 }
