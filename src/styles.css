@@ -6,6 +6,26 @@
   color: white;
 }
 
+.white-button {
+border: 1px solid #ed1c24;
+color: #ed1c24;
+background-color: white;
+margin: 15px;
+}
+
+.white-blue-button {
+  border: 1px solid #0075be;
+  color: #0075be;
+  background-color: white;
+  margin: 15px;
+  }
+
 .ptext {
   font-family: Roboto, sans-serif;
 }
+
+.blue-button {
+  background-color:#0075be; 
+  color: white;
+}
+
