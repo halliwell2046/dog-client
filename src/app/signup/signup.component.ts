@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DogOwnerService } from '../dog-owner-create/dog-owner.service';
+import { DoggoService } from '../doggo.service';
 
 @Component({
   selector: 'app-signup',
@@ -8,9 +9,20 @@ import { DogOwnerService } from '../dog-owner-create/dog-owner.service';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private service: DogOwnerService) { }
-
+  constructor(
+    private service: DogOwnerService,
+    private doggoService: DoggoService
+  ) {}
   ngOnInit() {
   }
-
+  onSubmit() {
+    this.doggoService
+      .userSignup(this.service.signupForm.value)
+      .subscribe((data: any) => {
+        sessionStorage.setItem("token", data.sessionToken);
+        this.doggoService.userID = data.sessionToken;
+        this.doggoService.sessionToken.next(data.sessionToken)
+        sessionStorage.setItem("accountType", data.accountType)
+      });
+}
 }

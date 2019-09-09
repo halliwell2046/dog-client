@@ -1,18 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DoggoService } from "src/app/doggo.service";
-// export interface DogTable {
-//   name: string;
-//   breed: string;
-//   age: number;
-//   weight: number;
-//   sex: string;
-// }
 
-// const ELEMENT_DATA: Object[] = [
-//   { name: "Bogey", breed: "Boxer", age: 1, weight: 45, sex: "M" },
-//   { name: "Rover", breed: "Pitbull", age: 2, weight: 40, sex: "M" },
-//   { name: "BooBoo", breed: "Poodle", age: 5, weight: 55, sex: "F" }
-// ];
 
 @Component({
   selector: "app-dog-table",
@@ -20,8 +8,14 @@ import { DoggoService } from "src/app/doggo.service";
   styleUrls: ["./dog-table.component.css"]
 })
 export class DogTableComponent implements OnInit {
-
-  displayedColumns: string[] = ["name", "breed", "age", "weight", "sex", "action"];
+  displayedColumns: string[] = [
+    "name",
+    "breed",
+    "age",
+    "weight",
+    "sex",
+    "action"
+  ];
 
   // petDataSource: Object = this.gettingPetData.petDataSource
 
@@ -29,16 +23,13 @@ export class DogTableComponent implements OnInit {
 
   data;
   ngOnInit() {
-    this.doggoService.ownerPetData()
+    this.doggoService.ownerPetData();
 
-    this.doggoService.cast.subscribe(pet=> this.data = pet)
+    this.doggoService.cast.subscribe(pet => (this.data = pet));
   }
 
-  deleteDog(id){
+  deleteDog(id) {
     // this.doggoService.petDataSource=[]
-    this.doggoService.deletePetData(id)
-      
-  
+    this.doggoService.deletePetData(id);
   }
 }
-

@@ -1,21 +1,20 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHandler, HttpHeaders } from "@angular/common/http";
-import {BehaviorSubject} from 'rxjs/internal/BehaviorSubject'
+import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
+import { FormsModule } from "@angular/forms";
 
 @Injectable({
   providedIn: "root"
 })
 export class DoggoService {
-
-  userID:string = '1'
+  userID: string = "1";
   userLoginURL: string = "http://localhost:3000/user/login";
   userSignupURL: string = "http://localhost:3000/user/signup";
-  userUpdateURL: string = "http://localhost:3000/user/update/1";
-  ownerAddingPetURL: string ='http://localhost:3000/owner/create';
-  
-  getPetURL: string =`http://localhost:3000/owner/${this.userID}`
-  deletePet: string = 'http://localhost:3000/owner/delete/'
+  userUpdateURL: string = "http://localhost:3000/owner/address";
+  ownerAddingPetURL: string = "http://localhost:3000/owner/create";
 
+  getPetURL: string = `http://localhost:3000/owner/`;
+  deletePet: string = "http://localhost:3000/owner/delete/";
 
   //SIGNUP
   // var firstName = req.body.user.firstName;
@@ -31,9 +30,24 @@ export class DoggoService {
   constructor(private http: HttpClient) {}
   // petDataSource: Object = []
 
-  petDataSource = new BehaviorSubject <any>([])
-  cast = this.petDataSource.asObservable()
+  petDataSource = new BehaviorSubject<any>([]);
+  cast = this.petDataSource.asObservable();
 
+  sessionToken = new BehaviorSubject<any>("");
+  token = this.sessionToken.asObservable();
+
+  //TOKEN ITEMS
+  checkToken() {
+    if (sessionStorage.getItem("token")) {
+      this.sessionToken.next(sessionStorage.getItem("token"));
+    }
+  }
+
+  logOut() {
+    this.sessionToken.next(undefined);
+  }
+
+// PROFILE OWNER
   addressUpdate(addressData) {
     const body = {
       data: {
@@ -41,17 +55,20 @@ export class DoggoService {
         city: addressData.city,
         state: addressData.state,
         zipcode: addressData.zipcode,
-        phoneNumber: addressData.phoneNumber
+        phoneNumber: addressData.phoneNumber,
+        picture: addressData.photourl
       }
     };
 
-    const reqHeaders = new HttpHeaders({ "Content-Type": "application/json" });
+    const reqHeaders = new HttpHeaders({ "Content-Type": "application/json", Authorization: this.sessionToken.value
+  });
     return this.http.put(this.userUpdateURL, body, { headers: reqHeaders });
   }
+
+  //PET OWNER ADDING PET
   petAdd(formData) {
     const body = {
       data: {
-        userId: '1',
         petName: formData.petName,
         image: formData.photourl,
         breed: formData.breed,
@@ -62,32 +79,80 @@ export class DoggoService {
       }
     };
 
-    console.log(formData.gender)
+    console.log(formData.gender);
 
-    const reqHeaders = new HttpHeaders({ "Content-Type": "application/json" });
-    return this.http.post(this.ownerAddingPetURL, body, { headers: reqHeaders });
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionToken.value
+    });
+    return this.http.post(this.ownerAddingPetURL, body, {
+      headers: reqHeaders
+    });
   }
 
 
+  // PET OWNER GETTING PETS FOR TABLE
   ownerPetData() {
-console.log('😀')
-    const reqHeaders = new HttpHeaders({ "Content-Type": "application/json" });
-    return this.http.get(this.getPetURL, { headers: reqHeaders })
-    // .subscribe(pets=> this.petDataSource = pets)
-    .subscribe(pet => {
-      console.log(pet)
-      this.petDataSource.next(pet)
-    })
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionToken.value
+    });
+    return (
+      this.http
+        .get(this.getPetURL, { headers: reqHeaders })
+        .subscribe(pet => {
+          console.log(pet);
+          this.petDataSource.next(pet);
+        })
+    );
   }
 
+  //DELETING PET DATA
+  deletePetData(id) {
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionToken.value
+    });
+    this.http
+      .delete(this.deletePet + id, { headers: reqHeaders })
+      .subscribe(() => {
+        console.log("this works2");
+        this.ownerPetData();
+      });
+  }
 
-deletePetData(id) {
-console.log('this works')
-  const reqHeaders = new HttpHeaders({ "Content-Type": "application/json" });
-   this.http.delete(this.deletePet+id, { headers: reqHeaders }).subscribe(() => {
-    console.log('this works2')
-    this.ownerPetData()
-  })
+  /// signup/login
 
-}
+  userLogin(formData) {
+    const reqHeaders = new HttpHeaders({ "Content-Type": "application/json" });
+    const body = {
+      user: {
+        email: formData.email,
+        password: formData.password,
+        firstName: formData.firstname,
+        lastName: formData.lastname,
+        accountType: formData.accountType
+      }
+    };
+    return this.http.post(this.userLoginURL, body, {
+      headers: reqHeaders
+    });
+  }
+
+  userSignup(formData) {
+    const reqHeaders = new HttpHeaders({ "Content-Type": "application/json" });
+    const body = {
+      user: {
+        email: formData.email,
+        password: formData.password,
+        firstName: formData.firstname,
+        lastName: formData.lastname,
+        accountType: formData.accountType
+      }
+    };
+    console.log(body);
+    return this.http.post(this.userSignupURL, body, {
+      headers: reqHeaders
+    });
+  }
 }

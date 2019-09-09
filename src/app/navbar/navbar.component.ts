@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { DoggoService } from '../doggo.service';
 
 
 @Component({
@@ -8,18 +9,19 @@ import {Component, OnInit} from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   token: string;
-  constructor() { }
+  constructor(private doggoService: DoggoService) { }
 
   ngOnInit() { 
-    if (sessionStorage.getItem("token")) {
-      this.token=sessionStorage.getItem('token');
-    }
+    this.doggoService.checkToken()
+   
+    this.doggoService.token.subscribe((sessionToken)=> this.token=sessionToken)
+
 
   }
 
   logOut(){
     sessionStorage.clear();
-    this.token=undefined
+    this.doggoService.logOut()
 
   }
 
