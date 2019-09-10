@@ -20,6 +20,8 @@ import { WalkerCreateDashboardComponent } from './walker-create-dashboard/walker
 import { WlkrOwnrviewComponent } from './dog-owner-create/wlkr-ownrview/wlkr-ownrview.component';
 import { WalkerSidebarComponent } from './walker-sidebar/walker-sidebar.component';
 import { OwnrWalkerviewComponent } from './ownr-walkerview/ownr-walkerview.component';
+import { WalkerDashboardComponent } from './walker-dashboard/walker-dashboard.component';
+import { WalkerNewRequestsComponent } from './walker-new-requests/walker-new-requests.component';
 
 
 const routes: Routes = [
@@ -41,7 +43,9 @@ const routes: Routes = [
   { path: "walkerdash", component: WalkerCreateDashboardComponent },
   { path: "walkerownerview", component: WlkrOwnrviewComponent},
   { path: "walkersidebar", component: WalkerSidebarComponent},
-  { path: "ownerwalkerview", component: OwnrWalkerviewComponent }
+  { path: "ownerwalkerview", component: OwnrWalkerviewComponent },
+  { path: "walkerdashboard", component: WalkerDashboardComponent},
+  { path: "walkernewreq", component: WalkerNewRequestsComponent}
 ];
 
 @NgModule({

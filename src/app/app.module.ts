@@ -31,7 +31,9 @@ import { WalkerCreateDashboardComponent } from './walker-create-dashboard/walker
 import { WalkerBioComponent } from './walker-bio/walker-bio.component';
 import { WlkrOwnrviewComponent } from './dog-owner-create/wlkr-ownrview/wlkr-ownrview.component';
 import { WalkerSidebarComponent } from './walker-sidebar/walker-sidebar.component';
-import { OwnrWalkerviewComponent } from './ownr-walkerview/ownr-walkerview.component'
+import { OwnrWalkerviewComponent } from './ownr-walkerview/ownr-walkerview.component';
+import { WalkerDashboardComponent } from './walker-dashboard/walker-dashboard.component';
+import { WalkerNewRequestsComponent } from './walker-new-requests/walker-new-requests.component'
 
 
 @NgModule({
@@ -58,7 +60,9 @@ import { OwnrWalkerviewComponent } from './ownr-walkerview/ownr-walkerview.compo
     WalkerBioComponent,
     WlkrOwnrviewComponent,
     WalkerSidebarComponent,
-    OwnrWalkerviewComponent
+    OwnrWalkerviewComponent,
+    WalkerDashboardComponent,
+    WalkerNewRequestsComponent
     
   ],
   imports: [
