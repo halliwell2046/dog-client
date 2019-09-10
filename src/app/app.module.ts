@@ -27,8 +27,8 @@ import { LisuTabsComponent } from './auth/lisu-tabs/lisu-tabs.component';
 import { WalkerCardsComponent } from './walker-cards/walker-cards.component';
 import { ReviewWalkerComponent } from './review-walker/review-walker.component'
 import { WalkerCreateComponent } from './walker-create/walker-create.component';
-import { WalkerCreateDashboardComponent } from './walker-create-dashboard/walker-create-dashboard.component';
-import { WalkerBioComponent } from './walker-bio/walker-bio.component'
+import { WalkerBioComponent } from './walker-bio/walker-bio.component';
+import { WalkerProfileComponent } from './walker-profile/walker-profile.component'
 
 
 @NgModule({
@@ -51,8 +51,8 @@ import { WalkerBioComponent } from './walker-bio/walker-bio.component'
     WalkerCardsComponent,
     ReviewWalkerComponent,
     WalkerCreateComponent,
-    WalkerCreateDashboardComponent,
-    WalkerBioComponent
+    WalkerBioComponent,
+    WalkerProfileComponent
     
   ],
   imports: [
