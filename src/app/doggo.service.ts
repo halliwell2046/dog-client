@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHandler, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
 import { FormsModule } from "@angular/forms";
-
 @Injectable({
   providedIn: "root"
 })
@@ -12,41 +11,32 @@ export class DoggoService {
   userSignupURL: string = "http://localhost:3000/user/signup";
   userUpdateURL: string = "http://localhost:3000/owner/address";
   ownerAddingPetURL: string = "http://localhost:3000/owner/create";
-
   getPetURL: string = `http://localhost:3000/owner/`;
   deletePet: string = "http://localhost:3000/owner/delete/";
-
   //SIGNUP
   // var firstName = req.body.user.firstName;
   //     var lastName = req.body.user.lastName;
   //     var email = req.body.user.email;
   //     var pass = req.body.user.password;
   //     var accountType = req.body.user.accountType;
-
   //LOGIN
   // .user.email
   // .user.password
-
   constructor(private http: HttpClient) {}
   // petDataSource: Object = []
-
   petDataSource = new BehaviorSubject<any>([]);
   cast = this.petDataSource.asObservable();
-
   sessionToken = new BehaviorSubject<any>("");
   token = this.sessionToken.asObservable();
-
   //TOKEN ITEMS
   checkToken() {
     if (sessionStorage.getItem("token")) {
       this.sessionToken.next(sessionStorage.getItem("token"));
     }
   }
-
   logOut() {
     this.sessionToken.next(undefined);
   }
-
 // PROFILE OWNER
   addressUpdate(addressData) {
     const body = {
@@ -59,12 +49,10 @@ export class DoggoService {
         picture: addressData.photourl
       }
     };
-
     const reqHeaders = new HttpHeaders({ "Content-Type": "application/json", Authorization: this.sessionToken.value
   });
     return this.http.put(this.userUpdateURL, body, { headers: reqHeaders });
   }
-
   //PET OWNER ADDING PET
   petAdd(formData) {
     const body = {
@@ -78,9 +66,7 @@ export class DoggoService {
         bio: formData.bio
       }
     };
-
     console.log(formData.gender);
-
     const reqHeaders = new HttpHeaders({
       "Content-Type": "application/json",
       Authorization: this.sessionToken.value
@@ -89,8 +75,6 @@ export class DoggoService {
       headers: reqHeaders
     });
   }
-
-
   // PET OWNER GETTING PETS FOR TABLE
   ownerPetData() {
     const reqHeaders = new HttpHeaders({
@@ -106,7 +90,6 @@ export class DoggoService {
         })
     );
   }
-
   //DELETING PET DATA
   deletePetData(id) {
     const reqHeaders = new HttpHeaders({
@@ -120,9 +103,7 @@ export class DoggoService {
         this.ownerPetData();
       });
   }
-
   /// signup/login
-
   userLogin(formData) {
     const reqHeaders = new HttpHeaders({ "Content-Type": "application/json" });
     const body = {
@@ -138,7 +119,6 @@ export class DoggoService {
       headers: reqHeaders
     });
   }
-
   userSignup(formData) {
     const reqHeaders = new HttpHeaders({ "Content-Type": "application/json" });
     const body = {

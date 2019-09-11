@@ -24,9 +24,10 @@
 }
 
 .blue-tab {
-  background-color: #0075be;
+  background-color: white;
+  border: 1px solid #0075be;
   text-align: center;
-  color: white;
+  color: #0075be;
   font-size: 1.5rem;
   font-family: Roboto;
   margin-top: 30px;

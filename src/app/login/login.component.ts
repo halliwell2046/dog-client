@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DogOwnerService } from "../dog-owner-create/dog-owner.service";
 import { DoggoService } from "../doggo.service";
-
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -12,9 +11,7 @@ export class LoginComponent implements OnInit {
     private service: DogOwnerService,
     private doggoService: DoggoService
   ) {}
-
   ngOnInit() {}
-
   onSubmit() {
     this.doggoService
       .userLogin(this.service.loginForm.value)
@@ -22,7 +19,6 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("token", data.sessionToken);
         sessionStorage.setItem("accountType", data.accountType)
         this.doggoService.checkToken()
-
       });
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-profile-dashboard',
+  selector: 'app-walker-profile',
   templateUrl: './walker-profile.component.html',
   styleUrls: ['./walker-profile.component.css']
 })

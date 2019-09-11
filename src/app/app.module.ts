@@ -28,7 +28,9 @@ import { WalkerCardsComponent } from './walker-cards/walker-cards.component';
 import { ReviewWalkerComponent } from './review-walker/review-walker.component'
 import { WalkerCreateComponent } from './walker-create/walker-create.component';
 import { WalkerBioComponent } from './walker-bio/walker-bio.component';
-import { WalkerProfileComponent } from './walker-profile/walker-profile.component'
+import { WalkerProfileComponent } from './walker-profile/walker-profile.component';
+import { DashboardComponent } from './containers/dashboard/dashboard.component';
+import { UserProfileComponent } from './containers/user-profile/user-profile.component'
 
 
 @NgModule({
@@ -52,7 +54,9 @@ import { WalkerProfileComponent } from './walker-profile/walker-profile.componen
     ReviewWalkerComponent,
     WalkerCreateComponent,
     WalkerBioComponent,
-    WalkerProfileComponent
+    WalkerProfileComponent,
+    DashboardComponent,
+    UserProfileComponent
     
   ],
   imports: [
