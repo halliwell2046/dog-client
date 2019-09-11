@@ -46,3 +46,22 @@ img {
   width: 300px;
 } */
 
+.showing-dashboard {
+  grid-column: 2/3;
+  max-width: 500px;
+  width:100%;
+  justify-self: center;
+  align-self: center;
+  
+}
+.center-content{
+  display:flex;
+  text-align: center;
+
+}
+.red-button{
+  width: 100%;
+  text-align:center;
+  padding: 15px 30px;
+  font-size: 25px;
+}

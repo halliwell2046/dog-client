@@ -1,16 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { DogOwnerService } from '../dog-owner-create/dog-owner.service';
+import { Component, OnInit } from "@angular/core";
+import { DogOwnerService } from "../dog-owner-create/dog-owner.service";
+import { DoggoService } from "../doggo.service";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
+  constructor(
+    private service: DogOwnerService,
+    private doggoService: DoggoService
+  ) {}
 
-  constructor(private service: DogOwnerService) { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  onSubmit() {
+    this.doggoService
+      .userLogin(this.service.loginForm.value)
+      .subscribe((data: any) => {
+        sessionStorage.setItem("token", data.sessionToken);
+        sessionStorage.setItem("accountType", data.accountType)
+        this.doggoService.checkToken()
+
+      });
   }
-
 }
