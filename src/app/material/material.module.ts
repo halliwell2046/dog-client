@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCheckboxModule } from "@angular/material/checkbox";
-import { MatInputModule, MatToolbarModule } from "@angular/material";
+import { MatInputModule, MatToolbarModule, MatStepperModule } from "@angular/material";
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { MatRadioModule } from '@angular/material/radio';
@@ -9,6 +9,7 @@ import {MatTableModule} from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
+
 
 
 const material = [
@@ -23,7 +24,8 @@ const material = [
   MatTableModule,
   MatGridListModule,
   MatSelectModule,
-  MatTabsModule
+  MatTabsModule,
+  MatStepperModule
 ];
 @NgModule({
   declarations: [],

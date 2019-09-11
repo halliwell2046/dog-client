@@ -1,5 +1,5 @@
-<h2 class="tab">walker</h2>
-<h1 class="addressh1">Welcome Jill, please create your <span style="font-weight: 800;">walker</span> profile.</h1>
+<h1 class="addressh1">Welcome {{firstName}}, please create your <span style="font-weight: 800;">walker</span> profile.
+</h1>
 <p class="ptext">
   First, complete your contact information.
 </p>
@@ -8,29 +8,31 @@
     <input formControlName="street" matInput placeholder="Street" />
     <mat-error>Must supply address</mat-error>
   </mat-form-field> <br>
-    <mat-form-field>
-      <input formControlName="city" matInput placeholder="City" />
-      <mat-error>City is Required</mat-error>
+  <div>
+  <mat-form-field class="same-line-fields-1">
+    <input formControlName="city" matInput placeholder="City" />
+    <mat-error>City is Required</mat-error>
+  </mat-form-field>
 
-    </mat-form-field>
-    <mat-form-field>
-      <mat-select formControlName="state" placeholder="State">
-        <ng-container *ngFor="let state of statesArray; index as i">
-          <mat-option value="{{ i }}">{{ state }}</mat-option>
-        </ng-container>
-        <mat-error>Select state is required</mat-error>
+  <mat-form-field class="same-line-fields-2">
+    <mat-select formControlName="state" placeholder="State">
+      <ng-container *ngFor="let state of statesArray; index as i">
+        <mat-option value="{{ i }}">{{ state }}</mat-option>
+      </ng-container>
+      <mat-error>Select state is required</mat-error>
+    </mat-select>
+  </mat-form-field>
 
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-      <input formControlName="zip" matInput placeholder="Zip Code" />
-      <mat-error>Zipcode Error</mat-error>
+  <mat-form-field class="same-line-fields-3">
+    <input formControlName="zip" matInput placeholder="Zip Code" />
+    <mat-error>Zipcode Error</mat-error>
+  </mat-form-field><br>
+  </div>
 
-    </mat-form-field><br>
-    <mat-form-field>
-        <input formControlName="phonenumber" matInput placeholder="Phone Number" />
-        <mat-error>Phone number must have 10 digits</mat-error>
-    </mat-form-field>
+  <mat-form-field>
+    <input formControlName="phonenumber" matInput placeholder="Phone Number" />
+    <mat-error>Phone number must have 10 digits</mat-error>
+  </mat-form-field>
+</form>
 
-
-
+<!--  -->

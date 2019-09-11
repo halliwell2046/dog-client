@@ -1,21 +1,50 @@
-<h2 class="tellUs">Review your walker!</h2>
-<p class="ptext">We'll need a few details about your pet.  You may add a bio with important information to help us take care of your dog.  Add a photo link from your social media if you like.</p>
+<h1 class="blue-tab">review your walker</h1>
+<p class="ptext">Please take a moment to rate your walker's performance. Add a photo link of your dog from social media.</p>
 
-<div class="walker-form">
-    <mat-form-field>
-        <input matInput placeholder="Your walker's name">
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput placeholder="Title of review">
-    </mat-form-field>
-    <mat-form-field>
-            <input matInput placeholder="Add your dog's photo URL">
-    </mat-form-field>
-    <mat-form-field>
-            <input matInput placeholder="Write your review">
-    </mat-form-field>    
-</div>
-<div>
-        <button class="red-button" mat-button>submit</button>
-        <button class="white-button" mat-button>cancel</button>
-</div>
+
+  <mat-vertical-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Write a title for your review.</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Title of review" formControlName="firstCtrl" required>
+        </mat-form-field>
+        <div>
+          <button class="blue-button" mat-button matStepperNext>next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Rate your walker on a scale of 0 to 5, with 5 being outstanding.</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Rate from 1 to 5" formControlName="secondCtrl" required>
+        </mat-form-field>
+        <div>
+          <button  class="white-blue-button" mat-button matStepperPrevious>back</button>
+          <button class="blue-button" mat-button matStepperNext>next</button>
+        </div>
+      </form>
+      </mat-step>
+      
+      <mat-step [stepControl]="thirdFormGroup">
+          <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel>Review your walker's performance.</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Walker review" formControlName="thirdCtrl" required>
+            </mat-form-field>
+            <div>
+              <button class="white-blue-button" mat-button matStepperPrevious>back</button>
+              <button class="blue-button" mat-button matStepperNext>next</button>
+            </div>
+          </form>
+        </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Finished</ng-template>
+      Thank you for your review.
+      <div>
+        <button class="white-blue-button" mat-button matStepperPrevious>back</button>
+        <button class="blue-button" mat-button (click)="stepper.reset()">submit</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>

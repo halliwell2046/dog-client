@@ -8,11 +8,19 @@
     width: 100%;
     grid-gap: 30px;
     grid-template-rows: auto auto auto;
- 
 }
   
 .blue-button {
-    color: blue;
-    border: solid 1px blue;
-    float: right;
+    color: white;
+    border: solid 1px #0075be;
+    margin-top: 30px;
+  
+}
+
+.tellUs {
+  color:#0075be;
+  font-family: Roboto, sans-serif;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 0px;
 }

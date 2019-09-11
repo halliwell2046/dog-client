@@ -18,7 +18,6 @@ import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.compo
 import { AvailableWalkersComponent } from './owner-dashboard/available-walkers/available-walkers.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
-// import { DogOwnerDashComponent } from './dog-owner-dash/dog-owner-dash.component';
 
 import { DogOwnerService } from './dog-owner-create/dog-owner.service';
 import {ReactiveFormsModule} from  '@angular/forms';
@@ -27,13 +26,15 @@ import { LisuTabsComponent } from './auth/lisu-tabs/lisu-tabs.component';
 import { WalkerCardsComponent } from './walker-cards/walker-cards.component';
 import { ReviewWalkerComponent } from './review-walker/review-walker.component'
 import { WalkerCreateComponent } from './walker-create/walker-create.component';
-import { WalkerCreateDashboardComponent } from './walker-create-dashboard/walker-create-dashboard.component';
-import { WalkerBioComponent } from './walker-bio/walker-bio.component';
 import { WlkrOwnrviewComponent } from './dog-owner-create/wlkr-ownrview/wlkr-ownrview.component';
 import { WalkerSidebarComponent } from './walker-sidebar/walker-sidebar.component';
 import { OwnrWalkerviewComponent } from './ownr-walkerview/ownr-walkerview.component';
 import { WalkerDashboardComponent } from './walker-dashboard/walker-dashboard.component';
 import { WalkerNewRequestsComponent } from './walker-new-requests/walker-new-requests.component'
+import { WalkerBioComponent } from './walker-bio/walker-bio.component';
+import { WalkerProfileComponent } from './walker-profile/walker-profile.component';
+import { DashboardComponent } from './containers/dashboard/dashboard.component';
+import { UserProfileComponent } from './containers/user-profile/user-profile.component'
 
 
 @NgModule({
@@ -56,13 +57,15 @@ import { WalkerNewRequestsComponent } from './walker-new-requests/walker-new-req
     WalkerCardsComponent,
     ReviewWalkerComponent,
     WalkerCreateComponent,
-    WalkerCreateDashboardComponent,
     WalkerBioComponent,
     WlkrOwnrviewComponent,
     WalkerSidebarComponent,
     OwnrWalkerviewComponent,
     WalkerDashboardComponent,
-    WalkerNewRequestsComponent
+    WalkerNewRequestsComponent,
+    WalkerProfileComponent,
+    DashboardComponent,
+    UserProfileComponent
     
   ],
   imports: [

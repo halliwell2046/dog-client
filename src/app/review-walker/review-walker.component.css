@@ -1,0 +1,43 @@
+.form-container{
+  display:flex;
+  flex-direction: column;
+}
+
+.form-container > * {
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.same-line-fields-1{
+  width: 100%;
+}
+
+.same-line-fields-2{
+  width: 100%;
+}
+
+.same-line-fields-3{
+  width: 100%;
+}
+
+.blue-tab {
+  background-color: white;
+  border: 1px solid #0075be;
+  text-align: center;
+  color: #0075be;
+  font-size: 1.5rem;
+  font-family: Roboto;
+  margin-top: 30px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.white-blue-button {
+  border: 1px solid #0075be;
+  color: #0075be;
+  background-color: white;
+  margin: 15px;
+  }
