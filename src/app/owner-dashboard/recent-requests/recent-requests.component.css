@@ -16,6 +16,16 @@ h1 {
     font-weight: bold;
 }
 
+.review-button {
+    background-color: red;
+    color: white;
+}
+
+.cancel-button {
+    border: solid black 1px;
+    color: black;
+}
+
 .gray-tab {
     background-color:  black;
     text-align: center;

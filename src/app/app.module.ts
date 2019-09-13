@@ -34,7 +34,8 @@ import { WalkerNewRequestsComponent } from './walker-new-requests/walker-new-req
 import { WalkerBioComponent } from './walker-bio/walker-bio.component';
 import { WalkerProfileComponent } from './walker-profile/walker-profile.component';
 import { DashboardComponent } from './containers/dashboard/dashboard.component';
-import { UserProfileComponent } from './containers/user-profile/user-profile.component'
+import { UserProfileComponent } from './containers/user-profile/user-profile.component';
+import { WalkerRecentRequestComponent } from './walker-dashboard/walker-recent-request/walker-recent-request.component'
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { UserProfileComponent } from './containers/user-profile/user-profile.com
     WalkerNewRequestsComponent,
     WalkerProfileComponent,
     DashboardComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    WalkerRecentRequestComponent
     
   ],
   imports: [

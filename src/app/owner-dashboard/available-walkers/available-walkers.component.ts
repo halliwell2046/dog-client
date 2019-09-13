@@ -1,19 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-export interface AvailalbeWalkers {
-  id: number;
-  walker: string;
-  rating: string;
-  request: string;
-}
-
-const ELEMENT_DATA: AvailalbeWalkers[] = [
-  {id: 1, walker: 'Jill Farmington', rating: '* * * *', request: 'yes or no' },
-  {id: 2, walker: 'Alice Frazier', rating: '* * * *', request: 'yes or no' },
-  {id: 3, walker: 'Rob VanArsdall', rating: '* * * *', request: 'yes or no' },
-  {id: 4, walker: 'Tracy Smart', rating: '* * * *', request: 'yes or no' },
-
-];
-
 @Component({
   selector: 'app-available-walkers',
   templateUrl: './available-walkers.component.html',
@@ -21,7 +6,56 @@ const ELEMENT_DATA: AvailalbeWalkers[] = [
 })
 export class AvailableWalkersComponent implements OnInit {
   displayedColumns: string[] = ['id', 'walker', 'rating', 'request'];
-  dataSource = ELEMENT_DATA;
+  availableWalkers = [
+    {
+      dateRequested: '09/25/2019', 
+      timeRequested: '2:30PM',
+      walkerId: '1',
+      userId: '2',
+      isAccepted: true,
+      isCompleted: false,
+      ownerNotified: false,
+      reviewTitle: 'Great', 
+      review: 'test',
+      rating: '****',
+    },
+      {
+        dateRequested: '09/27/2019', 
+        timeRequested: '2:30PM',
+        walkerId: '2',
+        userId: '2',
+        isAccepted: false,
+        isCompleted: false,
+        ownerNotified: false,
+        reviewTitle: 'Great', 
+        review: 'test',
+        rating: '****',
+    },
+    {
+      dateRequested: '09/27/2019', 
+      timeRequested: '2:30PM',
+      walkerId: '3',
+      userId: '2',
+      isAccepted: false,
+      isCompleted: false,
+      ownerNotified: false,
+      reviewTitle: 'Great', 
+      review: 'test',
+      rating: '****',
+  },
+  {
+    dateRequested: '09/27/2019', 
+    timeRequested: '2:30PM',
+    walkerId: '4',
+    userId: '2',
+    isAccepted: false,
+    isCompleted: false,
+    ownerNotified: false,
+    reviewTitle: 'Great', 
+    review: 'test',
+    rating: '****',
+}
+  ]
 
   constructor() { }
 

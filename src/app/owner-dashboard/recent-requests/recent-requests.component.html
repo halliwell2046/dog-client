@@ -1,16 +1,16 @@
 <h2 class="gray-tab">your recent requests</h2>
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z0">
+<table mat-table [dataSource]="recentRequest" class="mat-elevation-z0">
     
     <!-- Date Column -->
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef> Date </th>
-      <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.dateRequested}} </td>
     </ng-container>
   
     <!-- Time Column -->
     <ng-container matColumnDef="time">
       <th mat-header-cell *matHeaderCellDef> Time </th>
-      <td mat-cell *matCellDef="let element"> {{element.time}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.timeRequested}} </td>
     </ng-container>
   
     <!-- Walker Column -->
@@ -27,14 +27,14 @@
 
     <!-- Review Column -->
     <ng-container matColumnDef="review">
-        <th mat-header-cell *matHeaderCellDef> Review </th>
-        <td mat-cell *matCellDef="let element"> {{element.review}} </td>
+        <th mat-header-cell *matHeaderCellDef> Add Review </th>
+        <td mat-cell *matCellDef="let element"> <button class="review-button" mat-raised-button (click)="addReview(element.id)">Add Review</button> </td>
     </ng-container>
 
     <!-- Cancel Column -->
     <ng-container matColumnDef="cancel">
         <th mat-header-cell *matHeaderCellDef> Cancel </th>
-        <td mat-cell *matCellDef="let element"> {{element.cancel}} </td>
+        <td mat-cell *matCellDef="let element"> <button class="cancel-button" mat-raised-button (click)="cancelRequest(element.id)">cancel</button> </td>
     </ng-container>
   
     <tr mat-header-row style="height: 2em;" *matHeaderRowDef="displayedColumns"></tr>
