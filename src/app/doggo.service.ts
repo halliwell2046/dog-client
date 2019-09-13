@@ -13,6 +13,8 @@ export class DoggoService {
   ownerAddingPetURL: string = "http://localhost:3000/owner/create";
   getPetURL: string = `http://localhost:3000/owner/`;
   deletePet: string = "http://localhost:3000/owner/delete/";
+  walkerProfile: string = `http://localhost:3000/owner/`;
+  updateRequest: string = "http://localhost:3000/walker/update-request/1"
   //SIGNUP
   // var firstName = req.body.user.firstName;
   //     var lastName = req.body.user.lastName;
@@ -119,6 +121,20 @@ export class DoggoService {
       headers: reqHeaders
     });
   }
+
+// WALKER INFO FOR SIDEBAR
+walkerData() {
+  const reqHeaders = new HttpHeaders({
+    "Content-Type": "application/json",
+    Authorization: this.sessionToken.value
+  });
+  return (
+    this.http
+      .get(this.walkerProfile, { headers: reqHeaders })
+    
+  );
+}
+
   userSignup(formData) {
     const reqHeaders = new HttpHeaders({ "Content-Type": "application/json" });
     const body = {
@@ -135,4 +151,26 @@ export class DoggoService {
       headers: reqHeaders
     });
   }
+
+  addReview(data) {
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionToken.value
+    });
+    const body = {
+      data: {
+        reviewTitle: data.reviewTitle,
+        // rating: data.rating,
+        review: data.review
+
+      }
+    };
+    return (
+      this.http
+        .put(this.updateRequest, { headers: reqHeaders })
+      
+    );
+  }
+
 }
+

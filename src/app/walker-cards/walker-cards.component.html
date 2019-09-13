@@ -1,13 +1,13 @@
-   <div *ngFor="let review of filterCards()">
-
-     <div class="walkerCards">
+<div class="walkerCards">
+  <div *ngFor="let review of filterCards()">
+     <div >
        <mat-card class="example-card" style="width: 15rem;">
          <mat-card-header>
            <mat-card-title style="font-size: 24px; margin-left: 0px;">{{review.reviewTitle}}</mat-card-title>
-           <mat-card-subtitle style="font-size: 22px; text-align :center; margin-left: 0px; margin-bottom: 0px">*****</mat-card-subtitle>
+           <mat-card-subtitle style="font-size: 22px; text-align :center; margin-left: 0px; margin-bottom: 5px">{{review.rating}}/5</mat-card-subtitle>
 
          </mat-card-header>
-         <img mat-card-image class="dogpic" src="../../../assets/mutt.jpg" alt="Photo of a dog">
+         <img mat-card-image class="dogpic" src="{{review.petPic}}" alt="Photo of a dog">
          <mat-card-content>
            <p style="font-size: 15px;">
              {{review.review}}
@@ -19,4 +19,5 @@
     </mat-card-actions> -->
        </mat-card>
      </div>
+   </div>
    </div>
