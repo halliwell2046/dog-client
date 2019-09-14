@@ -48,7 +48,7 @@ export class DoggoService {
         state: addressData.state,
         zipcode: addressData.zipcode,
         phoneNumber: addressData.phoneNumber,
-        picture: addressData.photourl
+        pic: addressData.photourl
       }
     };
     const reqHeaders = new HttpHeaders({
@@ -154,31 +154,22 @@ export class DoggoService {
   }
 // PULLING REQUESTS THAT OWNER MADE
 
-  addReview(data) {
+
+  addReview(data){
+
     const reqHeaders = new HttpHeaders({
       "Content-Type": "application/json",
       Authorization: this.sessionToken.value
     });
-
-    return this.http.get(this.ownerRecentRequestURL, { headers: reqHeaders })
-  }
-  ownerRecentRequests(){
-
-
-
     const body = {
       data: {
         reviewTitle: data.reviewTitle,
         // rating: data.rating,
         review: data.review
-
       }
     };
-    return (
-      this.http
-        .put(this.updateRequest, body, { headers: reqHeaders })
+    return this.http.get(this.ownerRecentRequestURL, { headers: reqHeaders })
 
-    );
   }
 
 
@@ -193,6 +184,15 @@ export class DoggoService {
           .get(this.userProfile, { headers: reqHeaders })
   
       );
+    }
+
+    // OWNER RECENT REQUESTS
+    getOwnerRecentRequests(){
+      const reqHeaders = new HttpHeaders({
+        "Content-Type": "application/json",
+        Authorization: this.sessionToken.value
+      });
+      return this.http.get(this.ownerRecentRequestURL, {headers: reqHeaders})
     }
 
 }

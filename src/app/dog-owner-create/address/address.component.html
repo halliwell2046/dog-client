@@ -5,12 +5,12 @@
 </p>
 <form [formGroup]="service.form" class="form-container" (ngSubmit)="onSubmit()">
   <mat-form-field>
-    <input formControlName="street" matInput placeholder="Street" value="{{street}}" />
+    <input formControlName="street" matInput placeholder="Street" />
     <mat-error>Must supply address</mat-error>
   </mat-form-field>
   <div>
     <mat-form-field class="same-line-fields-1">
-      <input formControlName="city" matInput placeholder="City" value="{{city}}"/>
+      <input formControlName="city" matInput placeholder="City"/>
       <mat-error>City is Required</mat-error>
     </mat-form-field>
 
@@ -24,21 +24,21 @@
     </mat-form-field>
 
     <mat-form-field class="same-line-fields-3">
-      <input formControlName="zipcode" matInput placeholder="Zip Code" value='{{zipcode}}'/>
+      <input formControlName="zipcode" matInput placeholder="Zip Code" />
       <mat-error>Zipcode Error</mat-error>
     </mat-form-field>
   </div>
 
   <mat-form-field>
-    <input formControlName="phoneNumber" matInput placeholder="Phone Number" value='{{phoneNumber}}'/>
+    <input formControlName="phoneNumber" matInput placeholder="Phone Number" />
     <mat-error>Phone number must have 10 digits</mat-error>
 </mat-form-field>
 
   <mat-form-field>
-    <input formControlName="pic" matInput placeholder="Add Your Photo URL" value='{{photoURL}}' />
+    <input formControlName="picture" matInput placeholder="Add Your Photo URL" />
   </mat-form-field>
 
   <div class="add-bottom-padding">
-    <button mat-button class="red-button" style="margin-top: 10px;" type="submit">submit</button>
+    <button mat-button class="red-button" style="margin-top: 10px;" type="submit">submit</button><p style='padding-left:10px;'>Data Saved</p>
   </div>
 </form>

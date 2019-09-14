@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DoggoService } from 'src/app/doggo.service';
 
 
 @Component({
@@ -7,10 +8,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recent-requests.component.css']
 })
 export class RecentRequestsComponent implements OnInit {
-<<<<<<< HEAD
-  displayedColumns: string[] = ['dateRequested', 'timeRequested', 'walker', 'status', 'review', 'cancel'];
-  dataSource = ELEMENT_DATA;
-=======
   displayedColumns: string[] = ['date', 'time', 'walker', 'status', 'review', 'cancel'];
   recentRequest = [
     {
@@ -38,7 +35,6 @@ export class RecentRequestsComponent implements OnInit {
         rating: '****',
     }
   ]
->>>>>>> 7d30a60636460b8f1cb98cdc68d96dea92e70e56
 
   recentRequestData: object =[
     {
@@ -59,9 +55,14 @@ export class RecentRequestsComponent implements OnInit {
   ]
 
 
-  constructor() { }
+  constructor(private doggoService: DoggoService) { }
 
   ngOnInit() {
+
+    this.doggoService.getOwnerRecentRequests().subscribe((data:any)=>{
+      this.recentRequest = data
+    })
   }
+
 
 }

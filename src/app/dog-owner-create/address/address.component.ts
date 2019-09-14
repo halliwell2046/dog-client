@@ -78,36 +78,25 @@ export class AddressComponent implements OnInit {
 
   ngOnInit() {
     this.doggoService.getUserInfo().subscribe((requested: any) => {
-      this.name = requested.data.firstName
-      this.street = requested.data.address
-      this.city = requested.data.city
-      this.zipcode = requested.data.zip
-      this.photoURL = requested.data.pic
-      this.phoneNumber = requested.data.phoneNumber
+      console.log(requested.data)
+
+      this.service.form.controls['city'].setValue(requested.data.city)
+      this.service.form.controls['street'].setValue(requested.data.address)
+      this.service.form.controls['state'].setValue(requested.data.state)
+      this.service.form.controls['zipcode'].setValue(requested.data.zip)
+      this.service.form.controls['picture'].setValue(requested.data.pic)
+      this.service.form.controls['phoneNumber'].setValue(requested.data.phoneNumber)
     })
 
   }
-  name: string
-  street: string
-  city: string
-  phoneNumber: string
-  photoURL: string
-  zipcode: string
 
   onSubmit() {
     this.doggoService
       .addressUpdate(this.service.form.value)
       .subscribe((data: any) => {
-        if (data.error === false) {
-          console.log(data);
-        } else {
-          console.log(data);
+        console.log('itworked')
         }
-      });
+      );
     // console.warn(this.service.form.value);
   }
 }
-// Questions to ask Michael:
-// How can I get make the option select in the Code.
-
-// Red Valitators are throwing error when data has value in it.
