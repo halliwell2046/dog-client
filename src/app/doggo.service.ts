@@ -13,15 +13,22 @@ export class DoggoService {
   ownerAddingPetURL: string = "http://localhost:3000/owner/create";
   getPetURL: string = `http://localhost:3000/owner/`;
   deletePet: string = "http://localhost:3000/owner/delete/";
-  ownerRecentRequestURL: string ="http://localhost:3000/walker/owner-requests/"
+  ownerRecentRequestURL: string ="http://localhost:3000/walker/owner-requests/" 
+  walkerProfile: string = `http://localhost:3000/owner/`;
+  updateRequest: string = "http://localhost:3000/walker/update-request/1"
 
 
-  
-  constructor(private http: HttpClient) {}
-  // petDataSource: Object = []
+  userProfile: string = `http://localhost:3000/owner/userinfo`;
+
+
+
+  constructor(private http: HttpClient) { }
   petDataSource = new BehaviorSubject<any>([]);
+
   cast = this.petDataSource.asObservable();
+
   sessionToken = new BehaviorSubject<any>("");
+
   token = this.sessionToken.asObservable();
   //TOKEN ITEMS
   checkToken() {
@@ -32,7 +39,7 @@ export class DoggoService {
   logOut() {
     this.sessionToken.next(undefined);
   }
-// PROFILE OWNER
+  // PROFILE OWNER
   addressUpdate(addressData) {
     const body = {
       data: {
@@ -44,8 +51,9 @@ export class DoggoService {
         picture: addressData.photourl
       }
     };
-    const reqHeaders = new HttpHeaders({ "Content-Type": "application/json", Authorization: this.sessionToken.value
-  });
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json", Authorization: this.sessionToken.value
+    });
     return this.http.put(this.userUpdateURL, body, { headers: reqHeaders });
   }
   //PET OWNER ADDING PET
@@ -114,6 +122,20 @@ export class DoggoService {
       headers: reqHeaders
     });
   }
+
+  // WALKER INFO FOR SIDEBAR
+  walkerData() {
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionToken.value
+    });
+    return (
+      this.http
+        .get(this.walkerProfile, { headers: reqHeaders })
+
+    );
+  }
+
   userSignup(formData) {
     const reqHeaders = new HttpHeaders({ "Content-Type": "application/json" });
     const body = {
@@ -131,7 +153,8 @@ export class DoggoService {
     });
   }
 // PULLING REQUESTS THAT OWNER MADE
-  ownerRecentRequests(){
+
+  addReview(data) {
     const reqHeaders = new HttpHeaders({
       "Content-Type": "application/json",
       Authorization: this.sessionToken.value
@@ -139,5 +162,38 @@ export class DoggoService {
 
     return this.http.get(this.ownerRecentRequestURL, { headers: reqHeaders })
   }
+  ownerRecentRequests(){
+
+
+
+    const body = {
+      data: {
+        reviewTitle: data.reviewTitle,
+        // rating: data.rating,
+        review: data.review
+
+      }
+    };
+    return (
+      this.http
+        .put(this.updateRequest, body, { headers: reqHeaders })
+
+    );
+  }
+
+
+    // OWNER/WALKER INFO FOR SIDEBAR
+    getUserInfo() {
+      const reqHeaders = new HttpHeaders({
+        "Content-Type": "application/json",
+        Authorization: this.sessionToken.value
+      });
+      return (
+        this.http
+          .get(this.userProfile, { headers: reqHeaders })
+  
+      );
+    }
 
 }
+

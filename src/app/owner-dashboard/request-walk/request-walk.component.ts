@@ -1,16 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
-
-export interface RequestWalk {
-  date: string;
-  time: string;
-  dogs: string;
-}
-
-const ELEMENT_DATA: RequestWalk[] = [
-  { date: '10/1/2019', time: '12:00PM', dogs: 'Bogey, Rusty' }
-];
-
 @Component({
   selector: 'app-request-walk',
   templateUrl: './request-walk.component.html',
@@ -18,7 +6,32 @@ const ELEMENT_DATA: RequestWalk[] = [
 })
 export class RequestWalkComponent implements OnInit {
   displayedColumns: string[] = ['date', 'time', 'dogs'];
-  dataSource = ELEMENT_DATA;
+  requestWalk = [
+    {
+      dateRequested: '09/25/2019', 
+      timeRequested: '2:30PM',
+      walkerId: '1',
+      userId: '2',
+      isAccepted: true,
+      isCompleted: false,
+      ownerNotified: false,
+      reviewTitle: 'Great', 
+      review: 'test',
+      rating: '****',
+    },
+      {
+        dateRequested: '09/27/2019', 
+        timeRequested: '2:30PM',
+        walkerId: '1',
+        userId: '2',
+        isAccepted: false,
+        isCompleted: false,
+        ownerNotified: false,
+        reviewTitle: 'Great', 
+        review: 'test',
+        rating: '****',
+    }
+  ]
 
   constructor() { }
 

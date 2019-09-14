@@ -7,10 +7,10 @@
 }
 
 .white-button {
-border: 1px solid #ed1c24;
-color: #ed1c24;
-background-color: white;
-margin: 15px;
+  border: 1px solid #ed1c24;
+  color: #ed1c24;
+  background-color: white;
+  margin: 15px;
 }
 
 .white-blue-button {
@@ -38,4 +38,20 @@ margin: 15px;
   margin: 0;
   padding-bottom: 5px;
   margin-bottom: 10px;
+}
+
+.name {
+  font-family: Roboto;
+  font-size: 1.8rem;
+  vertical-align: top;
+  padding: 10px;
+  line-height: 1.2;
+} 
+
+.tellUs {
+  color:black;
+  font-family: Roboto, sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0px;
 }

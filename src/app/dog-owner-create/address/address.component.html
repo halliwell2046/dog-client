@@ -1,41 +1,41 @@
-<h1 class="addressh1">Welcome John, please create your <span style="font-weight: 800;">dog owner</span> profile.</h1>
+<h1 class="addressh1">Welcome {{name}}, please create your <span style="font-weight: 800;">dog owner</span> profile.</h1>
 <p class="ptext">
   Please enter your contact information and the location for your walker to meet
   your dog.
 </p>
 <form [formGroup]="service.form" class="form-container" (ngSubmit)="onSubmit()">
   <mat-form-field>
-    <input formControlName="street" matInput placeholder="Street" />
+    <input formControlName="street" matInput placeholder="Street" value="{{street}}" />
     <mat-error>Must supply address</mat-error>
   </mat-form-field>
   <div>
     <mat-form-field class="same-line-fields-1">
-      <input formControlName="city" matInput placeholder="City" />
+      <input formControlName="city" matInput placeholder="City" value="{{city}}"/>
       <mat-error>City is Required</mat-error>
     </mat-form-field>
 
     <mat-form-field class="same-line-fields-2">
-      <mat-select formControlName="state" placeholder="State">
-        <ng-container *ngFor="let state of statesArray; index as i">
-          <mat-option value="{{ state }}">{{ state }}</mat-option>
+      <mat-select formControlName="state" placeholder="State" >
+        <ng-container *ngFor="let stateArray of statesArray; index as i">
+          <mat-option value="{{ stateArray }}">{{ stateArray }}</mat-option>
         </ng-container>
         <mat-error>Select state is required</mat-error>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field class="same-line-fields-3">
-      <input formControlName="zipcode" matInput placeholder="Zip Code" />
+      <input formControlName="zipcode" matInput placeholder="Zip Code" value='{{zipcode}}'/>
       <mat-error>Zipcode Error</mat-error>
     </mat-form-field>
   </div>
 
   <mat-form-field>
-    <input formControlName="phoneNumber" matInput placeholder="Phone Number" />
+    <input formControlName="phoneNumber" matInput placeholder="Phone Number" value='{{phoneNumber}}'/>
     <mat-error>Phone number must have 10 digits</mat-error>
 </mat-form-field>
 
   <mat-form-field>
-    <input formControlName="pic" matInput placeholder="Add Your Photo URL" />
+    <input formControlName="pic" matInput placeholder="Add Your Photo URL" value='{{photoURL}}' />
   </mat-form-field>
 
   <div class="add-bottom-padding">

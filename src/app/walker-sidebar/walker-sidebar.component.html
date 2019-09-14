@@ -1,15 +1,16 @@
-<div>
-    <h2 class="tab">Walker</h2>
+<div >
+    <h2 class="tab">walker</h2>
   
   </div>
   <div class='profile-pic'>
   
     <img class="portrait" src="../../../assets/walker-portrait.jpg">
-    <h3 class="name">Jill Farmington</h3>
-    <h3 class="starrate">****</h3>
-    <h3>$15/Walk</h3>
-    <p>Macaroon bonbon sugar plum sesame snaps sweet roll bear claw. Icing cotton candy lemon drops. Muffin dessert halvah. Macaroon macaroon jujubes. Cookie soufflé marshmallow jelly-o chupa chups brownie. Fruitcake chocolate bar marzipan jelly beans. Chocolate cake cake sweet oat cake pudding pie jelly muffin. Topping carrot cake pie marshmallow sweet topping cupcake chupa chups macaroon. Chupa chups lollipop lemon drops croissant muffin icing oat cake bonbon pie. Fruitcake carrot cake cake sesame snaps chocolate. Gummi bears donut gingerbread marshmallow sesame snaps croissant sugar plum. Sesame snaps biscuit powder sugar plum carrot cake marshmallow.</p>
-     <button class="button-update" routerLink="/walkerdash" mat-button style="font-size: 16px; background-color: blue; color: white;"><div *ngIf="condition; else elseBlock">Contact Me</div>
+    <h3 class="name">{{walkerData[0].firstName}} {{walkerData[0].lastName}}</h3>
+    <h3 class="starrate">{{walkerData[0].rating}}</h3>
+    <h3 class="tellUs">$15/Walk</h3>
+    <p class="ptext">{{walkerData[0].bio}}</p>
+    
+     <button class="blue-button" routerLink="/walkerdash" mat-button ><div *ngIf="condition; else elseBlock">Contact Me</div>
           <ng-template #elseBlock>Update Profile</ng-template></button>
   </div>
   
