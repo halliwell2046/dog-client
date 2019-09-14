@@ -159,27 +159,20 @@ export class DoggoService {
       "Content-Type": "application/json",
       Authorization: this.sessionToken.value
     });
-
-    return this.http.get(this.ownerRecentRequestURL, { headers: reqHeaders })
-  }
-  ownerRecentRequests(){
-
-
-
-    const body = {
-      data: {
-        reviewTitle: data.reviewTitle,
-        // rating: data.rating,
-        review: data.review
+      const body = {
+        data: {
+          reviewTitle: data.reviewTitle,
+          // rating: data.rating,
+          review: data.review
+        }
+      };
+      return (
+        this.http
+          .put(this.updateRequest, body, { headers: reqHeaders })
+  
+      );
 
       }
-    };
-    return (
-      this.http
-        .put(this.updateRequest, body, { headers: reqHeaders })
-
-    );
-  }
 
 
     // OWNER/WALKER INFO FOR SIDEBAR
@@ -194,6 +187,8 @@ export class DoggoService {
   
       );
     }
+
+    
 
 }
 
