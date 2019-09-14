@@ -13,16 +13,14 @@ export class DoggoService {
   ownerAddingPetURL: string = "http://localhost:3000/owner/create";
   getPetURL: string = `http://localhost:3000/owner/`;
   deletePet: string = "http://localhost:3000/owner/delete/";
-  ownerRecentRequestURL: string ="http://localhost:3000/walker/owner-requests/" 
+  ownerRecentRequestURL: string =
+    "http://localhost:3000/walker/owner-requests/";
   walkerProfile: string = `http://localhost:3000/owner/`;
-  updateRequest: string = "http://localhost:3000/walker/update-request/1"
-
+  updateRequest: string = "http://localhost:3000/walker/update-request/1";
 
   userProfile: string = `http://localhost:3000/owner/userinfo`;
 
-
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   petDataSource = new BehaviorSubject<any>([]);
 
   cast = this.petDataSource.asObservable();
@@ -48,11 +46,12 @@ export class DoggoService {
         state: addressData.state,
         zipcode: addressData.zipcode,
         phoneNumber: addressData.phoneNumber,
-        pic: addressData.photourl
+        picture: addressData.picture
       }
     };
     const reqHeaders = new HttpHeaders({
-      "Content-Type": "application/json", Authorization: this.sessionToken.value
+      "Content-Type": "application/json",
+      Authorization: this.sessionToken.value
     });
     return this.http.put(this.userUpdateURL, body, { headers: reqHeaders });
   }
@@ -84,14 +83,12 @@ export class DoggoService {
       "Content-Type": "application/json",
       Authorization: this.sessionToken.value
     });
-    return (
-      this.http
-        .get(this.getPetURL, { headers: reqHeaders })
-        .subscribe(pet => {
-          console.log(pet);
-          this.petDataSource.next(pet);
-        })
-    );
+    return this.http
+      .get(this.getPetURL, { headers: reqHeaders })
+      .subscribe(pet => {
+        console.log(pet);
+        this.petDataSource.next(pet);
+      });
   }
   //DELETING PET DATA
   deletePetData(id) {
@@ -129,11 +126,7 @@ export class DoggoService {
       "Content-Type": "application/json",
       Authorization: this.sessionToken.value
     });
-    return (
-      this.http
-        .get(this.walkerProfile, { headers: reqHeaders })
-
-    );
+    return this.http.get(this.walkerProfile, { headers: reqHeaders });
   }
 
   userSignup(formData) {
@@ -152,11 +145,9 @@ export class DoggoService {
       headers: reqHeaders
     });
   }
-// PULLING REQUESTS THAT OWNER MADE
+  // PULLING REQUESTS THAT OWNER MADE
 
-
-  addReview(data){
-
+  addReview(data) {
     const reqHeaders = new HttpHeaders({
       "Content-Type": "application/json",
       Authorization: this.sessionToken.value
@@ -168,32 +159,24 @@ export class DoggoService {
         review: data.review
       }
     };
-    return this.http.get(this.ownerRecentRequestURL, { headers: reqHeaders })
-
+    return this.http.get(this.ownerRecentRequestURL, { headers: reqHeaders });
   }
 
+  // OWNER/WALKER INFO FOR SIDEBAR
+  getUserInfo() {
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionToken.value
+    });
+    return this.http.get(this.userProfile, { headers: reqHeaders });
+  }
 
-    // OWNER/WALKER INFO FOR SIDEBAR
-    getUserInfo() {
-      const reqHeaders = new HttpHeaders({
-        "Content-Type": "application/json",
-        Authorization: this.sessionToken.value
-      });
-      return (
-        this.http
-          .get(this.userProfile, { headers: reqHeaders })
-  
-      );
-    }
-
-    // OWNER RECENT REQUESTS
-    getOwnerRecentRequests(){
-      const reqHeaders = new HttpHeaders({
-        "Content-Type": "application/json",
-        Authorization: this.sessionToken.value
-      });
-      return this.http.get(this.ownerRecentRequestURL, {headers: reqHeaders})
-    }
-
+  // OWNER RECENT REQUESTS
+  getOwnerRecentRequests() {
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionToken.value
+    });
+    return this.http.get(this.ownerRecentRequestURL, { headers: reqHeaders });
+  }
 }
-
