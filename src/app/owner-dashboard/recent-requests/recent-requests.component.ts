@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DoggoService } from 'src/app/doggo.service';
 
 @Component({
   selector: 'app-recent-requests',
@@ -52,13 +53,26 @@ export class RecentRequestsComponent implements OnInit {
   }
   ]
 
+<<<<<<< HEAD
   constructor() { }
+=======
+
+  constructor(private doggoService: DoggoService) { }
+>>>>>>> origin/rob2
 
   ngOnInit() {
+
+    this.doggoService.getOwnerRecentRequests().subscribe((data:any)=>{
+      this.recentRequest = data
+    })
   }
 
+<<<<<<< HEAD
   reviewToggle: boolean = false;
   addReview(id) {
     this.reviewToggle=true
   }
+=======
+
+>>>>>>> origin/rob2
 }
