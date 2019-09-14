@@ -15,20 +15,19 @@ export class DoggoService {
   deletePet: string = "http://localhost:3000/owner/delete/";
   walkerProfile: string = `http://localhost:3000/owner/`;
   updateRequest: string = "http://localhost:3000/walker/update-request/1"
-  //SIGNUP
-  // var firstName = req.body.user.firstName;
-  //     var lastName = req.body.user.lastName;
-  //     var email = req.body.user.email;
-  //     var pass = req.body.user.password;
-  //     var accountType = req.body.user.accountType;
-  //LOGIN
-  // .user.email
-  // .user.password
-  constructor(private http: HttpClient) {}
-  // petDataSource: Object = []
+
+
+  userProfile: string = `http://localhost:3000/owner/userinfo`;
+
+
+
+  constructor(private http: HttpClient) { }
   petDataSource = new BehaviorSubject<any>([]);
+
   cast = this.petDataSource.asObservable();
+
   sessionToken = new BehaviorSubject<any>("");
+
   token = this.sessionToken.asObservable();
   //TOKEN ITEMS
   checkToken() {
@@ -39,7 +38,7 @@ export class DoggoService {
   logOut() {
     this.sessionToken.next(undefined);
   }
-// PROFILE OWNER
+  // PROFILE OWNER
   addressUpdate(addressData) {
     const body = {
       data: {
@@ -51,8 +50,9 @@ export class DoggoService {
         picture: addressData.photourl
       }
     };
-    const reqHeaders = new HttpHeaders({ "Content-Type": "application/json", Authorization: this.sessionToken.value
-  });
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json", Authorization: this.sessionToken.value
+    });
     return this.http.put(this.userUpdateURL, body, { headers: reqHeaders });
   }
   //PET OWNER ADDING PET
@@ -122,18 +122,18 @@ export class DoggoService {
     });
   }
 
-// WALKER INFO FOR SIDEBAR
-walkerData() {
-  const reqHeaders = new HttpHeaders({
-    "Content-Type": "application/json",
-    Authorization: this.sessionToken.value
-  });
-  return (
-    this.http
-      .get(this.walkerProfile, { headers: reqHeaders })
-    
-  );
-}
+  // WALKER INFO FOR SIDEBAR
+  walkerData() {
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionToken.value
+    });
+    return (
+      this.http
+        .get(this.walkerProfile, { headers: reqHeaders })
+
+    );
+  }
 
   userSignup(formData) {
     const reqHeaders = new HttpHeaders({ "Content-Type": "application/json" });
@@ -167,10 +167,24 @@ walkerData() {
     };
     return (
       this.http
-        .put(this.updateRequest, { headers: reqHeaders })
-      
+        .put(this.updateRequest, body, { headers: reqHeaders })
+
     );
   }
+
+
+    // OWNER/WALKER INFO FOR SIDEBAR
+    getUserInfo() {
+      const reqHeaders = new HttpHeaders({
+        "Content-Type": "application/json",
+        Authorization: this.sessionToken.value
+      });
+      return (
+        this.http
+          .get(this.userProfile, { headers: reqHeaders })
+  
+      );
+    }
 
 }
 

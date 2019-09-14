@@ -19,7 +19,8 @@ export class DogOwnerService {
     phoneNumber: new FormControl("", [
       Validators.required,
       Validators.minLength(10)
-    ])
+    ]),
+    picture: new FormControl("")
   });
 
   profileForm: FormGroup = new FormGroup({

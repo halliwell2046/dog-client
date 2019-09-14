@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { DogOwnerService } from "../dog-owner.service";
 import { DoggoService } from "src/app/doggo.service";
+import { CodeNode } from 'source-list-map';
 
 @Component({
   selector: "app-address",
@@ -72,12 +73,29 @@ export class AddressComponent implements OnInit {
 
   constructor(
     private service: DogOwnerService,
-    private userUpdate: DoggoService
-  ) {}
+    private doggoService: DoggoService
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.doggoService.getUserInfo().subscribe((requested: any) => {
+      this.name = requested.data.firstName
+      this.street = requested.data.address
+      this.city = requested.data.city
+      this.zipcode = requested.data.zip
+      this.photoURL = requested.data.pic
+      this.phoneNumber = requested.data.phoneNumber
+    })
+
+  }
+  name: string
+  street: string
+  city: string
+  phoneNumber: string
+  photoURL: string
+  zipcode: string
+
   onSubmit() {
-    this.userUpdate
+    this.doggoService
       .addressUpdate(this.service.form.value)
       .subscribe((data: any) => {
         if (data.error === false) {
@@ -89,3 +107,7 @@ export class AddressComponent implements OnInit {
     // console.warn(this.service.form.value);
   }
 }
+// Questions to ask Michael:
+// How can I get make the option select in the Code.
+
+// Red Valitators are throwing error when data has value in it.

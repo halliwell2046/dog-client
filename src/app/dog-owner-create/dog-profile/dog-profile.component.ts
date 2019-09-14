@@ -36,9 +36,9 @@ export class DogProfileComponent implements OnInit {
   }
 
 
-test(){
-  console.log(this.service.profileForm.value)
-}
+// test(){
+//   console.log(this.service.profileForm.value)
+// }
   
 
 }
