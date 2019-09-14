@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./walker-dashboard.component.css']
 })
 export class WalkerDashboardComponent implements OnInit {
+  
 
   constructor() { }
 

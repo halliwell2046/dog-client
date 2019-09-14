@@ -16,18 +16,13 @@ h1 {
     font-weight: bold;
 }
 
-.accept-button {
-    background-color: blue;
-    color: white;
-}
-
-.decline-button {
+.cancel-button {
     border: blue solid 1px;
     color: blue;
 }
 
 .gray-tab {
-    background-color:  rgb(101, 100, 100);
+    background-color:  black;
     text-align: center;
     color: white;
     font-size: 1.5rem;
@@ -35,4 +30,4 @@ h1 {
     margin: 0;
     padding-bottom: 5px;
     margin-bottom: 10px;
-}
+  }

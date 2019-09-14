@@ -1,16 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-export interface RecentRequest {
-  date: string;
-  time: string;
-  walker: string;
-  status: string;
-  review: string;
-  cancel: string;
-}
 
-const ELEMENT_DATA: RecentRequest[] =[
-{ date: '9/5/2019', time: '2:00PM', walker: 'Jane', status: 'Accepted', review: 'test review', cancel: 'yes or no' }
-];
 
 @Component({
   selector: 'app-recent-requests',
@@ -19,7 +8,32 @@ const ELEMENT_DATA: RecentRequest[] =[
 })
 export class RecentRequestsComponent implements OnInit {
   displayedColumns: string[] = ['date', 'time', 'walker', 'status', 'review', 'cancel'];
-  dataSource = ELEMENT_DATA;
+  recentRequest = [
+    {
+      dateRequested: '09/25/2019', 
+      timeRequested: '2:30PM',
+      walkerId: '1',
+      userId: '2',
+      isAccepted: true,
+      isCompleted: false,
+      ownerNotified: false,
+      reviewTitle: 'Great', 
+      review: 'test',
+      rating: '****',
+    },
+      {
+        dateRequested: '09/27/2019', 
+        timeRequested: '2:30PM',
+        walkerId: '2',
+        userId: '2',
+        isAccepted: false,
+        isCompleted: false,
+        ownerNotified: false,
+        reviewTitle: 'Great', 
+        review: 'test',
+        rating: '****',
+    }
+  ]
 
   constructor() { }
 
