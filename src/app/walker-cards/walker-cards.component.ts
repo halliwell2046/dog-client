@@ -18,11 +18,20 @@ reviewData = [
 
 {
   reviewTitle: "We love Jill!",
-  review: "Jill is AWESOME. Exactly who you hope to find to watch over your loved one.She is super pleasant, and flexible to work with. My Rachel LOVED her, her dog, and her walk! I definitely hope Jill is available to exercise Rachel when I'm out of town again.",
+  review: "Jill is AWESOME. Exactly who you hope to find to watch over your loved one.She is super pleasant, and flexible to work with. My Rachel LOVED her, her dog, and her walk! I hope Jill is available next time I need her.",
   rating: "5",
   petPic: "http://localhost:4200/assets/dachsund.jpg",
   petName: "Rachel",
   age: "5",
+},
+
+{
+  reviewTitle: "Jill rocks!",
+  review: "She really went the extra mile for us. We couldn't get home from work in time to let Joey out, so we texted Jill and she immediately helped us out. No messes when we got home. We will request her again.",
+  rating: "4",
+  petPic: "http://localhost:4200/assets/dog-icon.png",
+  petName: "Joey",
+  age: "3",
 },
 
 ]

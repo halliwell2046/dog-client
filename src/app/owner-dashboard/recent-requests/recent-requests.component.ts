@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
 @Component({
   selector: 'app-recent-requests',
   templateUrl: './recent-requests.component.html',
@@ -53,10 +52,13 @@ export class RecentRequestsComponent implements OnInit {
   }
   ]
 
-
   constructor() { }
 
   ngOnInit() {
   }
 
+  reviewToggle: boolean = false;
+  addReview(id) {
+    this.reviewToggle=true
+  }
 }
