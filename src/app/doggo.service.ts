@@ -13,15 +13,10 @@ export class DoggoService {
   ownerAddingPetURL: string = "http://localhost:3000/owner/create";
   getPetURL: string = `http://localhost:3000/owner/`;
   deletePet: string = "http://localhost:3000/owner/delete/";
-  //SIGNUP
-  // var firstName = req.body.user.firstName;
-  //     var lastName = req.body.user.lastName;
-  //     var email = req.body.user.email;
-  //     var pass = req.body.user.password;
-  //     var accountType = req.body.user.accountType;
-  //LOGIN
-  // .user.email
-  // .user.password
+  ownerRecentRequestURL: string ="http://localhost:3000/walker/owner-requests/"
+
+
+  
   constructor(private http: HttpClient) {}
   // petDataSource: Object = []
   petDataSource = new BehaviorSubject<any>([]);
@@ -135,4 +130,14 @@ export class DoggoService {
       headers: reqHeaders
     });
   }
+// PULLING REQUESTS THAT OWNER MADE
+  ownerRecentRequests(){
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionToken.value
+    });
+
+    return this.http.get(this.ownerRecentRequestURL, { headers: reqHeaders })
+  }
+
 }
