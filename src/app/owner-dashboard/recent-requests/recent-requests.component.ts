@@ -53,12 +53,8 @@ export class RecentRequestsComponent implements OnInit {
   }
   ]
 
-<<<<<<< HEAD
-  constructor() { }
-=======
 
   constructor(private doggoService: DoggoService) { }
->>>>>>> origin/rob2
 
   ngOnInit() {
 
@@ -67,12 +63,8 @@ export class RecentRequestsComponent implements OnInit {
     })
   }
 
-<<<<<<< HEAD
   reviewToggle: boolean = false;
   addReview(id) {
     this.reviewToggle=true
   }
-=======
-
->>>>>>> origin/rob2
 }

@@ -161,22 +161,6 @@ export class DoggoService {
       "Content-Type": "application/json",
       Authorization: this.sessionToken.value
     });
-<<<<<<< HEAD
-      const body = {
-        data: {
-          reviewTitle: data.reviewTitle,
-          // rating: data.rating,
-          review: data.review
-        }
-      };
-      return (
-        this.http
-          .put(this.updateRequest, body, { headers: reqHeaders })
-  
-      );
-
-      }
-=======
     const body = {
       data: {
         reviewTitle: data.reviewTitle,
@@ -187,7 +171,6 @@ export class DoggoService {
     return this.http.get(this.ownerRecentRequestURL, { headers: reqHeaders })
 
   }
->>>>>>> origin/rob2
 
 
     // OWNER/WALKER INFO FOR SIDEBAR
@@ -203,9 +186,6 @@ export class DoggoService {
       );
     }
 
-<<<<<<< HEAD
-    
-=======
     // OWNER RECENT REQUESTS
     getOwnerRecentRequests(){
       const reqHeaders = new HttpHeaders({
@@ -214,7 +194,6 @@ export class DoggoService {
       });
       return this.http.get(this.ownerRecentRequestURL, {headers: reqHeaders})
     }
->>>>>>> origin/rob2
 
 }
 
