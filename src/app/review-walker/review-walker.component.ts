@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { DoggoService } from '../doggo.service';
 
 /**
  * Review Walker Stepper vertical
@@ -17,7 +18,7 @@ export class ReviewWalkerComponent implements OnInit {
   thirdFormGroup: FormGroup;
   fourthFormGroup: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder, private doggoService: DoggoService) {}
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -32,5 +33,17 @@ export class ReviewWalkerComponent implements OnInit {
     this.fourthFormGroup = this._formBuilder.group({
       fourthCtrl: ['', Validators.required]
     });
+  }
+
+  onSubmit() {
+    let submittingData = {
+      reviewTitle: this.firstFormGroup,
+      rating: this.secondFormGroup,
+      review: this.thirdFormGroup
+    }
+
+    this.doggoService.addReview(submittingData).subscribe((data) => {
+      console.log(data);
+    }, (err)=> console.log (err));
   }
 }
