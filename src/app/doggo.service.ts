@@ -18,7 +18,7 @@ export class DoggoService {
   walkerProfile: string = `http://localhost:3000/owner/`;
   updateRequest: string = "http://localhost:3000/walker/update-request/1";
 
-  userProfile: string = `http://localhost:3000/owner/userinfo`;
+  userProfileURL: string = `http://localhost:3000/owner/userinfo`;
 
   addingReviewURL: string = "http://localhost:3000/walker/update-request/";
 
@@ -40,7 +40,7 @@ export class DoggoService {
     this.sessionToken.next(undefined);
   }
   // PROFILE OWNER
-  addressUpdate(addressData) {
+  profileUpdate(addressData) {
     const body = {
       data: {
         street: addressData.street,
@@ -48,7 +48,8 @@ export class DoggoService {
         state: addressData.state,
         zipcode: addressData.zipcode,
         phoneNumber: addressData.phoneNumber,
-        picture: addressData.picture
+        picture: addressData.picture,
+        bio: addressData.bio
       }
     };
     const reqHeaders = new HttpHeaders({
@@ -172,7 +173,7 @@ export class DoggoService {
       "Content-Type": "application/json",
       Authorization: this.sessionToken.value
     });
-    return this.http.get(this.userProfile, { headers: reqHeaders });
+    return this.http.get(this.userProfileURL, { headers: reqHeaders });
   }
 
   // OWNER RECENT REQUESTS

@@ -8,7 +8,7 @@ export class DogOwnerService {
   constructor() {}
 
   form: FormGroup = new FormGroup({
-    $key: new FormControl(null),
+    bio: new FormControl(null),
     street: new FormControl("", Validators.required),
     city: new FormControl("", Validators.required),
     state: new FormControl("", Validators.required),
@@ -62,9 +62,9 @@ export class DogOwnerService {
     street: new FormControl("", Validators.required),
     city: new FormControl("", Validators.required),
     state: new FormControl("", Validators.required),
-    zip: new FormControl("", Validators.required),
-    phonenumber: new FormControl("", Validators.required),
+    zipcode: new FormControl("", Validators.required),
+    phoneNumber: new FormControl("", Validators.required),
     bio: new FormControl(""),
-    photourl: new FormControl("")
+    picture: new FormControl("")
   });
 }

@@ -93,7 +93,7 @@ export class AddressComponent implements OnInit {
 
   onSubmit() {
     this.doggoService
-      .addressUpdate(this.service.form.value)
+      .profileUpdate(this.service.form.value)
       .subscribe((data: any) => {
         console.log("itworked");
       });
