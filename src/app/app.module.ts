@@ -1,7 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
-import { MatDialogModule } from "@angular/material/dialog";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -80,7 +79,6 @@ import { WalkerRecentRequestComponent } from "./walker-dashboard/walker-recent-r
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatDialogModule,
     FormsModule
   ],
   providers: [DogOwnerService],

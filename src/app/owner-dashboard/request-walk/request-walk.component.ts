@@ -40,7 +40,7 @@ export class RequestWalkComponent implements OnInit {
 
   addRequest(): void {
     const dialogRef = this.dialog.open(DialogRequest, {
-      width: "250px",
+      width: "600px",
       data: { time: this.time, date: this.date }
     });
 
@@ -48,10 +48,11 @@ export class RequestWalkComponent implements OnInit {
       console.log(result);
       this.requestWalk = [
         {
-          dateRequested: result.date,
+          dateRequested: result.date.toLocaleDateString("en-US"),
           timeRequested: result.time
         }
       ];
+      console.log(this.requestWalk);
     });
   }
 }
@@ -61,6 +62,17 @@ export class RequestWalkComponent implements OnInit {
   templateUrl: "dialog-request.html"
 })
 export class DialogRequest {
+  times: Object = [
+    "0800",
+    "0830",
+    "0900",
+    "1000",
+    "1030",
+    "1100",
+    "1130",
+    "1200"
+  ];
+
   constructor(
     public dialogRef: MatDialogRef<DialogRequest>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData

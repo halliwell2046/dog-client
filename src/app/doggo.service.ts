@@ -20,6 +20,8 @@ export class DoggoService {
 
   userProfile: string = `http://localhost:3000/owner/userinfo`;
 
+  addingReviewURL: string = "http://localhost:3000/walker/update-request/";
+
   constructor(private http: HttpClient) {}
   petDataSource = new BehaviorSubject<any>([]);
 
@@ -159,7 +161,9 @@ export class DoggoService {
         review: data.review
       }
     };
-    return this.http.get(this.ownerRecentRequestURL, { headers: reqHeaders });
+    return this.http.put(this.addingReviewURL + data.id, body, {
+      headers: reqHeaders
+    });
   }
 
   // OWNER/WALKER INFO FOR SIDEBAR

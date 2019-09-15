@@ -1,11 +1,22 @@
-<h1 mat-dialog-title>Hi {{data.name}}</h1>
+<h1 mat-dialog-title>Request a Walk</h1>
 <div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.time">
-  </mat-form-field>
 </div>
+<mat-form-field>
+  <input matInput [matDatepicker]="picker1" placeholder="Pick a Date" [(ngModel)]="data.date">
+  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+  <mat-datepicker #picker1></mat-datepicker>
+</mat-form-field>
+
+
+
+<mat-form-field>
+  <mat-select [(ngModel)]='data.time' placeholder="Time">
+    <ng-container *ngFor="let time of times; index as i">
+      <mat-option value="{{ time }}">{{ time }}</mat-option>
+    </ng-container>
+  </mat-select>
+</mat-form-field>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.time" cdkFocusInitial>Ok</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
 </div>
