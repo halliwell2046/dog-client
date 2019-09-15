@@ -13,7 +13,7 @@ export class WalkerProfileComponent implements OnInit {
     private walkerService: DogOwnerService,
     private doggoService: DoggoService
   ) {}
-
+  firstName: string;
   ngOnInit() {
     this.doggoService.getUserInfo().subscribe((requested: any) => {
       console.log(requested.data);
@@ -39,6 +39,7 @@ export class WalkerProfileComponent implements OnInit {
       this.walkerService.walkerForm.controls["bio"].setValue(
         requested.data.bio
       );
+      this.firstName = requested.data.firstName;
     });
   }
 

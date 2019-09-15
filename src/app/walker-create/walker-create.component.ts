@@ -9,6 +9,7 @@ import { FormGroup, FormBuilder } from "@angular/forms";
 })
 export class WalkerCreateComponent implements OnInit {
   @Input() address: FormGroup;
+  @Input() firstName: string;
 
   statesArray: Object = [
     "AL",
