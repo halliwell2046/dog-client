@@ -36,3 +36,12 @@
     margin-right:0px;
     width: 20%;
 }
+
+.gray-text {
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    padding-left:30px;
+    padding-top: 5px;
+    color: rgb(140, 140, 140);
+
+ }

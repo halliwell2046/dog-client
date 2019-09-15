@@ -24,3 +24,10 @@
   line-height: 1.2;
   margin-bottom: 0px;
 }
+
+.white-button {
+  border: 1px solid #0075be;
+  color: #0075be;
+  background-color: white;
+  margin: 15px;
+}
