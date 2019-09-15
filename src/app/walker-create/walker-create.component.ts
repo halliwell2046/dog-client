@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { DogOwnerService } from '../dog-owner-create/dog-owner.service';
+import { Component, OnInit, Input } from "@angular/core";
+import { DogOwnerService } from "../dog-owner-create/dog-owner.service";
+import { FormGroup, FormBuilder } from "@angular/forms";
 
 @Component({
-  selector: 'app-walker-create',
-  templateUrl: './walker-create.component.html',
-  styleUrls: ['./walker-create.component.css']
+  selector: "app-walker-create",
+  templateUrl: "./walker-create.component.html",
+  styleUrls: ["./walker-create.component.css"]
 })
 export class WalkerCreateComponent implements OnInit {
+  @Input() address: FormGroup;
+
   statesArray: Object = [
     "AL",
     "AK",
@@ -69,9 +72,7 @@ export class WalkerCreateComponent implements OnInit {
     "WY"
   ];
 
-  constructor(private service: DogOwnerService) { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

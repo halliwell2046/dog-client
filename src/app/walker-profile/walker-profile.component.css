@@ -1,5 +1,5 @@
 .tab {
-  background-color:#0075be;
+  background-color: #0075be;
   text-align: center;
   color: white;
   font-size: 1.8rem;
@@ -9,27 +9,19 @@
   width: 200px;
 }
 
-.grid{
-      display: grid;
-      grid-template-columns: 1em 1fr 1fr 1em;
-      width: 100%;
-      grid-gap: 30px;
-      grid-template-rows: auto auto auto; 
+.grid {
+  display: grid;
+  grid-template-columns: 1em 1fr 1fr 1em;
+  width: 100%;
+  grid-gap: 30px;
+  grid-template-rows: auto auto auto;
 }
 
 .one {
   grid-column: 2/3;
- 
 }
 
 .two {
- grid-column: 3/4;
- /* grid-row: 1/2;  */
+  grid-column: 3/4;
+  /* grid-row: 1/2;  */
 }
-
-
-
-
-
-
-
