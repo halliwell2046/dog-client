@@ -1,15 +1,16 @@
-<div >
-    <h2 class="tab">walker</h2>
-  
-  </div>
-  <div class='profile-pic'>
-    <img class="portrait" src="../../../assets/walker-portrait.jpg">
-    <h3 class="name">{{walkerData[0].firstName}} {{walkerData[0].lastName}}</h3>
-    <h3 class="starrate">Rating: {{walkerData[0].rating}}/5</h3>
-    <h3 class="tellUs">$15/Walk</h3>
-    <p class="ptext">{{walkerData[0].bio}}</p>
-    
-     <button class="blue-button" routerLink="/walkerdash" mat-button ><div *ngIf="condition; else elseBlock">Contact Me</div>
-          <ng-template #elseBlock>Update Profile</ng-template></button>
-  </div>
-  
+<div>
+  <h2 class="tab">walker</h2>
+
+</div>
+<div class='profile-pic'>
+  <img class="portrait" src="{{walkerData.pic}}">
+  <h3 class="name">{{walkerData.firstName}} {{walkerData.lastName}}</h3>
+  <h3 class="starrate">Rating: {{walkerData.rating}}/5</h3>
+  <h3 class="tellUs">$15/Walk</h3>
+  <p class="ptext">{{walkerData.bio}}</p>
+
+  <button class="blue-button" routerLink="/dashboard" mat-button>
+    <div *ngIf="condition; else elseBlock">Contact Me</div>
+    <ng-template #elseBlock>Update Profile</ng-template>
+  </button>
+</div>
