@@ -1,42 +1,67 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { DoggoService } from "../doggo.service";
 
 @Component({
-  selector: 'app-walker-new-requests',
-  templateUrl: './walker-new-requests.component.html',
-  styleUrls: ['./walker-new-requests.component.css']
+  selector: "app-walker-new-requests",
+  templateUrl: "./walker-new-requests.component.html",
+  styleUrls: ["./walker-new-requests.component.css"]
 })
 export class WalkerNewRequestsComponent implements OnInit {
-  displayedColumns: string[] = ['date', 'time', 'dogs', 'location', 'accept', 'decline'];
-  pendingRequestData = [
+  displayedColumns: string[] = [
+    "date",
+    "time",
+    "dogs",
+    "location",
+    "accept",
+    "decline"
+  ];
+  pendingRequestData: any = [
     {
-      dateRequested: '09/25/2019', 
-      timeRequested: '2:30PM',
-      walkerId: '1',
-      userId: '2',
+      dateRequested: "09/25/2019",
+      timeRequested: "2:30PM",
+      walkerId: "1",
+      userId: "2",
       isAccepted: true,
       isCompleted: false,
       ownerNotified: false,
-      reviewTitle: 'Great', 
-      review: 'test',
-      rating: '****',
+      reviewTitle: "Great",
+      review: "test",
+      rating: "****",
+      dogs: "Poochie, Goochie"
     },
-      {
-        dateRequested: '09/27/2019', 
-        timeRequested: '2:30PM',
-        walkerId: '1',
-        userId: '2',
-        isAccepted: false,
-        isCompleted: false,
-        ownerNotified: false,
-        reviewTitle: 'Great', 
-        review: 'test',
-        rating: '****',
-      }
-    ]
+    {
+      dateRequested: "09/27/2019",
+      timeRequested: "2:30PM",
+      walkerId: "1",
+      userId: "2",
+      isAccepted: false,
+      isCompleted: false,
+      ownerNotified: false,
+      reviewTitle: "Great",
+      review: "test",
+      rating: "****"
+    }
+  ];
 
-  constructor() { }
+  constructor(private doggoService: DoggoService) {}
 
   ngOnInit() {
+    this.doggoService.getPendingWalkerRequest().subscribe(data => {
+      console.log(data);
+      this.pendingRequestData = data;
+    });
   }
 
+  acceptRequest(id: number) {
+    this.doggoService
+      .walkerAccepts(id)
+      .subscribe(() => this.refreshTable(), err => console.log(err));
+  }
+
+  refreshTable(): void {
+    this.doggoService.getPendingWalkerRequest().subscribe(data => {
+      console.log(data);
+      this.pendingRequestData = data;
+    });
+  }
 }

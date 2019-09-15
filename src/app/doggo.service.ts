@@ -22,22 +22,37 @@ export class DoggoService {
 
   addingReviewURL: string = "http://localhost:3000/walker/update-request/";
 
+  walkerAcceptedRequestsURL: string =
+    "http://localhost:3000/walker/accpeted-requests/";
+  walkerPendingRequestsURL: string =
+    "http://localhost:3000/walker/pending-requests/";
+
+  walkerAcceptButtonURL: string =
+    "http://localhost:3000/walker/walker-update-request/";
+
   constructor(private http: HttpClient) {}
+
+  // BEHAVIOR SUBJECTS
   petDataSource = new BehaviorSubject<any>([]);
+  petData = this.petDataSource.asObservable();
 
-  cast = this.petDataSource.asObservable();
+  sessionTokenSource = new BehaviorSubject<string>("");
+  token = this.sessionTokenSource.asObservable();
 
-  sessionToken = new BehaviorSubject<any>("");
+  walkerPendingSource = new BehaviorSubject<any>([]);
+  walkerPendingData = this.walkerPendingSource.asObservable();
+  updatePendingData(data: any) {
+    this.
+  }
 
-  token = this.sessionToken.asObservable();
   //TOKEN ITEMS
   checkToken() {
     if (sessionStorage.getItem("token")) {
-      this.sessionToken.next(sessionStorage.getItem("token"));
+      this.sessionTokenSource.next(sessionStorage.getItem("token"));
     }
   }
   logOut() {
-    this.sessionToken.next(undefined);
+    this.sessionTokenSource.next(undefined);
   }
   // PROFILE OWNER
   profileUpdate(addressData) {
@@ -183,5 +198,33 @@ export class DoggoService {
       Authorization: this.sessionToken.value
     });
     return this.http.get(this.ownerRecentRequestURL, { headers: reqHeaders });
+  }
+
+  //WALKER PENDING REQUEST TABLE
+  getPendingWalkerRequest() {
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionToken.value
+    });
+    return this.http.get(this.walkerPendingRequestsURL, {
+      headers: reqHeaders
+    });
+  }
+
+  //WALKER USED ACCEPT BUTTON ON PENDING
+
+  walkerAccepts(data: number) {
+    let body = {
+      data: {
+        isAccepted: true
+      }
+    };
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionToken.value
+    });
+    return this.http.put(this.walkerAcceptButtonURL + data, body, {
+      headers: reqHeaders
+    });
   }
 }
