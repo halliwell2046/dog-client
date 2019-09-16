@@ -66,6 +66,9 @@ export class WalkerNewRequestsComponent implements OnInit {
       console.log(data);
       this.pendingRequestData = data;
     });
+    this.doggoService
+      .getAcceptedWalkerRequest()
+      .subscribe(data => this.doggoService.walkerUpdateAcceptedData(data));
   }
 
   declineRequest(id) {

@@ -23,7 +23,7 @@ export class DoggoService {
   addingReviewURL: string = "http://localhost:3000/walker/update-request/";
 
   walkerAcceptedRequestsURL: string =
-    "http://localhost:3000/walker/accpeted-requests/";
+    "http://localhost:3000/walker/accepted-requests/";
   walkerPendingRequestsURL: string =
     "http://localhost:3000/walker/pending-requests/";
 
@@ -38,6 +38,12 @@ export class DoggoService {
 
   sessionTokenSource = new BehaviorSubject<any>("");
   sessionToken = this.sessionTokenSource.asObservable();
+
+  walkerAcceptedSource = new BehaviorSubject<any>([]);
+  walkerAcceptedData = this.walkerAcceptedSource.asObservable();
+  walkerUpdateAcceptedData(data: any) {
+    this.walkerAcceptedSource.next(data);
+  }
 
   walkerPendingSource = new BehaviorSubject<any>([]);
   walkerPendingData = this.walkerPendingSource.asObservable();
@@ -242,6 +248,19 @@ export class DoggoService {
       Authorization: this.sessionTokenSource.value
     });
     return this.http.put(this.walkerAcceptButtonURL + data, body, {
+      headers: reqHeaders
+    });
+  }
+
+  // WALKER ACCEPTED TABLE
+
+  //WALKER PENDING REQUEST TABLE
+  getAcceptedWalkerRequest() {
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionTokenSource.value
+    });
+    return this.http.get(this.walkerAcceptedRequestsURL, {
       headers: reqHeaders
     });
   }
