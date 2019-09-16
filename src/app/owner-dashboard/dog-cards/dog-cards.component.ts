@@ -49,8 +49,7 @@ export class DogCardsComponent implements OnInit {
 
   ngOnInit() {
     this.doggoService.ownerPetData();
-
-    this.doggoService.cast.subscribe(pet => (this.petData = pet));
+    this.doggoService.petData.subscribe(pet => (this.petData = pet));
   }
 
   deleteDog(id) {
