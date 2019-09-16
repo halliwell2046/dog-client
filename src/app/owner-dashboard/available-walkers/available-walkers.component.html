@@ -1,8 +1,55 @@
 <h1 class="red-tab">available walkers near you</h1>
 <div class="grid">
-  <div class="grid-item one">
+  <!-- <div class="grid-item one">
       <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Indianapolis&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.utilitysavingexpert.com">Utility Saving Expert</a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div>
-  </div>
+  </div> -->
+  
+  <div id="map" class="grid-item one"></div>
+  
+    <script>
+  function initMap(){
+    var options = {
+      center:{lat:39.7684,lng:-86.1581}
+    }
+
+    var map = new
+    google.maps.Map(document.getElementById('map'), options);
+
+    // var marker = new google.maps.Marker({
+    //   position:{lat:39.6137, lng:-86.1067},
+    //   map:map,
+    //   icon:'http://maps.google.com/mapfiles/kml/shapes/parks.png'
+    // });
+
+    var markers = [
+    {
+      coords:{lat:39.6137, lng:-86.1067},
+    iconImage: 'http://maps.google.com/mapfiles/kml/shapes/parks.png'
+  }
+    ];
+
+    for(var i = 0;i < markers.length;i++){
+      addMarker(markers[i]);
+    }
+
+    function addMarker(props){
+      var marker = new google.maps.Marker({
+        position:props.coords,
+        map:map,
+       // icon:props.iconImage
+      });
+
+      if(props.iconImage){
+        marker.setIcon(props.iconImage);
+      }
+    }
+  }
+  </script>
+  <script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhvcvc8Mgu6IT34VrX9_icHJXuTLyW6r4&callback=initMap"
+  async defer>
+  </script>
+
 <div class="grid-item two">
 <table mat-table [dataSource]="availableWalkers" class="mat-elevation-z0">
     
@@ -33,5 +80,4 @@
       <tr mat-header-row style="height: 2em;" *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="height: 2em;"  ></tr>
     </table>
-  </div>
 </div>

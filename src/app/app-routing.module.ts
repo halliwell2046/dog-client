@@ -7,6 +7,7 @@ import { WalkerNewRequestsComponent } from './walker-new-requests/walker-new-req
 import { WalkerRecentRequestComponent } from './walker-dashboard/walker-recent-request/walker-recent-request.component';
 import { WalkerDashboardComponent } from './walker-dashboard/walker-dashboard.component';
 import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.component';
+import { AvailableWalkersComponent } from './owner-dashboard/available-walkers/available-walkers.component';
 
 
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: "walkerrecent", component: WalkerRecentRequestComponent },
   { path: "walkerdash", component: WalkerDashboardComponent },
   { path: "ownerdash", component: OwnerDashboardComponent },
+  { path: "availwalker", component: AvailableWalkersComponent},
   // { path: "walker", component: WalkerOwnerViewComponent },
     // { path: "owner", component: OwnerViewComponent },
 ];
