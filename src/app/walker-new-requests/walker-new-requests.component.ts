@@ -48,8 +48,11 @@ export class WalkerNewRequestsComponent implements OnInit {
   ngOnInit() {
     this.doggoService.getPendingWalkerRequest().subscribe(data => {
       console.log(data);
-      this.pendingRequestData = data;
+      this.doggoService.walkerUpdatePendingData(data);
     });
+    this.doggoService.walkerPendingData.subscribe(
+      result => (this.pendingRequestData = result)
+    );
   }
 
   acceptRequest(id: number) {
@@ -62,6 +65,12 @@ export class WalkerNewRequestsComponent implements OnInit {
     this.doggoService.getPendingWalkerRequest().subscribe(data => {
       console.log(data);
       this.pendingRequestData = data;
+    });
+  }
+
+  declineRequest(id) {
+    this.doggoService.walkerDeclines(id).subscribe(result => {
+      this.refreshTable();
     });
   }
 }

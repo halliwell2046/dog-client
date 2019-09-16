@@ -36,13 +36,13 @@ export class DoggoService {
   petDataSource = new BehaviorSubject<any>([]);
   petData = this.petDataSource.asObservable();
 
-  sessionTokenSource = new BehaviorSubject<string>("");
-  token = this.sessionTokenSource.asObservable();
+  sessionTokenSource = new BehaviorSubject<any>("");
+  sessionToken = this.sessionTokenSource.asObservable();
 
   walkerPendingSource = new BehaviorSubject<any>([]);
   walkerPendingData = this.walkerPendingSource.asObservable();
-  updatePendingData(data: any) {
-    this.
+  walkerUpdatePendingData(data: any) {
+    this.walkerPendingSource.next(data);
   }
 
   //TOKEN ITEMS
@@ -69,7 +69,7 @@ export class DoggoService {
     };
     const reqHeaders = new HttpHeaders({
       "Content-Type": "application/json",
-      Authorization: this.sessionToken.value
+      Authorization: this.sessionTokenSource.value
     });
     return this.http.put(this.userUpdateURL, body, { headers: reqHeaders });
   }
@@ -89,7 +89,7 @@ export class DoggoService {
     console.log(formData.gender);
     const reqHeaders = new HttpHeaders({
       "Content-Type": "application/json",
-      Authorization: this.sessionToken.value
+      Authorization: this.sessionTokenSource.value
     });
     return this.http.post(this.ownerAddingPetURL, body, {
       headers: reqHeaders
@@ -99,7 +99,7 @@ export class DoggoService {
   ownerPetData() {
     const reqHeaders = new HttpHeaders({
       "Content-Type": "application/json",
-      Authorization: this.sessionToken.value
+      Authorization: this.sessionTokenSource.value
     });
     return this.http
       .get(this.getPetURL, { headers: reqHeaders })
@@ -112,7 +112,7 @@ export class DoggoService {
   deletePetData(id) {
     const reqHeaders = new HttpHeaders({
       "Content-Type": "application/json",
-      Authorization: this.sessionToken.value
+      Authorization: this.sessionTokenSource.value
     });
     this.http
       .delete(this.deletePet + id, { headers: reqHeaders })
@@ -138,15 +138,6 @@ export class DoggoService {
     });
   }
 
-  // WALKER INFO FOR SIDEBAR
-  walkerData() {
-    const reqHeaders = new HttpHeaders({
-      "Content-Type": "application/json",
-      Authorization: this.sessionToken.value
-    });
-    return this.http.get(this.walkerProfile, { headers: reqHeaders });
-  }
-
   userSignup(formData) {
     const reqHeaders = new HttpHeaders({ "Content-Type": "application/json" });
     const body = {
@@ -168,7 +159,7 @@ export class DoggoService {
   addReview(data) {
     const reqHeaders = new HttpHeaders({
       "Content-Type": "application/json",
-      Authorization: this.sessionToken.value
+      Authorization: this.sessionTokenSource.value
     });
     const body = {
       data: {
@@ -182,11 +173,11 @@ export class DoggoService {
     });
   }
 
-  // OWNER/WALKER INFO FOR SIDEBAR
+  // OWNER INFO FOR SIDEBAR
   getUserInfo() {
     const reqHeaders = new HttpHeaders({
       "Content-Type": "application/json",
-      Authorization: this.sessionToken.value
+      Authorization: this.sessionTokenSource.value
     });
     return this.http.get(this.userProfileURL, { headers: reqHeaders });
   }
@@ -195,16 +186,26 @@ export class DoggoService {
   getOwnerRecentRequests() {
     const reqHeaders = new HttpHeaders({
       "Content-Type": "application/json",
-      Authorization: this.sessionToken.value
+      Authorization: this.sessionTokenSource.value
     });
     return this.http.get(this.ownerRecentRequestURL, { headers: reqHeaders });
   }
 
+  //WALKER SPECIFIC AREA
+
+  // WALKER INFO FOR SIDEBAR
+  walkerData() {
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionTokenSource.value
+    });
+    return this.http.get(this.walkerProfile, { headers: reqHeaders });
+  }
   //WALKER PENDING REQUEST TABLE
   getPendingWalkerRequest() {
     const reqHeaders = new HttpHeaders({
       "Content-Type": "application/json",
-      Authorization: this.sessionToken.value
+      Authorization: this.sessionTokenSource.value
     });
     return this.http.get(this.walkerPendingRequestsURL, {
       headers: reqHeaders
@@ -221,7 +222,24 @@ export class DoggoService {
     };
     const reqHeaders = new HttpHeaders({
       "Content-Type": "application/json",
-      Authorization: this.sessionToken.value
+      Authorization: this.sessionTokenSource.value
+    });
+    return this.http.put(this.walkerAcceptButtonURL + data, body, {
+      headers: reqHeaders
+    });
+  }
+
+  //WALKER USING DECLINE BUTTON
+
+  walkerDeclines(data: number) {
+    let body = {
+      data: {
+        walkerId: null
+      }
+    };
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionTokenSource.value
     });
     return this.http.put(this.walkerAcceptButtonURL + data, body, {
       headers: reqHeaders
