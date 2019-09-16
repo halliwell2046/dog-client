@@ -1,37 +1,44 @@
 <h1 class="red-tab">available walkers near you</h1>
 <div class="grid">
   <div class="grid-item one">
-      <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Indianapolis&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.utilitysavingexpert.com">Utility Saving Expert</a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div>
-  </div>
-<div class="grid-item two">
-<table mat-table [dataSource]="availableWalkers" class="mat-elevation-z0">
-    
-    <!-- ID Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> ID </th>
-      <td mat-cell *matCellDef="let element"> {{element.walkerId}} </td>
-    </ng-container>
-  
-    <!-- Walker Column -->
-    <ng-container matColumnDef="walker">
-      <th mat-header-cell *matHeaderCellDef> Walker </th>
-      <td mat-cell *matCellDef="let element" class="links"> {{element.walker}} </td>
-    </ng-container>
-  
-    <!-- Rating Column -->
-    <ng-container matColumnDef="rating">
-      <th mat-header-cell *matHeaderCellDef> Rating </th>
-      <td mat-cell *matCellDef="let element"> {{element.rating}} </td>
-    </ng-container>
+    <agm-map [latitude]="lat" [longitude]="lng">
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      <agm-marker [latitude]="lat2" [longitude]="lng2"></agm-marker>
 
-       <!-- Request Column -->
-       <ng-container matColumnDef="request">
+    </agm-map>
+
+    <!-- <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Indianapolis&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.utilitysavingexpert.com">Utility Saving Expert</a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div> -->
+  </div>
+  <div class="grid-item two">
+    <table mat-table [dataSource]="availableWalkers" class="mat-elevation-z0">
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.walkerId}} </td>
+      </ng-container>
+
+      <!-- Walker Column -->
+      <ng-container matColumnDef="walker">
+        <th mat-header-cell *matHeaderCellDef> Walker </th>
+        <td mat-cell *matCellDef="let element" class="links"> {{element.walker}} </td>
+      </ng-container>
+
+      <!-- Rating Column -->
+      <ng-container matColumnDef="rating">
+        <th mat-header-cell *matHeaderCellDef> Rating </th>
+        <td mat-cell *matCellDef="let element"> {{element.rating}} </td>
+      </ng-container>
+
+      <!-- Request Column -->
+      <ng-container matColumnDef="request">
         <th mat-header-cell *matHeaderCellDef> Request </th>
-        <td mat-cell *matCellDef="let element"> <button class="book-button" mat-button (click)="bookWalker(element.id)">book</button> </td>
+        <td mat-cell *matCellDef="let element"> <button class="book-button" mat-button
+            (click)="bookWalker(element.id)">book</button> </td>
       </ng-container>
 
       <tr mat-header-row style="height: 2em;" *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="height: 2em;"  ></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="height: 2em;"></tr>
     </table>
   </div>
 </div>

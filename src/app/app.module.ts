@@ -39,6 +39,7 @@ import { WalkerProfileComponent } from "./walker-profile/walker-profile.componen
 import { DashboardComponent } from "./containers/dashboard/dashboard.component";
 import { UserProfileComponent } from "./containers/user-profile/user-profile.component";
 import { WalkerRecentRequestComponent } from "./walker-dashboard/walker-recent-request/walker-recent-request.component";
+import { AgmCoreModule } from "@agm/core";
 
 @NgModule({
   declarations: [
@@ -79,7 +80,10 @@ import { WalkerRecentRequestComponent } from "./walker-dashboard/walker-recent-r
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyCWe1USFU9NpbwOkpKsE6X0mlouDBYc-W0"
+    })
   ],
   providers: [DogOwnerService],
   bootstrap: [AppComponent],

@@ -1,7 +1,9 @@
 .box {
 
 }
-
+agm-map{
+  height:400px;
+}
 .grid{
     display: grid;
     grid-template-columns: 1fr 1fr;
