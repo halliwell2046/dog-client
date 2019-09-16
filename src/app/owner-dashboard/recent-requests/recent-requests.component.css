@@ -19,8 +19,6 @@ h1 {
 .review-button {
         background-color:#ed1c24; 
         color: white;
-        /* height: 2em;
-        font-size: 1em; */
         position: relative;
         display: inline-block;
         box-sizing: border-box;

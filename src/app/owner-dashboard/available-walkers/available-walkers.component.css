@@ -54,9 +54,26 @@ h1 {
       text-decoration: underline;
   }
 
-  .book-button {
+  /* .book-button {
     background-color: red;
     color: white;
-  }
+  } */
 
+  .book-button {
+    background-color:#ed1c24; 
+    color: white;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
+    min-width: 64px;
+    height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 30px;
+    margin: 2px;   
+  }
   
