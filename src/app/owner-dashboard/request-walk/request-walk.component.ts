@@ -4,6 +4,9 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA
 } from "@angular/material/dialog";
+import { map, catchError } from "rxjs/operators";
+import { DoggoService } from "src/app/doggo.service";
+import { Observable, of } from "rxjs";
 
 export interface DialogData {
   time: string;
@@ -31,12 +34,17 @@ export class RequestWalkComponent implements OnInit {
     }
   ];
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private doggoService: DoggoService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.doggoService.petData.subscribe(pet => (this.pets = pet));
+    console.log(this.dogs);
+  }
 
   time: string;
   date: string;
+  pets: any;
+  dogs: string;
 
   addRequest(): void {
     const dialogRef = this.dialog.open(DialogRequest, {
@@ -46,10 +54,13 @@ export class RequestWalkComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
+      this.dogs = this.pets.map(data => data.petName).join(" ");
+
       this.requestWalk = [
         {
           dateRequested: result.date.toLocaleDateString("en-US"),
-          timeRequested: result.time
+          timeRequested: result.time,
+          dogs: this.dogs
         }
       ];
       console.log(this.requestWalk);

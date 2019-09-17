@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DoggoService } from "src/app/doggo.service";
 
-
 @Component({
   selector: "app-dog-table",
   templateUrl: "./dog-table.component.html",
@@ -24,12 +23,10 @@ export class DogTableComponent implements OnInit {
   data;
   ngOnInit() {
     this.doggoService.ownerPetData();
-
-    this.doggoService.cast.subscribe(pet => (this.data = pet));
+    this.doggoService.petData.subscribe(pet => (this.data = pet));
   }
 
   deleteDog(id) {
-    // this.doggoService.petDataSource=[]
     this.doggoService.deletePetData(id);
   }
 }
