@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { DogOwnerService } from "../dog-owner.service";
 import { DoggoService } from "src/app/doggo.service";
 import { CodeNode } from "source-list-map";
+import { GoogleService } from "src/app/maps/google.service";
 
 @Component({
   selector: "app-address",
@@ -70,10 +71,13 @@ export class AddressComponent implements OnInit {
     "WI",
     "WY"
   ];
+  ownerLat: number;
+  ownerLng: number;
 
   constructor(
     private service: DogOwnerService,
-    private doggoService: DoggoService
+    private doggoService: DoggoService,
+    private googleService: GoogleService
   ) {}
 
   ngOnInit() {
@@ -92,11 +96,19 @@ export class AddressComponent implements OnInit {
   }
 
   onSubmit() {
-    this.doggoService
-      .profileUpdate(this.service.form.value)
+    this.googleService
+      .geoCoding(this.service.form.value)
       .subscribe((data: any) => {
-        console.log("itworked");
+        console.log(data);
+        this.ownerLat = data.results[0].geometry.location.lat;
+        this.ownerLng = data.results[0].geometry.location.lng;
+        this.doggoService
+          .profileUpdate(this.service.form.value, this.ownerLat, this.ownerLng)
+          .subscribe((addressData: any) => {
+            console.log("itworked");
+          });
       });
+
     // console.warn(this.service.form.value);
   }
 }

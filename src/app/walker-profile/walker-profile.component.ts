@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { DogOwnerService } from "../dog-owner-create/dog-owner.service";
 import { FormBuilder } from "@angular/forms";
 import { DoggoService } from "../doggo.service";
+import { GoogleService } from "../maps/google.service";
 
 @Component({
   selector: "app-walker-profile",
@@ -11,9 +12,12 @@ import { DoggoService } from "../doggo.service";
 export class WalkerProfileComponent implements OnInit {
   constructor(
     private walkerService: DogOwnerService,
-    private doggoService: DoggoService
+    private doggoService: DoggoService,
+    private googleService: GoogleService
   ) {}
   firstName: string;
+  walkerLat: number;
+  walkerLng: number;
   ngOnInit() {
     this.doggoService.getUserInfo().subscribe((requested: any) => {
       console.log(requested.data);
@@ -44,9 +48,20 @@ export class WalkerProfileComponent implements OnInit {
   }
 
   onSubmit() {
+    this.googleService
+      .geoCoding(this.walkerService.walkerForm.value)
+      .subscribe((data: any) => {
+        console.log(data);
+        this.walkerLat = data.results[0].geometry.location.lat;
+        this.walkerLng = data.results[0].geometry.location.lng;
+      });
     console.log(this.walkerService.walkerForm.value);
     this.doggoService
-      .profileUpdate(this.walkerService.walkerForm.value)
+      .profileUpdate(
+        this.walkerService.walkerForm.value,
+        this.walkerLat,
+        this.walkerLng
+      )
       .subscribe(
         (data: any) => {
           console.log("itworked");

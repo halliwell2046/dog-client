@@ -61,7 +61,7 @@ export class DoggoService {
     this.sessionTokenSource.next(undefined);
   }
   // PROFILE OWNER
-  profileUpdate(addressData) {
+  profileUpdate(addressData, lat, lng) {
     const body = {
       data: {
         street: addressData.street,
@@ -70,7 +70,9 @@ export class DoggoService {
         zipcode: addressData.zipcode,
         phoneNumber: addressData.phoneNumber,
         picture: addressData.picture,
-        bio: addressData.bio
+        bio: addressData.bio,
+        lat: lat,
+        lng: lng
       }
     };
     const reqHeaders = new HttpHeaders({
