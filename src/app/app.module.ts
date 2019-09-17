@@ -82,7 +82,7 @@ import { AgmCoreModule } from "@agm/core";
     HttpClientModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyCWe1USFU9NpbwOkpKsE6X0mlouDBYc-W0"
+      apiKey: ""
     })
   ],
   providers: [DogOwnerService],

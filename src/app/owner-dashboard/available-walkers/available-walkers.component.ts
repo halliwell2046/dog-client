@@ -9,6 +9,7 @@ export class AvailableWalkersComponent implements OnInit {
   lng = 86.1581;
   lat2 = 39.9612;
   lng2 = 82.9988;
+  icon = "http://www.dash12.com/walker-marker.png";
   displayedColumns: string[] = ["id", "walker", "rating", "request"];
   availableWalkers = [
     {
