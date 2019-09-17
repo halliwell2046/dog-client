@@ -5,11 +5,27 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./available-walkers.component.css"]
 })
 export class AvailableWalkersComponent implements OnInit {
-  lat = 39.7684;
-  lng = 86.1581;
-  lat2 = 39.9612;
-  lng2 = 82.9988;
-  icon = "http://www.dash12.com/walker-marker.png";
+  lat = Number(sessionStorage.getItem("lat"));
+  lng = Number(sessionStorage.getItem("lng"));
+  // lat2 = 39.6915486;
+  // lng2 = -86.0306551;
+  walkers = [
+    {
+      lat: 39.690705,
+      lng: -86.061802
+    },
+    {
+      lat: 39.669485,
+      lng: -86.039276
+    },
+    {
+      lat: 39.719363,
+      lng: -86.026258
+    }
+  ];
+
+  iconOwner = "../../assets/dog-with-leash.png";
+  iconWalker = "../../assets/walker-marker.png";
   displayedColumns: string[] = ["id", "walker", "rating", "request"];
   availableWalkers = [
     {

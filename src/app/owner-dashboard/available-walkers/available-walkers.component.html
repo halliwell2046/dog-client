@@ -1,9 +1,11 @@
 <h1 class="red-tab">available walkers near you</h1>
 <div class="grid">
   <div class="grid-item one">
-    <agm-map [latitude]="lat" [longitude]="lng">
-      <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]='icon'></agm-marker>
-      <agm-marker [latitude]="lat2" [longitude]="lng2"></agm-marker>
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12">
+      <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]='iconOwner'></agm-marker>
+      <ng-container *ngFor='let walker of walkers'>
+        <agm-marker [latitude]="walker.lat" [longitude]="walker.lng" [iconUrl]='iconWalker'></agm-marker>
+      </ng-container>
 
     </agm-map>
 

@@ -6,7 +6,8 @@ import { FormsModule } from "@angular/forms";
   providedIn: "root"
 })
 export class DoggoService {
-  userID: string = "1";
+  userDataInfo: Object = [];
+  userID: string = "";
   userLoginURL: string = "http://localhost:3000/user/login";
   userSignupURL: string = "http://localhost:3000/user/signup";
   userUpdateURL: string = "http://localhost:3000/owner/address";
