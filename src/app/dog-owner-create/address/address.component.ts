@@ -102,6 +102,8 @@ export class AddressComponent implements OnInit {
         console.log(data);
         this.ownerLat = data.results[0].geometry.location.lat;
         this.ownerLng = data.results[0].geometry.location.lng;
+        sessionStorage.setItem("lat", this.ownerLat.toString());
+        sessionStorage.setItem("lng", this.ownerLng.toString());
         this.doggoService
           .profileUpdate(this.service.form.value, this.ownerLat, this.ownerLng)
           .subscribe((addressData: any) => {
