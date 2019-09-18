@@ -54,9 +54,9 @@ export class WalkerProfileComponent implements OnInit {
         console.log(data);
         this.walkerLat = data.results[0].geometry.location.lat;
         this.walkerLng = data.results[0].geometry.location.lng;
+        sessionStorage.setItem("lat", this.walkerLat.toString());
+        sessionStorage.setItem("lng", this.walkerLng.toString());
       });
-    sessionStorage.setItem("lat", this.walkerLat.toString());
-    sessionStorage.setItem("lng", this.walkerLng.toString());
     console.log(this.walkerService.walkerForm.value);
     this.doggoService
       .profileUpdate(

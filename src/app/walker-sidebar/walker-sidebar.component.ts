@@ -28,6 +28,7 @@ export class WalkerSidebarComponent implements OnInit {
       } else {
         Object.assign(this.walkerData, { pic: requested.data.pic });
       }
+      this.doggoService.userDataInfo = requested.data;
     });
   }
 }

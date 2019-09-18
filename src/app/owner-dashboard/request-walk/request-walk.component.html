@@ -1,31 +1,29 @@
-<h1 class="red-tab">request a walk <span><button class="plus-button" mat-button (click)="addRequest()">+</button></span></h1>
+<h1 class="red-tab">request a walk <span><button class="plus-button" mat-button (click)="addRequest()">+</button></span>
+</h1>
 <table mat-table [dataSource]="requestWalk" class="mat-elevation-z0">
-    
-    <!-- Date Column -->
-    <ng-container matColumnDef="date">
-      <th mat-header-cell *matHeaderCellDef> Date </th>
-      <td mat-cell *matCellDef="let element"> {{element.dateRequested}} </td>
-    </ng-container>
-  
-    <!-- Time Column -->
-    <ng-container matColumnDef="time">
-      <th mat-header-cell *matHeaderCellDef> Time </th>
-      <td mat-cell *matCellDef="let element"> {{element.timeRequested}} </td>
-    </ng-container>
-  
-    <!-- Dogs Column -->
-    <ng-container matColumnDef="dogs">
-      <th mat-header-cell *matHeaderCellDef> Dogs </th>
-      <td mat-cell *matCellDef="let element"> {{element.dogs}} </td>
-    </ng-container>
+
+  <!-- Date Column -->
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.dateRequested}} </td>
+  </ng-container>
+
+  <!-- Time Column -->
+  <ng-container matColumnDef="time">
+    <th mat-header-cell *matHeaderCellDef> Time </th>
+    <td mat-cell *matCellDef="let element"> {{element.timeRequested}} </td>
+  </ng-container>
+
+  <!-- Dogs Column -->
+  <ng-container matColumnDef="dogs">
+    <th mat-header-cell *matHeaderCellDef> Dogs </th>
+    <td mat-cell *matCellDef="let element"> {{element.dogs}} </td>
+  </ng-container>
 
   <tr mat-header-row style="height: 2em;" *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="height: 2em;"  ></tr>
-  </table>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="height: 2em;"></tr>
+</table>
 
-  <div>
-    <button class="red-button" style="margin-top: 20px; " (click)="onClickMe" mat-button>fetch</button>
+<div *ngIf='displayFetch'>
+  <button class="red-button" style="margin-top: 20px; " (click)="fetchWalker()" mat-button>Find Local Walkers</button>
 </div>
-
-
-

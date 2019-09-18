@@ -6,7 +6,7 @@ import { FormsModule } from "@angular/forms";
   providedIn: "root"
 })
 export class DoggoService {
-  userDataInfo: Object = [];
+  userDataInfo: any = [];
   userID: string = "";
   userLoginURL: string = "http://localhost:3000/user/login";
   userSignupURL: string = "http://localhost:3000/user/signup";
@@ -31,6 +31,8 @@ export class DoggoService {
   walkerAcceptButtonURL: string =
     "http://localhost:3000/walker/walker-update-request/";
 
+  zipcodeServerURL: string = "http://localhost:3000/zipcode/check";
+
   constructor(private http: HttpClient) {}
 
   // BEHAVIOR SUBJECTS
@@ -52,6 +54,11 @@ export class DoggoService {
     this.walkerPendingSource.next(data);
   }
 
+  zipcodeSource = new BehaviorSubject<any>([]);
+  zipcodeData = this.zipcodeSource.asObservable();
+  UpdateZipcodeData(data: any) {
+    this.zipcodeSource.next(data);
+  }
   //TOKEN ITEMS
   checkToken() {
     if (sessionStorage.getItem("token")) {
@@ -264,6 +271,23 @@ export class DoggoService {
       Authorization: this.sessionTokenSource.value
     });
     return this.http.get(this.walkerAcceptedRequestsURL, {
+      headers: reqHeaders
+    });
+  }
+
+  checkZipcodes(zipcodeRequested: string) {
+    let api = `http://api.geonames.org/findNearbyPostalCodesJSON?postalcode=${zipcodeRequested}&country=US&radius=10&username=rvanar`;
+    return this.http.get(api);
+  }
+
+  zipCodeServer(zipcodes) {
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionTokenSource.value
+    });
+    console.log(zipcodes);
+    let body = { zipcode: zipcodes };
+    return this.http.post(this.zipcodeServerURL, body, {
       headers: reqHeaders
     });
   }

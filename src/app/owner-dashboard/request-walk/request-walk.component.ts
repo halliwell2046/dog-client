@@ -45,6 +45,9 @@ export class RequestWalkComponent implements OnInit {
   date: string;
   pets: any;
   dogs: string;
+  zips = [];
+  zipcodes = [];
+  displayFetch = false;
 
   addRequest(): void {
     const dialogRef = this.dialog.open(DialogRequest, {
@@ -64,7 +67,28 @@ export class RequestWalkComponent implements OnInit {
         }
       ];
       console.log(this.requestWalk);
+      this.displayFetch = true;
     });
+  }
+
+  fetchWalker() {
+    this.doggoService
+      .checkZipcodes(this.doggoService.userDataInfo.zip)
+      .subscribe((data: any) => {
+        this.doggoService
+          .zipCodeServer(this.zipCompiler(data.postalCodes))
+          .subscribe(data => {
+            console.log(data);
+            this.doggoService.UpdateZipcodeData(data);
+          });
+      });
+  }
+  zipCompiler(zipcodes) {
+    let zipdata = zipcodes.map(data => data.postalCode);
+    for (let i = 0; i < zipdata.length; i++) {
+      this.zips.push({ zip: zipdata[i] });
+    }
+    return this.zips;
   }
 }
 

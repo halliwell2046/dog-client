@@ -1,15 +1,15 @@
 <h1 class="red-tab">available walkers near you</h1>
 <div class="grid">
   <div class="grid-item one">
-    <!-- <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12">
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12">
       <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]='iconOwner'></agm-marker>
-      <ng-container *ngFor='let walker of walkers'>
+      <ng-container *ngFor='let walker of availableWalkers'>
         <agm-marker [latitude]="walker.lat" [longitude]="walker.lng" [iconUrl]='iconWalker'></agm-marker>
       </ng-container>
 
-    </agm-map> -->
+    </agm-map>
 
-    <div class="mapouter">
+    <!-- <div class="mapouter">
       <div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas"
           src="https://maps.google.com/maps?q=Indianapolis&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
           scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.utilitysavingexpert.com">Utility
@@ -30,7 +30,7 @@
         }
 
       </style>
-    </div>
+    </div> -->
   </div>
   <div class="grid-item two">
     <table mat-table [dataSource]="availableWalkers" class="mat-elevation-z0">
@@ -38,13 +38,13 @@
       <!-- ID Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> ID </th>
-        <td mat-cell *matCellDef="let element"> {{element.walkerId}} </td>
+        <td mat-cell *matCellDef="let element; let i= index;"> {{i+1}}. </td>
       </ng-container>
 
       <!-- Walker Column -->
       <ng-container matColumnDef="walker">
         <th mat-header-cell *matHeaderCellDef> Walker </th>
-        <td mat-cell *matCellDef="let element" class="links"> {{element.walker}} </td>
+        <td mat-cell *matCellDef="let element" class="links"> {{element.firstName}} {{element.lastName}} </td>
       </ng-container>
 
       <!-- Rating Column -->

@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { DoggoService } from "src/app/doggo.service";
 @Component({
   selector: "app-available-walkers",
   templateUrl: "./available-walkers.component.html",
@@ -29,56 +30,100 @@ export class AvailableWalkersComponent implements OnInit {
   displayedColumns: string[] = ["id", "walker", "rating", "request"];
   availableWalkers = [
     {
-      dateRequested: "09/25/2019",
-      timeRequested: "2:30PM",
-      walkerId: "1",
-      userId: "2",
-      isAccepted: true,
-      isCompleted: false,
-      ownerNotified: false,
-      reviewTitle: "Great",
-      review: "test",
-      rating: "****"
+      id: 6,
+      userName: "walker@walker.com",
+      firstName: "walker",
+      lastName: "ranger",
+      password: "$2a$10$h9SNfaVkdauwVPY/8V5Mz.ZqJcQ3L5xQGAFWjB5AsbeEupWBj1xOm",
+      address: "32323",
+      city: "232",
+      state: "1",
+      zip: "46259",
+      phoneNumber: "er2r2wer",
+      bio: "bio",
+      accountType: "walker",
+      pic:
+        "https://amp.businessinsider.com/images/5d35f24a100a241a332b0857-1136-852.jpg",
+      rating: null,
+      numberOfWalks: null,
+      lat: null,
+      lng: null,
+      createdAt: "2019-09-08T18:38:58.974Z",
+      updatedAt: "2019-09-16T01:31:08.198Z"
     },
     {
-      dateRequested: "09/27/2019",
-      timeRequested: "2:30PM",
-      walkerId: "2",
-      userId: "2",
-      isAccepted: false,
-      isCompleted: false,
-      ownerNotified: false,
-      reviewTitle: "Great",
-      review: "test",
-      rating: "****"
+      id: 6,
+      userName: "walker@walker.com",
+      firstName: "walker",
+      lastName: "ranger",
+      password: "$2a$10$h9SNfaVkdauwVPY/8V5Mz.ZqJcQ3L5xQGAFWjB5AsbeEupWBj1xOm",
+      address: "32323",
+      city: "232",
+      state: "1",
+      zip: "46259",
+      phoneNumber: "er2r2wer",
+      bio: "bio",
+      accountType: "walker",
+      pic:
+        "https://amp.businessinsider.com/images/5d35f24a100a241a332b0857-1136-852.jpg",
+      rating: null,
+      numberOfWalks: null,
+      lat: null,
+      lng: null,
+      createdAt: "2019-09-08T18:38:58.974Z",
+      updatedAt: "2019-09-16T01:31:08.198Z"
     },
     {
-      dateRequested: "09/27/2019",
-      timeRequested: "2:30PM",
-      walkerId: "3",
-      userId: "2",
-      isAccepted: false,
-      isCompleted: false,
-      ownerNotified: false,
-      reviewTitle: "Great",
-      review: "test",
-      rating: "****"
+      id: 6,
+      userName: "walker@walker.com",
+      firstName: "walker",
+      lastName: "ranger",
+      password: "$2a$10$h9SNfaVkdauwVPY/8V5Mz.ZqJcQ3L5xQGAFWjB5AsbeEupWBj1xOm",
+      address: "32323",
+      city: "232",
+      state: "1",
+      zip: "46259",
+      phoneNumber: "er2r2wer",
+      bio: "bio",
+      accountType: "walker",
+      pic:
+        "https://amp.businessinsider.com/images/5d35f24a100a241a332b0857-1136-852.jpg",
+      rating: "*****",
+      numberOfWalks: null,
+      lat: null,
+      lng: null,
+      createdAt: "2019-09-08T18:38:58.974Z",
+      updatedAt: "2019-09-16T01:31:08.198Z"
     },
     {
-      dateRequested: "09/27/2019",
-      timeRequested: "2:30PM",
-      walkerId: "4",
-      userId: "2",
-      isAccepted: false,
-      isCompleted: false,
-      ownerNotified: false,
-      reviewTitle: "Great",
-      review: "test",
-      rating: "****"
+      id: 6,
+      userName: "walker@walker.com",
+      firstName: "walker",
+      lastName: "ranger",
+      password: "$2a$10$h9SNfaVkdauwVPY/8V5Mz.ZqJcQ3L5xQGAFWjB5AsbeEupWBj1xOm",
+      address: "32323",
+      city: "232",
+      state: "1",
+      zip: "46259",
+      phoneNumber: "er2r2wer",
+      bio: "bio",
+      accountType: "walker",
+      pic:
+        "https://amp.businessinsider.com/images/5d35f24a100a241a332b0857-1136-852.jpg",
+      rating: null,
+      numberOfWalks: null,
+      lat: null,
+      lng: null,
+      createdAt: "2019-09-08T18:38:58.974Z",
+      updatedAt: "2019-09-16T01:31:08.198Z"
     }
   ];
 
-  constructor() {}
+  constructor(private doggoService: DoggoService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.doggoService.zipcodeData.subscribe(
+      walkers => (this.availableWalkers = walkers)
+    );
+  }
 }

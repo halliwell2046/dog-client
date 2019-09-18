@@ -22,6 +22,7 @@ export class OwnerSidebarComponent implements OnInit {
       } else {
         this.picture = requested.data.pic;
       }
+      this.doggoService.userDataInfo = requested.data;
     });
   }
 }
