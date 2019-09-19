@@ -12,11 +12,13 @@
            <p style="font-size: 15px;">
              {{review.review}}
            </p>
-           <p style="font-size: 13px; color: rgb(169, 168, 168)">{{review.petName}} , age {{review.age}}</p>
+           <p style="font-size: 13px; color: rgb(169, 168, 168); ">{{review.petName}} , age {{review.age}}</p>
          </mat-card-content>
-         <!-- <mat-card-actions>
-      <button mat-button style="font-size: 16px; color: red;">remove</button>
-    </mat-card-actions> -->
+         <mat-card-actions>
+           <!-- <div class="spacer">
+            <button mat-button class="white-blue-button" (click)='deleteDog(pet.id)'>remove</button>
+          </div> -->
+    </mat-card-actions>
        </mat-card>
      </div>
    </div>

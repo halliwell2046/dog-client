@@ -7,3 +7,11 @@
   .example-card {
   margin: 20px;
   }
+
+  .white-blue-button {
+    border: 1px solid #0075be;
+    margin-bottom: 20px;
+  }
+  .spacer {
+    margin-bottom: 10px;
+  }

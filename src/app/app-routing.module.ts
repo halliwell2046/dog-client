@@ -7,6 +7,8 @@ import { WalkerNewRequestsComponent } from './walker-new-requests/walker-new-req
 import { WalkerRecentRequestComponent } from './walker-dashboard/walker-recent-request/walker-recent-request.component';
 import { WalkerDashboardComponent } from './walker-dashboard/walker-dashboard.component';
 import { OwnerDashboardComponent } from './owner-dashboard/owner-dashboard.component';
+import { OwnrWalkerviewComponent } from './ownr-walkerview/ownr-walkerview.component';
+import { WlkrOwnrviewComponent } from './dog-owner-create/wlkr-ownrview/wlkr-ownrview.component';
 
 
 
@@ -18,8 +20,8 @@ const routes: Routes = [
   { path: "walkerrecent", component: WalkerRecentRequestComponent },
   { path: "walkerdash", component: WalkerDashboardComponent },
   { path: "ownerdash", component: OwnerDashboardComponent },
-  // { path: "walker", component: WalkerOwnerViewComponent },
-    // { path: "owner", component: OwnerViewComponent },
+  { path: "owner", component: OwnrWalkerviewComponent },
+  { path: "walker", component: WlkrOwnrviewComponent },
 ];
 
 @NgModule({

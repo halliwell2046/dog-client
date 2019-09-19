@@ -16,9 +16,9 @@
    grid-row: 1/2; 
   }
  
-  .blue-button {
-    color: blue;
-    border: solid 1px blue;
-    float: right;
+  .white-button {
+    margin-left: 20px;
+    float: center;
+    border: 1px solid #ed1c24;
 }
   

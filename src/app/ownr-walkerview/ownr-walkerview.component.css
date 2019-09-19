@@ -15,9 +15,14 @@
    grid-column: 2/-1;
    grid-row: 1/2; 
   }
+
+  .three {
+    grid-column: 2/-1;
+    grid-row: 2/3; 
+   }
  
-  .red-button {
-    color: white;
-    border: solid 1px red;
-    float: right;
+  .white-blue-button {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #0075be;
 }
