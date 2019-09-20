@@ -130,6 +130,9 @@ export class AvailableWalkersComponent implements OnInit {
 
   bookWalker(id) {
     this.doggoService.bookTheWalker(id).subscribe(data => {
+      this.doggoService.getOwnerRecentRequests().subscribe((data: any) => {
+        this.doggoService.updateOwnerPendingRequestData(data);
+      });
       this.doggoService.updateRequestingWalkerData([]);
     });
   }

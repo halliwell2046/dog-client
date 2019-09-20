@@ -42,7 +42,12 @@ export class DoggoService {
 
   sessionTokenSource = new BehaviorSubject<any>("");
   sessionToken = this.sessionTokenSource.asObservable();
-
+  // Owner Pending Requests
+  ownerPendingRequestSource = new BehaviorSubject<any>([]);
+  ownerPendingRequestData = this.ownerPendingRequestSource.asObservable();
+  updateOwnerPendingRequestData(data: any) {
+    this.ownerPendingRequestSource.next(data);
+  }
   walkerAcceptedSource = new BehaviorSubject<any>([]);
   walkerAcceptedData = this.walkerAcceptedSource.asObservable();
   walkerUpdateAcceptedData(data: any) {
@@ -225,6 +230,7 @@ export class DoggoService {
       data: {
         dateRequested: this.requestingWalkSource.value[0].dateRequested,
         timeRequested: this.requestingWalkSource.value[0].timeRequested,
+        dogs: this.requestingWalkSource.value[0].dogs,
         walkerid: data
       }
     };
