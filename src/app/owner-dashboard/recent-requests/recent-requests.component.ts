@@ -67,9 +67,12 @@ export class RecentRequestsComponent implements OnInit {
 
   ngOnInit() {
     this.doggoService.getOwnerRecentRequests().subscribe((data: any) => {
-      this.doggoService.updateOwnerPendingRequestData(data)
+      this.doggoService.updateOwnerPendingRequestData(data);
+      console.log(data);
     });
-    this.doggoService.ownerPendingRequestSource.subscribe(data => this.recentRequest=data)
+    this.doggoService.ownerPendingRequestSource.subscribe(
+      data => (this.recentRequest = data)
+    );
   }
 
   reviewToggle: boolean = false;
