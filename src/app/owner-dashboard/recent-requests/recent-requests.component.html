@@ -29,14 +29,13 @@
   <ng-container matColumnDef="review">
     <th mat-header-cell *matHeaderCellDef> Add Review </th>
 
-    <div *ngIf='element?.review==null'>
-      <td mat-cell *matCellDef="let element"> <i class='material-icons'>check_circle_icon</i> </td>
-    </div>
+    <td mat-cell *matCellDef="let element">
+      <i *ngIf='element?.review!==null' class='material-icons'>check_circle_icon</i>
+      <button *ngIf='element?.review==null' class="review-button" mat-button
+        (click)="addReview(element.id)">{{buttonReviewTitle}}</button>
 
-    <div>
-      <td mat-cell *matCellDef="let element"> <button class="review-button" mat-button
-          (click)="addReview(element.id)">{{buttonReviewTitle}}</button> </td>
-    </div>
+    </td>
+
 
 
   </ng-container>

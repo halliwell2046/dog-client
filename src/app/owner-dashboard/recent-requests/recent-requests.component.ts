@@ -29,7 +29,8 @@ export class RecentRequestsComponent implements OnInit {
       ownerNotified: false,
       reviewTitle: "Great",
       review: "test",
-      rating: "****"
+      rating: "****",
+      status: ""
     },
     {
       dateRequested: "09/27/2019",
@@ -41,7 +42,8 @@ export class RecentRequestsComponent implements OnInit {
       ownerNotified: false,
       reviewTitle: "Great",
       review: "test",
-      rating: "****"
+      rating: "****",
+      status: ""
     }
   ];
 
@@ -71,7 +73,7 @@ export class RecentRequestsComponent implements OnInit {
       console.log(data);
     });
     this.doggoService.ownerPendingRequestSource.subscribe(
-      data => (this.recentRequest = data)
+      data => (this.recentRequest = this.determineStatus(data))
     );
   }
 
@@ -85,6 +87,26 @@ export class RecentRequestsComponent implements OnInit {
       this.buttonReviewTitle = "Add Review";
     }
   }
+
+  determineStatus(requestArray: any) {
+    let status = "";
+    let newRequestArray = [];
+    let newRequest = [];
+    newRequest = requestArray.map(data => {
+      if (data.isAccepted && data.isCompleted) {
+        status = "Completed";
+      } else if (data.isAccepted) {
+        status = "Accepted Not Completed";
+      } else {
+        status = "Waiting for Walker to Accept";
+      }
+      Object.assign(data, { status: status });
+      newRequestArray.push(data);
+    });
+
+    return newRequestArray;
+  }
+
   recieveMessages($events) {
     this.reviewToggle = $events;
   }
