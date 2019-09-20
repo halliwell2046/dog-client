@@ -13,9 +13,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.doggoService.checkToken();
 
-    this.doggoService.sessionToken.subscribe(
-      sessionToken => (this.token = sessionToken)
-    );
+    this.doggoService.sessionToken.subscribe(sessionToken => {
+      this.token = sessionToken;
+      console.log(this.token);
+    });
   }
 
   logOut() {

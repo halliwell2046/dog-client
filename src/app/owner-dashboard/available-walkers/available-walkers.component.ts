@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { DoggoService } from "src/app/doggo.service";
 @Component({
   selector: "app-available-walkers",
@@ -10,6 +10,7 @@ export class AvailableWalkersComponent implements OnInit {
   lng = Number(sessionStorage.getItem("lng"));
   // lat2 = 39.6915486;
   // lng2 = -86.0306551;
+
   walkers = [
     {
       lat: 39.690705,
@@ -125,5 +126,11 @@ export class AvailableWalkersComponent implements OnInit {
     this.doggoService.zipcodeData.subscribe(
       walkers => (this.availableWalkers = walkers)
     );
+  }
+
+  bookWalker(id) {
+    this.doggoService.bookTheWalker(id).subscribe(data => {
+      this.doggoService.updateRequestingWalkerData([]);
+    });
   }
 }

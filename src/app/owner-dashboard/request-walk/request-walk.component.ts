@@ -38,6 +38,9 @@ export class RequestWalkComponent implements OnInit {
 
   ngOnInit() {
     this.doggoService.petData.subscribe(pet => (this.pets = pet));
+    this.doggoService.requestingWalkData.subscribe(
+      data => (this.requestWalk = data)
+    );
     console.log(this.dogs);
   }
 
@@ -56,30 +59,29 @@ export class RequestWalkComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       this.dogs = this.pets.map(data => data.petName).join(" ");
 
-      this.requestWalk = [
+      this.doggoService.updateRequestingWalkerData([
         {
           dateRequested: result.date.toLocaleDateString("en-US"),
           timeRequested: result.time,
           dogs: this.dogs
         }
-      ];
-      console.log(this.requestWalk);
+      ]);
+      console.log(this.doggoService.requestingWalkSource.value);
       this.displayFetch = true;
     });
   }
 
   fetchWalker() {
     this.doggoService
-      .checkZipcodes(this.doggoService.userDataInfo.zip)
+      .checkZipcodes(this.doggoService.userDataInfo.zip) // Checking zipcodes with API to get 10 mile radius
       .subscribe((data: any) => {
         this.doggoService
-          .zipCodeServer(this.zipCompiler(data.postalCodes))
+          .zipCodeServer(this.zipCompiler(data.postalCodes)) // Seachers for Walkers in our Database
           .subscribe(data => {
             console.log(data);
-            this.doggoService.UpdateZipcodeData(data);
+            this.doggoService.UpdateWalkersInAreaZipcodeData(data); // Method of storing all the walker data in a service
           });
       });
   }

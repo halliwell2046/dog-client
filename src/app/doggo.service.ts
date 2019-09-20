@@ -17,7 +17,8 @@ export class DoggoService {
   ownerRecentRequestURL: string =
     "http://localhost:3000/walker/owner-requests/";
   walkerProfile: string = `http://localhost:3000/owner/`;
-  updateRequest: string = "http://localhost:3000/walker/update-request/1";
+  serviceRequestCreateURL: string =
+    "http://localhost:3000/walker/create-request/";
 
   userProfileURL: string = `http://localhost:3000/owner/userinfo`;
 
@@ -53,11 +54,17 @@ export class DoggoService {
   walkerUpdatePendingData(data: any) {
     this.walkerPendingSource.next(data);
   }
-
+  // Walkers in the Owners Zipcode
   zipcodeSource = new BehaviorSubject<any>([]);
   zipcodeData = this.zipcodeSource.asObservable();
-  UpdateZipcodeData(data: any) {
+  UpdateWalkersInAreaZipcodeData(data: any) {
     this.zipcodeSource.next(data);
+  }
+  //The current requested walk
+  requestingWalkSource = new BehaviorSubject<any>([]);
+  requestingWalkData = this.requestingWalkSource.asObservable();
+  updateRequestingWalkerData(data: any) {
+    this.requestingWalkSource.next(data);
   }
   //TOKEN ITEMS
   checkToken() {
@@ -207,6 +214,25 @@ export class DoggoService {
     return this.http.get(this.ownerRecentRequestURL, { headers: reqHeaders });
   }
 
+  // OWNER BOOKING WALKER
+
+  bookTheWalker(data) {
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionTokenSource.value
+    });
+    let body = {
+      data: {
+        dateRequested: this.requestingWalkSource.value[0].dateRequested,
+        timeRequested: this.requestingWalkSource.value[0].timeRequested,
+        walkerid: data
+      }
+    };
+    console.log(body);
+    return this.http.post(this.serviceRequestCreateURL, body, {
+      headers: reqHeaders
+    });
+  }
   //WALKER SPECIFIC AREA
 
   // WALKER INFO FOR SIDEBAR
@@ -236,11 +262,14 @@ export class DoggoService {
         isAccepted: true
       }
     };
+    let newURL = `${this.walkerAcceptButtonURL}${data}`;
+
     const reqHeaders = new HttpHeaders({
       "Content-Type": "application/json",
       Authorization: this.sessionTokenSource.value
     });
-    return this.http.put(this.walkerAcceptButtonURL + data, body, {
+    console.log(newURL);
+    return this.http.put(newURL, body, {
       headers: reqHeaders
     });
   }
@@ -271,6 +300,47 @@ export class DoggoService {
       Authorization: this.sessionTokenSource.value
     });
     return this.http.get(this.walkerAcceptedRequestsURL, {
+      headers: reqHeaders
+    });
+  }
+
+  //WALKER MARKS IT COMPLETE
+
+  walkerMarksComplete(data) {
+    let body = {
+      data: {
+        isCompleted: true
+      }
+    };
+    let newURL = `${this.walkerAcceptButtonURL}${data}`;
+
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionTokenSource.value
+    });
+    console.log(newURL);
+    return this.http.put(newURL, body, {
+      headers: reqHeaders
+    });
+  }
+  //WALKER MARKS IT CANCELED
+
+  walkerMarksCancel(data) {
+    let body = {
+      data: {
+        isCompleted: false,
+        isAccepted: false,
+        walkerID: null
+      }
+    };
+    let newURL = `${this.walkerAcceptButtonURL}${data}`;
+
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionTokenSource.value
+    });
+    console.log(newURL);
+    return this.http.put(newURL, body, {
       headers: reqHeaders
     });
   }

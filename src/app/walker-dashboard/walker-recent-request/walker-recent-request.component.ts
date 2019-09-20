@@ -55,4 +55,23 @@ export class WalkerRecentRequestComponent implements OnInit {
       result => (this.recentRequestData = result)
     );
   }
+  markedComplete(id) {
+    console.log(id);
+    this.doggoService.walkerMarksComplete(id).subscribe(data => {
+      console.log(data);
+      this.doggoService
+        .getAcceptedWalkerRequest()
+        .subscribe(data => this.doggoService.walkerUpdateAcceptedData(data));
+    });
+  }
+
+  markedCancel(id) {
+    console.log(id);
+    this.doggoService.walkerMarksCancel(id).subscribe(data => {
+      console.log(data);
+      this.doggoService
+        .getAcceptedWalkerRequest()
+        .subscribe(data => this.doggoService.walkerUpdateAcceptedData(data));
+    });
+  }
 }
