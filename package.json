@@ -1,6 +1,6 @@
 {
   "name": "dog-client",
-  "version": "10.16.1",
+  "version": "0.0.1",
   "engines": {
     "node": "10.15.3"
   },
@@ -16,11 +16,13 @@
   "private": true,
   "dependencies": {
     "@agm/core": "^1.0.0",
+    "@angular-devkit/build-angular": "^0.7.5",
     "@angular/animations": "^8.2.6",
     "@angular/cdk": "^8.2.0",
     "@angular/cli": "~8.2.0",
     "@angular/common": "^8.2.6",
     "@angular/compiler": "^8.2.6",
+    "@angular/compiler-cli": "^6.1.10",
     "@angular/core": "^8.2.6",
     "@angular/forms": "^8.2.6",
     "@angular/material": "^8.2.0",
