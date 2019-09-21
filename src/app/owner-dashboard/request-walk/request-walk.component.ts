@@ -41,7 +41,6 @@ export class RequestWalkComponent implements OnInit {
     this.doggoService.requestingWalkData.subscribe(
       data => (this.requestWalk = data)
     );
-    console.log(this.dogs);
   }
 
   time: string;
@@ -82,6 +81,8 @@ export class RequestWalkComponent implements OnInit {
           .subscribe(data => {
             console.log(data);
             this.doggoService.UpdateWalkersInAreaZipcodeData(data); // Method of storing all the walker data in a service
+
+            this.displayFetch = false;
           });
       });
   }

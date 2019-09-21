@@ -3,8 +3,9 @@
   <div class="grid-item one">
     <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12">
       <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]='iconOwner'></agm-marker>
-      <ng-container *ngFor='let walker of availableWalkers'>
-        <agm-marker [latitude]="walker.lat" [longitude]="walker.lng" [iconUrl]='iconWalker'></agm-marker>
+      <ng-container *ngFor='let walker of availableWalkers; let i = index'>
+        <agm-marker [latitude]="walker.lat" [longitude]="walker.lng" [iconUrl]='iconWalker'>
+        </agm-marker>
       </ng-container>
 
     </agm-map>

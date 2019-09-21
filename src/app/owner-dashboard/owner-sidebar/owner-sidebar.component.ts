@@ -16,7 +16,6 @@ export class OwnerSidebarComponent implements OnInit {
     this.doggoService.getUserInfo().subscribe((requested: any) => {
       this.firstName = requested.data.firstName;
       this.lastName = requested.data.lastName;
-      console.log(requested);
       if (requested.data.pic == null || requested.data.pic == "") {
         this.picture = "../../assets/owner-icon.png";
       } else {

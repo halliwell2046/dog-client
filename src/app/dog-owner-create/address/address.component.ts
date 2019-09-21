@@ -82,8 +82,6 @@ export class AddressComponent implements OnInit {
 
   ngOnInit() {
     this.doggoService.getUserInfo().subscribe((requested: any) => {
-      console.log(requested.data);
-
       this.service.form.controls["city"].setValue(requested.data.city);
       this.service.form.controls["street"].setValue(requested.data.address);
       this.service.form.controls["state"].setValue(requested.data.state);
@@ -99,16 +97,13 @@ export class AddressComponent implements OnInit {
     this.googleService
       .geoCoding(this.service.form.value)
       .subscribe((data: any) => {
-        console.log(data);
         this.ownerLat = data.results[0].geometry.location.lat;
         this.ownerLng = data.results[0].geometry.location.lng;
         sessionStorage.setItem("lat", this.ownerLat.toString());
         sessionStorage.setItem("lng", this.ownerLng.toString());
         this.doggoService
           .profileUpdate(this.service.form.value, this.ownerLat, this.ownerLng)
-          .subscribe((addressData: any) => {
-            console.log("itworked");
-          });
+          .subscribe((addressData: any) => {});
       });
 
     // console.warn(this.service.form.value);

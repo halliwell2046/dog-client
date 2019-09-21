@@ -20,4 +20,8 @@ export class OwnerDashboardComponent implements OnInit {
       }
     });
   }
+
+  receivedBooked($event) {
+    this.displayWalkers = false;
+  }
 }

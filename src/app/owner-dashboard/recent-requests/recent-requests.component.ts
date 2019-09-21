@@ -18,34 +18,35 @@ export class RecentRequestsComponent implements OnInit {
     "review",
     "cancel"
   ];
-  recentRequest = [
-    {
-      dateRequested: "09/25/2019",
-      timeRequested: "2:30PM",
-      walkerId: "1",
-      userId: "2",
-      isAccepted: true,
-      isCompleted: false,
-      ownerNotified: false,
-      reviewTitle: "Great",
-      review: "test",
-      rating: "****",
-      status: ""
-    },
-    {
-      dateRequested: "09/27/2019",
-      timeRequested: "2:30PM",
-      walkerId: "2",
-      userId: "2",
-      isAccepted: false,
-      isCompleted: false,
-      ownerNotified: false,
-      reviewTitle: "Great",
-      review: "test",
-      rating: "****",
-      status: ""
-    }
-  ];
+  recentRequest = [];
+  // recentRequest = [
+  //   {
+  //     dateRequested: "09/25/2019",
+  //     timeRequested: "2:30PM",
+  //     walkerId: "1",
+  //     userId: "2",
+  //     isAccepted: true,
+  //     isCompleted: false,
+  //     ownerNotified: false,
+  //     reviewTitle: "Great",
+  //     review: "test",
+  //     rating: "****",
+  //     status: ""
+  //   },
+  //   {
+  //     dateRequested: "09/27/2019",
+  //     timeRequested: "2:30PM",
+  //     walkerId: "2",
+  //     userId: "2",
+  //     isAccepted: false,
+  //     isCompleted: false,
+  //     ownerNotified: false,
+  //     reviewTitle: "Great",
+  //     review: "test",
+  //     rating: "****",
+  //     status: ""
+  //   }
+  // ];
 
   recentRequestData: object = [
     {
@@ -70,7 +71,6 @@ export class RecentRequestsComponent implements OnInit {
   ngOnInit() {
     this.doggoService.getOwnerRecentRequests().subscribe((data: any) => {
       this.doggoService.updateOwnerPendingRequestData(data);
-      console.log(data);
     });
     this.doggoService.ownerPendingRequestSource.subscribe(
       data => (this.recentRequest = this.determineStatus(data))
@@ -88,21 +88,33 @@ export class RecentRequestsComponent implements OnInit {
     }
   }
 
+  cancelRequest(id) {
+    this.doggoService.cancelRequest(id).subscribe(() => {
+      this.doggoService.getOwnerRecentRequests().subscribe((data: any) => {
+        this.doggoService.updateOwnerPendingRequestData(data);
+      });
+    });
+  }
+
   determineStatus(requestArray: any) {
     let status = "";
     let newRequestArray = [];
     let newRequest = [];
     newRequest = requestArray.map(data => {
-      if (data.isAccepted && data.isCompleted) {
-        status = "Completed";
-      } else if (data.isAccepted) {
-        status = "Accepted Not Completed";
+      if (data.isaccepted && data.iscompleted) {
+        status = "Complete";
+      } else if (data.isaccepted && data.iscompleted == false) {
+        status = "Accepted";
       } else {
-        status = "Waiting for Walker to Accept";
+        status = "Pending Response";
+      }
+      if (data.walkerid == null) {
+        status = "Walker Canceled";
       }
       Object.assign(data, { status: status });
       newRequestArray.push(data);
     });
+    console.log(newRequestArray);
 
     return newRequestArray;
   }

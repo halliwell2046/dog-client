@@ -34,6 +34,8 @@ export class DoggoService {
 
   zipcodeServerURL: string = "http://localhost:3000/zipcode/check";
 
+  ownerDeletesRequestURL: string = "http://localhost:3000/walker/delete/";
+
   constructor(private http: HttpClient) {}
 
   // BEHAVIOR SUBJECTS
@@ -132,7 +134,6 @@ export class DoggoService {
     return this.http
       .get(this.getPetURL, { headers: reqHeaders })
       .subscribe(pet => {
-        console.log(pet);
         this.petDataSource.next(pet);
       });
   }
@@ -145,7 +146,6 @@ export class DoggoService {
     this.http
       .delete(this.deletePet + id, { headers: reqHeaders })
       .subscribe(() => {
-        console.log("this works2");
         this.ownerPetData();
       });
   }
@@ -177,7 +177,6 @@ export class DoggoService {
         accountType: formData.accountType
       }
     };
-    console.log(body);
     return this.http.post(this.userSignupURL, body, {
       headers: reqHeaders
     });
@@ -197,6 +196,18 @@ export class DoggoService {
       }
     };
     return this.http.put(this.addingReviewURL + data.id, body, {
+      headers: reqHeaders
+    });
+  }
+
+  //OWNER CANCELS REQUEST
+
+  cancelRequest(id) {
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionTokenSource.value
+    });
+    return this.http.delete(this.ownerDeletesRequestURL + id, {
       headers: reqHeaders
     });
   }
@@ -231,10 +242,9 @@ export class DoggoService {
         dateRequested: this.requestingWalkSource.value[0].dateRequested,
         timeRequested: this.requestingWalkSource.value[0].timeRequested,
         dogs: this.requestingWalkSource.value[0].dogs,
-        walkerid: data
+        walkerID: data
       }
     };
-    console.log(body);
     return this.http.post(this.serviceRequestCreateURL, body, {
       headers: reqHeaders
     });
@@ -274,7 +284,6 @@ export class DoggoService {
       "Content-Type": "application/json",
       Authorization: this.sessionTokenSource.value
     });
-    console.log(newURL);
     return this.http.put(newURL, body, {
       headers: reqHeaders
     });
@@ -324,7 +333,6 @@ export class DoggoService {
       "Content-Type": "application/json",
       Authorization: this.sessionTokenSource.value
     });
-    console.log(newURL);
     return this.http.put(newURL, body, {
       headers: reqHeaders
     });
@@ -345,7 +353,6 @@ export class DoggoService {
       "Content-Type": "application/json",
       Authorization: this.sessionTokenSource.value
     });
-    console.log(newURL);
     return this.http.put(newURL, body, {
       headers: reqHeaders
     });
@@ -361,7 +368,6 @@ export class DoggoService {
       "Content-Type": "application/json",
       Authorization: this.sessionTokenSource.value
     });
-    console.log(zipcodes);
     let body = { zipcode: zipcodes };
     return this.http.post(this.zipcodeServerURL, body, {
       headers: reqHeaders
