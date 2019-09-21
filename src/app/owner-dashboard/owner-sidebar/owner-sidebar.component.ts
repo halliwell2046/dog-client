@@ -10,7 +10,7 @@ export class OwnerSidebarComponent implements OnInit {
   firstName: string;
   lastName: string;
   picture: string = "../../assets/owner-icon.png";
-  constructor(private doggoService: DoggoService) {}
+  constructor(public doggoService: DoggoService) {}
 
   ngOnInit() {
     this.doggoService.getUserInfo().subscribe((requested: any) => {

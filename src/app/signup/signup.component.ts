@@ -9,8 +9,8 @@ import { DoggoService } from "../doggo.service";
 })
 export class SignupComponent implements OnInit {
   constructor(
-    private service: DogOwnerService,
-    private doggoService: DoggoService
+    public service: DogOwnerService,
+    public doggoService: DoggoService
   ) {}
   ngOnInit() {}
   onSubmit() {

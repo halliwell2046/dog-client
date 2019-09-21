@@ -19,8 +19,8 @@ export class ReviewWalkerComponent implements OnInit {
   fourthFormGroup: FormGroup;
 
   constructor(
-    private _formBuilder: FormBuilder,
-    private doggoService: DoggoService
+    public _formBuilder: FormBuilder,
+    public doggoService: DoggoService
   ) {}
 
   ngOnInit() {

@@ -75,9 +75,9 @@ export class AddressComponent implements OnInit {
   ownerLng: number;
 
   constructor(
-    private service: DogOwnerService,
-    private doggoService: DoggoService,
-    private googleService: GoogleService
+    public service: DogOwnerService,
+    public doggoService: DoggoService,
+    public googleService: GoogleService
   ) {}
 
   ngOnInit() {

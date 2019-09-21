@@ -5,7 +5,7 @@ import { HttpClient, HttpHandler, HttpHeaders } from "@angular/common/http";
   providedIn: "root"
 })
 export class GoogleService {
-  constructor(private http: HttpClient) {}
+  constructor(public http: HttpClient) {}
 
   geoCoding(data: any) {
     let apiAddress = data.street.split(" ").join("+");

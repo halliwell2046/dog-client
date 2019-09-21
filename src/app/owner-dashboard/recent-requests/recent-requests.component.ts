@@ -66,7 +66,7 @@ export class RecentRequestsComponent implements OnInit {
     }
   ];
 
-  constructor(private doggoService: DoggoService) {}
+  constructor(public doggoService: DoggoService) {}
 
   ngOnInit() {
     this.doggoService.getOwnerRecentRequests().subscribe((data: any) => {

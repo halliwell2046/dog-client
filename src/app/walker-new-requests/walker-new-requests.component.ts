@@ -43,7 +43,7 @@ export class WalkerNewRequestsComponent implements OnInit {
     }
   ];
 
-  constructor(private doggoService: DoggoService) {}
+  constructor(public doggoService: DoggoService) {}
 
   ngOnInit() {
     console.log(

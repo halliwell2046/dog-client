@@ -8,7 +8,7 @@ import { DoggoService } from "../doggo.service";
 })
 export class NavbarComponent implements OnInit {
   token: string;
-  constructor(private doggoService: DoggoService) {}
+  constructor(public doggoService: DoggoService) {}
 
   ngOnInit() {
     this.doggoService.checkToken();

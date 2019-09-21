@@ -17,7 +17,7 @@ export class AvailableWalkersComponent implements OnInit {
   displayedColumns: string[] = ["id", "walker", "rating", "request"];
   availableWalkers = [];
 
-  constructor(private doggoService: DoggoService) {}
+  constructor(public doggoService: DoggoService) {}
 
   ngOnInit() {
     this.doggoService.zipcodeData.subscribe(

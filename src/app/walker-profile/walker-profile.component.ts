@@ -11,9 +11,9 @@ import { GoogleService } from "../maps/google.service";
 })
 export class WalkerProfileComponent implements OnInit {
   constructor(
-    private walkerService: DogOwnerService,
-    private doggoService: DoggoService,
-    private googleService: GoogleService
+    public walkerService: DogOwnerService,
+    public doggoService: DoggoService,
+    public googleService: GoogleService
   ) {}
   firstName: string;
   walkerLat: number;

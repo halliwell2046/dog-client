@@ -18,7 +18,7 @@ export class DogTableComponent implements OnInit {
 
   // petDataSource: Object = this.gettingPetData.petDataSource
 
-  constructor(private doggoService: DoggoService) {}
+  constructor(public doggoService: DoggoService) {}
 
   data;
   ngOnInit() {

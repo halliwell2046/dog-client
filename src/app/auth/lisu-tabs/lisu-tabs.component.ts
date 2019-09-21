@@ -8,7 +8,7 @@ import { DoggoService } from "src/app/doggo.service";
 })
 export class LisuTabsComponent implements OnInit {
   value: number = 0;
-  constructor(private doggoService: DoggoService) {}
+  constructor(public doggoService: DoggoService) {}
   token: string = undefined;
   ngOnInit() {
     this.doggoService.sessionToken.subscribe(

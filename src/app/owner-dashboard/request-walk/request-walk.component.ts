@@ -34,7 +34,7 @@ export class RequestWalkComponent implements OnInit {
     }
   ];
 
-  constructor(public dialog: MatDialog, private doggoService: DoggoService) {}
+  constructor(public dialog: MatDialog, public doggoService: DoggoService) {}
 
   ngOnInit() {
     this.doggoService.petData.subscribe(pet => (this.pets = pet));

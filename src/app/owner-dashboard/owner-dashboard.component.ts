@@ -9,7 +9,7 @@ import { DoggoService } from "../doggo.service";
 export class OwnerDashboardComponent implements OnInit {
   displayWalkers = false;
 
-  constructor(private doggoService: DoggoService) {}
+  constructor(public doggoService: DoggoService) {}
 
   ngOnInit() {
     this.doggoService.zipcodeData.subscribe(walkers => {

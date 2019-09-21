@@ -45,7 +45,7 @@ export class DogCardsComponent implements OnInit {
         "The basset hound is a friendly, easygoing dog. They tend to be good with other dogs and other pets in general. Bassets are people-oriented. They are not easy to train as they are quite stubborn."
     }
   ];
-  constructor(private doggoService: DoggoService) {}
+  constructor(public doggoService: DoggoService) {}
 
   ngOnInit() {
     this.doggoService.ownerPetData();

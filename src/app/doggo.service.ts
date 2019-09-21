@@ -1,4 +1,4 @@
-import { APIURL } from '../environments/environment.prod';
+import { APIURL } from "../environments/environment.prod";
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHandler, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
@@ -15,29 +15,24 @@ export class DoggoService {
   ownerAddingPetURL: string = `${APIURL}/owner/create`;
   getPetURL: string = `${APIURL}/owner/`;
   deletePet: string = `${APIURL}/owner/delete/`;
-  ownerRecentRequestURL: string =
-    `${APIURL}/walker/owner-requests/`;
+  ownerRecentRequestURL: string = `${APIURL}/walker/owner-requests/`;
   walkerProfile: string = `${APIURL}0/owner/`;
-  serviceRequestCreateURL: string =
-    `${APIURL}/walker/create-request/`;
+  serviceRequestCreateURL: string = `${APIURL}/walker/create-request/`;
 
   userProfileURL: string = `${APIURL}/owner/userinfo`;
 
   addingReviewURL: string = `${APIURL}/walker/update-request/`;
 
-  walkerAcceptedRequestsURL: string =
-    `${APIURL}/walker/accepted-requests/`;
-  walkerPendingRequestsURL: string =
-    `${APIURL}/walker/pending-requests/`;
+  walkerAcceptedRequestsURL: string = `${APIURL}/walker/accepted-requests/`;
+  walkerPendingRequestsURL: string = `${APIURL}/walker/pending-requests/`;
 
-  walkerAcceptButtonURL: string =
-    `${APIURL}/walker/walker-update-request/`;
+  walkerAcceptButtonURL: string = `${APIURL}/walker/walker-update-request/`;
 
   zipcodeServerURL: string = `${APIURL}/zipcode/check`;
 
   ownerDeletesRequestURL: string = `${APIURL}/walker/delete/`;
 
-  constructor(private http: HttpClient) {}
+  constructor(public http: HttpClient) {}
 
   // BEHAVIOR SUBJECTS
   petDataSource = new BehaviorSubject<any>([]);

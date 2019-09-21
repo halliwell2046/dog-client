@@ -9,8 +9,8 @@ import { DoggoService } from "src/app/doggo.service";
 })
 export class DogProfileComponent implements OnInit {
   constructor(
-    private service: DogOwnerService,
-    private doggoService: DoggoService
+    public service: DogOwnerService,
+    public doggoService: DoggoService
   ) {}
 
   ngOnInit() {
