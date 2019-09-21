@@ -17,8 +17,12 @@ export class LoginComponent implements OnInit {
       .userLogin(this.service.loginForm.value)
       .subscribe((data: any) => {
         sessionStorage.setItem("token", data.sessionToken);
-        sessionStorage.setItem("accountType", data.accountType)
-        this.doggoService.checkToken()
+        sessionStorage.setItem("accountType", data.accountType);
+        sessionStorage.setItem("lat", data.email.lat);
+        sessionStorage.setItem("lng", data.email.lng);
+        this.doggoService.checkToken();
+        this.doggoService.userDataInfo = data;
+        console.log(this.doggoService.userDataInfo);
       });
   }
 }

@@ -1,65 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { DoggoService } from "src/app/doggo.service";
 @Component({
-  selector: 'app-available-walkers',
-  templateUrl: './available-walkers.component.html',
-  styleUrls: ['./available-walkers.component.css']
+  selector: "app-available-walkers",
+  templateUrl: "./available-walkers.component.html",
+  styleUrls: ["./available-walkers.component.css"]
 })
 export class AvailableWalkersComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'walker', 'rating', 'request'];
-  availableWalkers = [
-    {
-      dateRequested: '09/25/2019', 
-      timeRequested: '2:30PM',
-      walkerId: '1',
-      userId: '2',
-      isAccepted: true,
-      isCompleted: false,
-      ownerNotified: false,
-      reviewTitle: 'Great', 
-      review: 'test',
-      rating: '****',
-    },
-      {
-        dateRequested: '09/27/2019', 
-        timeRequested: '2:30PM',
-        walkerId: '2',
-        userId: '2',
-        isAccepted: false,
-        isCompleted: false,
-        ownerNotified: false,
-        reviewTitle: 'Great', 
-        review: 'test',
-        rating: '****',
-    },
-    {
-      dateRequested: '09/27/2019', 
-      timeRequested: '2:30PM',
-      walkerId: '3',
-      userId: '2',
-      isAccepted: false,
-      isCompleted: false,
-      ownerNotified: false,
-      reviewTitle: 'Great', 
-      review: 'test',
-      rating: '****',
-  },
-  {
-    dateRequested: '09/27/2019', 
-    timeRequested: '2:30PM',
-    walkerId: '4',
-    userId: '2',
-    isAccepted: false,
-    isCompleted: false,
-    ownerNotified: false,
-    reviewTitle: 'Great', 
-    review: 'test',
-    rating: '****',
-}
-  ]
+  lat = Number(sessionStorage.getItem("lat"));
+  lng = Number(sessionStorage.getItem("lng"));
+  // lat2 = 39.6915486;
+  // lng2 = -86.0306551;
+  @Input() displayWalkers: boolean;
+  @Output() displayWalkerEvent = new EventEmitter<boolean>();
+  iconOwner = "../../assets/dog-with-leash.png";
+  iconWalker = "../../assets/walker-marker.png";
+  displayedColumns: string[] = ["id", "walker", "rating", "request"];
+  availableWalkers = [];
 
-  constructor() { }
+  constructor(private doggoService: DoggoService) {}
 
   ngOnInit() {
+    this.doggoService.zipcodeData.subscribe(
+      walkers => (this.availableWalkers = walkers)
+    );
   }
 
+  bookWalker(id) {
+    this.doggoService.bookTheWalker(id).subscribe(data => {
+      this.doggoService.getOwnerRecentRequests().subscribe((data: any) => {
+        this.doggoService.updateOwnerPendingRequestData(data);
+      });
+      this.doggoService.updateRequestingWalkerData([]);
+      this.displayWalkers = false;
+      this.displayWalkerEvent.emit(this.displayWalkers);
+    });
+  }
 }

@@ -46,6 +46,9 @@ export class WalkerNewRequestsComponent implements OnInit {
   constructor(private doggoService: DoggoService) {}
 
   ngOnInit() {
+    console.log(
+      "this is the value" + this.doggoService.sessionTokenSource.value
+    );
     this.doggoService.getPendingWalkerRequest().subscribe(data => {
       console.log(data);
       this.doggoService.walkerUpdatePendingData(data);
@@ -56,9 +59,13 @@ export class WalkerNewRequestsComponent implements OnInit {
   }
 
   acceptRequest(id: number) {
-    this.doggoService
-      .walkerAccepts(id)
-      .subscribe(() => this.refreshTable(), err => console.log(err));
+    this.doggoService.walkerAccepts(id).subscribe(
+      data => {
+        console.log(data);
+        this.refreshTable();
+      },
+      err => console.log(err)
+    );
   }
 
   refreshTable(): void {
@@ -74,6 +81,13 @@ export class WalkerNewRequestsComponent implements OnInit {
   declineRequest(id) {
     this.doggoService.walkerDeclines(id).subscribe(result => {
       this.refreshTable();
+    });
+  }
+
+  buttonClick() {
+    this.doggoService.getPendingWalkerRequest().subscribe(data => {
+      console.log(data);
+      this.doggoService.walkerUpdatePendingData(data);
     });
   }
 }

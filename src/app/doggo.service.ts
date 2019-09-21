@@ -6,7 +6,8 @@ import { FormsModule } from "@angular/forms";
   providedIn: "root"
 })
 export class DoggoService {
-  userID: string = "1";
+  userDataInfo: any = [];
+  userID: string = "";
   userLoginURL: string = "http://localhost:3000/user/login";
   userSignupURL: string = "http://localhost:3000/user/signup";
   userUpdateURL: string = "http://localhost:3000/owner/address";
@@ -16,7 +17,8 @@ export class DoggoService {
   ownerRecentRequestURL: string =
     "http://localhost:3000/walker/owner-requests/";
   walkerProfile: string = `http://localhost:3000/owner/`;
-  updateRequest: string = "http://localhost:3000/walker/update-request/1";
+  serviceRequestCreateURL: string =
+    "http://localhost:3000/walker/create-request/";
 
   userProfileURL: string = `http://localhost:3000/owner/userinfo`;
 
@@ -30,6 +32,10 @@ export class DoggoService {
   walkerAcceptButtonURL: string =
     "http://localhost:3000/walker/walker-update-request/";
 
+  zipcodeServerURL: string = "http://localhost:3000/zipcode/check";
+
+  ownerDeletesRequestURL: string = "http://localhost:3000/walker/delete/";
+
   constructor(private http: HttpClient) {}
 
   // BEHAVIOR SUBJECTS
@@ -38,7 +44,12 @@ export class DoggoService {
 
   sessionTokenSource = new BehaviorSubject<any>("");
   sessionToken = this.sessionTokenSource.asObservable();
-
+  // Owner Pending Requests
+  ownerPendingRequestSource = new BehaviorSubject<any>([]);
+  ownerPendingRequestData = this.ownerPendingRequestSource.asObservable();
+  updateOwnerPendingRequestData(data: any) {
+    this.ownerPendingRequestSource.next(data);
+  }
   walkerAcceptedSource = new BehaviorSubject<any>([]);
   walkerAcceptedData = this.walkerAcceptedSource.asObservable();
   walkerUpdateAcceptedData(data: any) {
@@ -50,7 +61,18 @@ export class DoggoService {
   walkerUpdatePendingData(data: any) {
     this.walkerPendingSource.next(data);
   }
-
+  // Walkers in the Owners Zipcode
+  zipcodeSource = new BehaviorSubject<any>([]);
+  zipcodeData = this.zipcodeSource.asObservable();
+  UpdateWalkersInAreaZipcodeData(data: any) {
+    this.zipcodeSource.next(data);
+  }
+  //The current requested walk
+  requestingWalkSource = new BehaviorSubject<any>([]);
+  requestingWalkData = this.requestingWalkSource.asObservable();
+  updateRequestingWalkerData(data: any) {
+    this.requestingWalkSource.next(data);
+  }
   //TOKEN ITEMS
   checkToken() {
     if (sessionStorage.getItem("token")) {
@@ -61,7 +83,7 @@ export class DoggoService {
     this.sessionTokenSource.next(undefined);
   }
   // PROFILE OWNER
-  profileUpdate(addressData) {
+  profileUpdate(addressData, lat, lng) {
     const body = {
       data: {
         street: addressData.street,
@@ -70,7 +92,9 @@ export class DoggoService {
         zipcode: addressData.zipcode,
         phoneNumber: addressData.phoneNumber,
         picture: addressData.picture,
-        bio: addressData.bio
+        bio: addressData.bio,
+        lat: lat,
+        lng: lng
       }
     };
     const reqHeaders = new HttpHeaders({
@@ -110,7 +134,6 @@ export class DoggoService {
     return this.http
       .get(this.getPetURL, { headers: reqHeaders })
       .subscribe(pet => {
-        console.log(pet);
         this.petDataSource.next(pet);
       });
   }
@@ -123,7 +146,6 @@ export class DoggoService {
     this.http
       .delete(this.deletePet + id, { headers: reqHeaders })
       .subscribe(() => {
-        console.log("this works2");
         this.ownerPetData();
       });
   }
@@ -155,7 +177,6 @@ export class DoggoService {
         accountType: formData.accountType
       }
     };
-    console.log(body);
     return this.http.post(this.userSignupURL, body, {
       headers: reqHeaders
     });
@@ -179,6 +200,19 @@ export class DoggoService {
     });
   }
 
+  //OWNER CANCELS REQUEST
+
+  cancelRequest(id) {
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionTokenSource.value
+    });
+
+    return this.http.delete(`${this.ownerDeletesRequestURL}${id}`, {
+      headers: reqHeaders
+    });
+  }
+
   // OWNER INFO FOR SIDEBAR
   getUserInfo() {
     const reqHeaders = new HttpHeaders({
@@ -197,6 +231,25 @@ export class DoggoService {
     return this.http.get(this.ownerRecentRequestURL, { headers: reqHeaders });
   }
 
+  // OWNER BOOKING WALKER
+
+  bookTheWalker(data) {
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionTokenSource.value
+    });
+    let body = {
+      data: {
+        dateRequested: this.requestingWalkSource.value[0].dateRequested,
+        timeRequested: this.requestingWalkSource.value[0].timeRequested,
+        dogs: this.requestingWalkSource.value[0].dogs,
+        walkerID: data
+      }
+    };
+    return this.http.post(this.serviceRequestCreateURL, body, {
+      headers: reqHeaders
+    });
+  }
   //WALKER SPECIFIC AREA
 
   // WALKER INFO FOR SIDEBAR
@@ -226,11 +279,13 @@ export class DoggoService {
         isAccepted: true
       }
     };
+    let newURL = `${this.walkerAcceptButtonURL}${data}`;
+
     const reqHeaders = new HttpHeaders({
       "Content-Type": "application/json",
       Authorization: this.sessionTokenSource.value
     });
-    return this.http.put(this.walkerAcceptButtonURL + data, body, {
+    return this.http.put(newURL, body, {
       headers: reqHeaders
     });
   }
@@ -261,6 +316,61 @@ export class DoggoService {
       Authorization: this.sessionTokenSource.value
     });
     return this.http.get(this.walkerAcceptedRequestsURL, {
+      headers: reqHeaders
+    });
+  }
+
+  //WALKER MARKS IT COMPLETE
+
+  walkerMarksComplete(data) {
+    let body = {
+      data: {
+        isCompleted: true
+      }
+    };
+    let newURL = `${this.walkerAcceptButtonURL}${data}`;
+
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionTokenSource.value
+    });
+    return this.http.put(newURL, body, {
+      headers: reqHeaders
+    });
+  }
+  //WALKER MARKS IT CANCELED
+
+  walkerMarksCancel(data) {
+    let body = {
+      data: {
+        isCompleted: false,
+        isAccepted: false,
+        walkerID: null
+      }
+    };
+    let newURL = `${this.walkerAcceptButtonURL}${data}`;
+
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionTokenSource.value
+    });
+    return this.http.put(newURL, body, {
+      headers: reqHeaders
+    });
+  }
+
+  checkZipcodes(zipcodeRequested: string) {
+    let api = `http://api.geonames.org/findNearbyPostalCodesJSON?postalcode=${zipcodeRequested}&country=US&radius=10&username=rvanar`;
+    return this.http.get(api);
+  }
+
+  zipCodeServer(zipcodes) {
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionTokenSource.value
+    });
+    let body = { zipcode: zipcodes };
+    return this.http.post(this.zipcodeServerURL, body, {
       headers: reqHeaders
     });
   }

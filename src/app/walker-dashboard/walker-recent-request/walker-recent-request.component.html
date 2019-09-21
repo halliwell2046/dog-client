@@ -1,49 +1,55 @@
 <h2 class="gray-tab">your recent requests</h2>
 <table mat-table [dataSource]="recentRequestData" class="mat-elevation-z0">
-    
-   <!-- Walker Column -->
-   <ng-container matColumnDef="walker">
+
+  <!-- Walker Column -->
+  <ng-container matColumnDef="walker">
     <th mat-header-cell *matHeaderCellDef> Walker </th>
     <td mat-cell *matCellDef="let element"> {{element.walkerId}} </td>
   </ng-container>
 
-    <!-- Date Column -->
-    <ng-container matColumnDef="date">
-      <th mat-header-cell *matHeaderCellDef> Date </th>
-      <td mat-cell *matCellDef="let element"> {{element.dateRequested}} </td>
-    </ng-container>
-  
-    <!-- Time Column -->
-    <ng-container matColumnDef="time">
-      <th mat-header-cell *matHeaderCellDef> Time </th>
-      <td mat-cell *matCellDef="let element"> {{element.timeRequested}} </td>
-    </ng-container>
-  
-     <!-- Dogs Column -->
-     <ng-container matColumnDef="dogs">
-      <th mat-header-cell *matHeaderCellDef> Dog(s) </th>
-      <td mat-cell *matCellDef="let element"> {{element.dogs}} </td>
-    </ng-container>
-
-    <!-- Location Column -->
-    <ng-container matColumnDef="location">
-      <th mat-header-cell *matHeaderCellDef> Location </th>
-      <td mat-cell *matCellDef="let element"> {{element.location}} </td>
-    </ng-container>
-
-    <!-- Cancel Column -->
-    <ng-container matColumnDef="cancel">
-        <th mat-header-cell *matHeaderCellDef> Cancel </th>
-        <td mat-cell *matCellDef="let element"> 
-          <button class="cancel-button" mat-button (click)="cancelRequest(element.id)">cancel</button> </td>
-    </ng-container>
-
-    <!--Completed Column-->
-    <ng-container  matColumnDef="complete">
-      <th mat-header-cell *matHeaderCellDef> Completed </th>
-      <td  mat-cell  *matCellDef="let element"><i  style="margin-left: 15px;" class="material-icons">pets</i> </td>
+  <!-- Date Column -->
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.dateRequested}} </td>
   </ng-container>
 
-    <tr mat-header-row style="height: 2em;" *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row  *matRowDef="let row; columns: displayedColumns;" style="height: 2em;"></tr>
-  </table>
+  <!-- Time Column -->
+  <ng-container matColumnDef="time">
+    <th mat-header-cell *matHeaderCellDef> Time </th>
+    <td mat-cell *matCellDef="let element"> {{element.timeRequested}} </td>
+  </ng-container>
+
+  <!-- Dogs Column -->
+  <ng-container matColumnDef="dogs">
+    <th mat-header-cell *matHeaderCellDef> Dog(s) </th>
+    <td mat-cell *matCellDef="let element"> {{element.dogs}} </td>
+  </ng-container>
+
+  <!-- Location Column -->
+  <ng-container matColumnDef="location">
+    <th mat-header-cell *matHeaderCellDef> Location </th>
+    <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+  </ng-container>
+
+  <!-- Cancel Column -->
+  <ng-container matColumnDef="cancel">
+    <th mat-header-cell *matHeaderCellDef> Cancel </th>
+    <td mat-cell *matCellDef="let element">
+      <button [disabled]='element.iscompleted' class="cancel-button" mat-button
+        (click)="markedCancel(element.id)">cancel</button> </td>
+  </ng-container>
+
+  <!--Completed Column-->
+  <ng-container matColumnDef="complete">
+    <th mat-header-cell *matHeaderCellDef> Completed </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-button [disabled]='element.iscompleted' (click)='markedComplete(element.id)'>
+        <i class="material-icons">pets</i>
+
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row style="height: 2em;" *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="height: 2em;"></tr>
+</table>

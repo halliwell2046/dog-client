@@ -23,11 +23,12 @@ export class WalkerSidebarComponent implements OnInit {
         lastName: requested.data.lastName,
         bio: requested.data.bio
       };
-      if (requested.data.pic !== null || requested.data.pic !== " ") {
-        Object.assign(this.walkerData, { pic: requested.data.pic });
-      } else {
+      if (requested.data.pic == null || requested.data.pic == "") {
         Object.assign(this.walkerData, { pic: "../../assets/walker-icon.png" });
+      } else {
+        Object.assign(this.walkerData, { pic: requested.data.pic });
       }
+      this.doggoService.userDataInfo = requested.data;
     });
   }
 }

@@ -13,8 +13,9 @@
     <div class="grid-item four">
       <app-request-walk></app-request-walk>
     </div>
-    <div class="grid-item five">
-      <app-available-walkers></app-available-walkers>
+    <div class="grid-item five" *ngIf="displayWalkers">
+      <app-available-walkers class="animated fadeIn slow" [displayWalkers]="displayWalkers"
+        (displayWalkerEvent)='receivedBooked($event)'></app-available-walkers>
     </div>
   </div>
 
