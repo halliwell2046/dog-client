@@ -91,7 +91,7 @@ export class AddressComponent implements OnInit {
       this.service.form.controls["phoneNumber"].setValue(
         requested.data.phoneNumber
       );
-      this.name = requested.firstName;
+      this.name = requested.data.firstName;
     });
   }
 
