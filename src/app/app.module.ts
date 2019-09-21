@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, APP_ID } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -39,7 +39,12 @@ import { WalkerProfileComponent } from "./walker-profile/walker-profile.componen
 import { DashboardComponent } from "./containers/dashboard/dashboard.component";
 import { UserProfileComponent } from "./containers/user-profile/user-profile.component";
 import { WalkerRecentRequestComponent } from "./walker-dashboard/walker-recent-request/walker-recent-request.component";
-
+import { AuthGuardService } from "./auth-guard.service";
+import { JwtModule } from "@auth0/angular-jwt";
+const APIURL = "http://localhost:4200";
+export function tokenGetter() {
+  return localStorage.getItem("token");
+ }
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,9 +84,15 @@ import { WalkerRecentRequestComponent } from "./walker-dashboard/walker-recent-r
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: [APIURL]
+      }
+    })
   ],
-  providers: [DogOwnerService],
+  providers: [DogOwnerService, AuthGuardService],
   bootstrap: [AppComponent],
   entryComponents: [DialogRequest]
 })

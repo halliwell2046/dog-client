@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHandler, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
 import { FormsModule } from "@angular/forms";
+
 @Injectable({
   providedIn: "root"
 })
@@ -32,6 +33,8 @@ export class DoggoService {
 
   constructor(private http: HttpClient) {}
 
+  
+
   // BEHAVIOR SUBJECTS
   petDataSource = new BehaviorSubject<any>([]);
   petData = this.petDataSource.asObservable();
@@ -52,6 +55,7 @@ export class DoggoService {
   }
 
   //TOKEN ITEMS
+
   checkToken() {
     if (sessionStorage.getItem("token")) {
       this.sessionTokenSource.next(sessionStorage.getItem("token"));
