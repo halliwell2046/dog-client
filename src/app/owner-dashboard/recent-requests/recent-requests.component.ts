@@ -87,7 +87,7 @@ export class RecentRequestsComponent implements OnInit {
       this.buttonReviewTitle = "Add Review";
     }
   }
-
+$events:boolean;
   cancelRequest(id) {
     console.log("ID >>>", id);
     this.doggoService.cancelRequest(id).subscribe(
