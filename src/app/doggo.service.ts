@@ -356,7 +356,7 @@ export class DoggoService {
   }
 
   checkZipcodes(zipcodeRequested: string) {
-    let api = `http://api.geonames.org/findNearbyPostalCodesJSON?postalcode=${zipcodeRequested}&country=US&radius=10&username=rvanar`;
+    let api = `https://secure.geonames.org/findNearbyPostalCodesJSON?postalcode=${zipcodeRequested}&country=US&radius=10&username=rvanar`;
     return this.http.get(api);
   }
 
