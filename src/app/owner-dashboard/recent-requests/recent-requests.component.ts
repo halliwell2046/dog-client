@@ -125,7 +125,7 @@ export class RecentRequestsComponent implements OnInit {
 
     return newRequestArray;
   }
-
+  $events: boolean;
   recieveMessages($events) {
     this.reviewToggle = $events;
   }
