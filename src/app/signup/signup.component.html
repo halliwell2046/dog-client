@@ -15,7 +15,7 @@
         <input formControlName="email" matInput placeholder="Email" />
       </mat-form-field>
       <mat-form-field>
-        <input formControlName="password" matInput placeholder="Password" />
+        <input  [type]="show ? 'text' : 'password'" formControlName="password" matInput placeholder="Password" />
       </mat-form-field>
       <mat-radio-group
         formControlName="accountType"

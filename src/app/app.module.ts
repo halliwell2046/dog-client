@@ -41,6 +41,7 @@ import { UserProfileComponent } from "./containers/user-profile/user-profile.com
 import { WalkerRecentRequestComponent } from "./walker-dashboard/walker-recent-request/walker-recent-request.component";
 import { AuthGuardService } from "./auth-guard.service";
 import { JwtModule } from "@auth0/angular-jwt";
+import { AppPasswordDirective } from './app-password.directive';
 const APIURL = "http://localhost:4200";
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -75,7 +76,9 @@ export function tokenGetter() {
     DashboardComponent,
     UserProfileComponent,
     WalkerRecentRequestComponent,
-    DialogRequest
+    DialogRequest,
+    AppPasswordDirective,
+    
   ],
   imports: [
     BrowserModule,
