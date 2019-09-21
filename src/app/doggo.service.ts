@@ -207,7 +207,8 @@ export class DoggoService {
       "Content-Type": "application/json",
       Authorization: this.sessionTokenSource.value
     });
-    return this.http.delete(this.ownerDeletesRequestURL + id, {
+
+    return this.http.delete(`${this.ownerDeletesRequestURL}${id}`, {
       headers: reqHeaders
     });
   }

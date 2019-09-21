@@ -89,11 +89,18 @@ export class RecentRequestsComponent implements OnInit {
   }
 
   cancelRequest(id) {
-    this.doggoService.cancelRequest(id).subscribe(() => {
-      this.doggoService.getOwnerRecentRequests().subscribe((data: any) => {
-        this.doggoService.updateOwnerPendingRequestData(data);
-      });
-    });
+    console.log("ID >>>", id);
+    this.doggoService.cancelRequest(id).subscribe(
+      data => {
+        this.doggoService.getOwnerRecentRequests().subscribe(
+          (data: any) => {
+            this.doggoService.updateOwnerPendingRequestData(data);
+          },
+          err => console.log("2", err)
+        );
+      },
+      err => console.log("1", err)
+    );
   }
 
   determineStatus(requestArray: any) {
