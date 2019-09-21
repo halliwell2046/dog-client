@@ -73,6 +73,7 @@ export class AddressComponent implements OnInit {
   ];
   ownerLat: number;
   ownerLng: number;
+  name: string;
 
   constructor(
     public service: DogOwnerService,
@@ -90,6 +91,7 @@ export class AddressComponent implements OnInit {
       this.service.form.controls["phoneNumber"].setValue(
         requested.data.phoneNumber
       );
+      this.name = requested.firstName;
     });
   }
 
