@@ -1,0 +1,39 @@
+.dogCards {
+display: flex;
+flex-wrap: wrap;
+
+}
+
+.example-card {
+margin: 20px;
+}
+
+.paw-icon {
+  margin-left: 0px; 
+  margin-top: 10px; 
+
+}
+
+.name {
+  font-family: Roboto;
+  font-size: 1.4rem;
+} 
+
+.cancel-button {
+  background-color:white; 
+  color: #ed1c24;
+  /* height: 2em;
+  font-size: 1em; */
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  border: 1px solid #ed1c24;
+  border-radius: 4px;
+  min-width: 64px;
+  height: 30px;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 24px;
+}

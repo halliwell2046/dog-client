@@ -1,0 +1,68 @@
+.introh2 {
+  color:black;
+  font-family: Roboto, sans-serif;
+  font-size: 2.2em;
+  font-weight: 200;
+  line-height: 1.2;
+  text-align: center;
+  margin: 0% 5% 5% 5%;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  width: 100%;
+  grid-gap: 10px;
+}
+
+.leftDog {
+grid-column: 1/2;
+margin-right:20%;
+}
+
+.auth {
+  grid-column: 2/3;
+  max-width: 500px;
+  width:100%;
+  justify-self: center;
+  
+}
+
+.rightDog {
+grid-column: 3/4;
+margin-left:20%;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.mat-tab-label{
+  font-size: 14px !important;
+} 
+
+/* .constrain {
+  width: 300px;
+} */
+
+.showing-dashboard {
+  grid-column: 2/3;
+  max-width: 500px;
+  width:100%;
+  justify-self: center;
+  align-self: center;
+  
+}
+.center-content{
+  display:flex;
+  text-align: center;
+
+}
+.red-button{
+  width: 100%;
+  text-align:center;
+  padding: 5px 10px;
+  font-size: 20px;
+
+}

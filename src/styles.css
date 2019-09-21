@@ -1,2 +1,77 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.red-button {
+  background-color:#ed1c24; 
+  color: white;
+}
+
+.white-button {
+  border: 1px solid #ed1c24;
+  color: #ed1c24;
+  background-color: white;
+  margin: 15px;
+}
+
+.white-blue-button {
+  border: 1px solid #0075be;
+  color: #0075be;
+  background-color: white;
+  margin: 15px;
+  }
+
+.ptext {
+  font-family: Roboto, sans-serif;
+}
+
+.blue-button {
+  background-color:#0075be; 
+  color: white;
+}
+
+.red-tab {
+  background-color: #ed1c24;
+  text-align: center;
+  color: white;
+  font-size: 1.5rem;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.name {
+  font-family: Roboto;
+  font-size: 1.8rem;
+  vertical-align: top;
+  padding: 10px;
+  line-height: 1.2;
+} 
+
+.tellUs {
+  color:black;
+  font-family: Roboto, sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0px;
+}
+
+.review-button {
+  background-color:#ed1c24; 
+  color: white;
+  /* height: 2em;
+  font-size: 1em; */
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px;
+  min-width: 64px;
+  height: 30px;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 30px;
+  margin: 2px;      
+}

@@ -1,0 +1,86 @@
+.tab {
+  background-color: #0075be;
+  text-align: center;
+  color: white;
+  font-size: 1.8rem;
+  font-family: Roboto;
+  margin: 0;
+  padding-bottom: 5px;
+  width: 200px;
+}
+
+.addressh1 {
+  color: #0075be;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.form-container > * {
+  width: 100%;
+}
+
+.same-line-fields-1 {
+  margin-right: 10px;
+  width: 55%;
+}
+
+.same-line-fields-2 {
+  margin-right: 10px;
+  width: 15%;
+}
+
+.same-line-fields-3 {
+  margin-right: 0px;
+  width: 25%;
+}
+
+/* .grid{
+      display: grid;
+      grid-template-columns: 1em 1fr 1fr 1em;
+      width: 100%;
+      grid-gap: 30px;
+      grid-template-rows: auto auto auto;
+   
+} */
+
+/* .address-group{
+    grid-column: 2/3;
+    grid-row: 1/2;
+
+}
+
+.owner-table-group{
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+
+.pet-add-group{
+  grid-column: 3/4;
+  grid-row: 1/3;
+} */
+
+/* 
+@media only screen and (max-width: 768px) {
+
+  .grid{
+      display: grid;
+      grid-template-columns: 1em auto 1em;
+      width: 100%;
+      grid-gap: 25px;
+      grid-template-rows: auto auto auto auto;
+   
+}
+
+.owner-table-group{
+  grid-column: 2/3;
+  grid-row: 3/4;
+}
+
+.pet-add-group{
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+
+
+} */

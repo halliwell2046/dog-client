@@ -1,0 +1,33 @@
+
+mat-radio-button{
+    margin-left: 5px;
+    margin-top: 5px;
+    }
+    
+form {
+    text-align: center;
+    padding-top: 35px;
+
+}
+
+/* .submit {
+    border: 1px solid red;
+    background-color: red;
+    color: white;
+    margin: 5px;
+} */
+.main-container{
+    max-width: 500px;
+}
+.container > * {
+    width: 100%;
+
+}
+
+.userType {
+    text-align:center;
+}
+
+.red-button {
+    margin-top: 20px;
+}

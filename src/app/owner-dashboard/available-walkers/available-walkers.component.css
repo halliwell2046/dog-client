@@ -1,0 +1,81 @@
+.box {
+
+}
+agm-map{
+  height:400px;
+}
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    grid-gap: 10px;
+    grid-template-rows: auto auto auto auto;
+  }
+ 
+  .one {
+    background-color:  #e6e7e8;
+    grid-row: 1/-1;
+  }
+ 
+  .two {
+   grid-column: 2/-1;
+   grid-row: 1/2; 
+  }
+
+table {
+    width: 100%;
+}
+
+th {
+    background-color: lightgray;
+    color: black;
+    font-weight: bold;
+}
+
+h1 {
+    width: 100%;
+    text-align: center;
+
+    color: white;
+    font-weight: bold;
+}
+
+.red-tab {
+    background-color: #ed1c24;
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    font-family: Roboto;
+    margin: 0;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+  }
+
+  .links {
+      color: #ed1c24;
+      text-decoration: underline;
+  }
+
+  /* .book-button {
+    background-color: red;
+    color: white;
+  } */
+
+  .book-button {
+    background-color:#ed1c24; 
+    color: white;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
+    min-width: 64px;
+    height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 30px;
+    margin: 2px;   
+  }
+  

@@ -1,0 +1,25 @@
+<div class="main-container">
+    <form [formGroup]="service.loginForm" class='form-container' (ngSubmit)="onSubmit()">
+  <div class="container">
+   
+      <mat-form-field>
+        <input
+          formControlName="email"
+          matInput
+          placeholder="Email (Username)"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="password" matInput placeholder="Password" />
+      </mat-form-field>
+    </div>
+    <button
+      class="red-button"
+      [disabled]="service.loginForm.invalid"
+      type="submit"
+      mat-button
+    >
+      Submit
+    </button>
+  </form>
+</div>

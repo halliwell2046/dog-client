@@ -1,0 +1,19 @@
+/* .head {
+    width: 100%;
+    background-color: rgb(43, 41, 41);
+    text-align: center;
+    color: white;
+    font-weight: bold;
+} */
+
+table {
+    width: 100%;
+   
+}
+
+th {
+    background-color: black;
+    color: white;
+    font-size: 18px;
+}
+

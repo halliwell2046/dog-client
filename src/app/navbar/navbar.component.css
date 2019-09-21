@@ -1,0 +1,22 @@
+.container {
+  margin-top: 50px;
+  height: 130px;
+}
+
+.logo {
+  height: 75px;
+  margin-left: -10px;
+}
+
+.fill-remain-space {
+flex: 1 1 auto;
+}
+
+.mat-toolbar {
+  background:white;
+}
+
+.mat-stroked-button {
+  font-size: 18px;
+  line-height: 2;
+}

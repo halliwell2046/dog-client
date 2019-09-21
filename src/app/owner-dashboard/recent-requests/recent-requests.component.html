@@ -1,1 +1,57 @@
-<p>recent-requests works!</p>
+<h2 class="gray-tab">your recent requests</h2>
+<table mat-table [dataSource]="recentRequest" class="mat-elevation-z0">
+
+  <!-- Date Column -->
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.dateRequested}} </td>
+  </ng-container>
+
+  <!-- Time Column -->
+  <ng-container matColumnDef="time">
+    <th mat-header-cell *matHeaderCellDef> Time </th>
+    <td mat-cell *matCellDef="let element"> {{element.timeRequested}} </td>
+  </ng-container>
+
+  <!-- Walker Column -->
+  <ng-container matColumnDef="walker">
+    <th mat-header-cell *matHeaderCellDef> Walker </th>
+    <td mat-cell *matCellDef="let element"> {{element.firstName}} {{element.lastName}} </td>
+  </ng-container>
+
+  <!-- Status Column -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+  </ng-container>
+
+  <!-- Review Column -->
+  <ng-container matColumnDef="review">
+    <th mat-header-cell *matHeaderCellDef> Add Review </th>
+
+    <td mat-cell *matCellDef="let element">
+      <i *ngIf='element?.review!=null' class='material-icons'>check_circle_icon</i>
+      <button *ngIf="element?.review==null" [disabled]="element?.status!='Complete'" class="review-button" mat-button
+        (click)="addReview(element.id)">{{buttonReviewTitle}}</button>
+
+
+    </td>
+
+
+
+  </ng-container>
+
+  <!-- Cancel Column -->
+  <ng-container matColumnDef="cancel">
+    <th mat-header-cell *matHeaderCellDef> Cancel </th>
+    <td mat-cell *matCellDef="let element"> <button class="cancel-button" mat-button
+        (click)="cancelRequest(element.id)">cancel</button> </td>
+  </ng-container>
+
+  <tr mat-header-row style="height: 2em;" *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" style="height: 2em;"></tr>
+</table>
+
+<div *ngIf="reviewToggle" class="animated fadeIn slow">
+  <app-review-walker reviewID="{{currentReview}}" (reviewEvent)="recieveMessages($events)"></app-review-walker>
+</div>

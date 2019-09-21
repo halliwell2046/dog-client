@@ -1,0 +1,16 @@
+<div class="form-container" [formGroup]='bioform'>
+  <h2 class="tellUs">Tell us about yourself</h2>
+  <p class="ptext">Please add a short bio here to introduce yourself to everyone.
+    You may also add a photo link from your social media account.
+  </p>
+  <mat-form-field>
+    <input formControlName="bio" matInput placeholder="BIO" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input formControlName="picture" matInput placeholder="Add photo URL" />
+  </mat-form-field>
+</div>
+<!-- <div>
+    <button mat-button class="blue-button" type="submit" (click)='onSubmit()'>submit</button>
+  </div> -->

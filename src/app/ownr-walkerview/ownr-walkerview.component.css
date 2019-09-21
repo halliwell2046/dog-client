@@ -1,0 +1,28 @@
+.grid{
+    display: grid;
+    grid-template-columns: 200px auto;
+    width: 100%;
+    grid-gap: 10px;
+    grid-template-rows: auto auto auto auto;
+  }
+ 
+  .one {
+    background-color:  #e6e7e8;
+    grid-row: 1/-1;
+  }
+ 
+  .two {
+   grid-column: 2/-1;
+   grid-row: 1/2; 
+  }
+
+  .three {
+    grid-column: 2/-1;
+    grid-row: 2/3; 
+   }
+ 
+  .white-blue-button {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #0075be;
+}

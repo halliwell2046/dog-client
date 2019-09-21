@@ -1,1 +1,37 @@
-<p>dog-profile works!</p>
+<h2 class="tellUs">Tell us about your dog</h2>
+<p class="ptext">We'll need a few details about your pet.  You may add a bio with important information to help us take care of your dog.  Add a photo link from your social media if you like.</p>
+
+<form [formGroup]="service.profileForm" class="form-container" (ngSubmit)="onSubmit()">
+<div class="profile-form">
+    <mat-form-field>
+        <input formControlName="petName" matInput placeholder="Your Dog's Name" />
+    <mat-error>Must supply name</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input formControlName="breed" matInput placeholder="Breed" />
+    <mat-error>Must supply breed</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input formControlName="age" matInput placeholder="Age" />
+    <mat-error>Must supply age</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input formControlName="weight" matInput placeholder="Approximate Weight" />
+    <mat-error>Must supply weight</mat-error>
+    </mat-form-field>
+    <mat-radio-group formControlName="gender" aria-label="Select an option">
+            <mat-radio-button class="leftRadio" style="color: rgb(140, 140, 140)" value="M">Male</mat-radio-button>
+            <mat-radio-button class="rightRadio" style="color: rgb(140, 140, 140)" value="F">Female</mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field>
+        <input formControlName="photourl" matInput placeholder="Photo URL" />
+    </mat-form-field>
+    <mat-form-field>
+        <input formControlName="bio" matInput placeholder="Bio" />
+    </mat-form-field>    
+</div>
+<div>
+        <button class="red-button" mat-button type='submit'[disabled]='service.profileForm.invalid'>add a dog</button>
+        <button class="white-button" type='button' routerLink='/dashboard' mat-button>next</button>
+
+</div> </form>

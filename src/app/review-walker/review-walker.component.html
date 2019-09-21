@@ -1,0 +1,50 @@
+<h1 class="white-tab">review your walker</h1>
+<p class="ptext">Please take a moment to rate your walker's performance. Add a photo link of your dog from social media.
+</p>
+
+<mat-vertical-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Write a title for your review.</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Title of review" formControlName="reviewTitle" required>
+      </mat-form-field>
+      <div>
+        <button class="red-button-small" mat-button matStepperNext>next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Rate your walker on a scale of 0 to 5, with 5 being outstanding.</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Rate from 1 to 5" formControlName="rating" required>
+      </mat-form-field>
+      <div>
+        <button class="white-button-small" mat-button matStepperPrevious>back</button>
+        <button class="red-button-small" mat-button matStepperNext>next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Review your walker's performance.</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Walker review" formControlName="review" required>
+      </mat-form-field>
+      <div>
+        <button class="white-button-small" mat-button matStepperPrevious>back</button>
+        <button class="red-button-small" mat-button matStepperNext>next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Finished</ng-template>
+    Thank you for your review.
+    <div>
+      <button class="white-button-small" mat-button matStepperPrevious>back</button>
+      <button class="red-button-small" mat-button (click)="onSubmit()">submit</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>

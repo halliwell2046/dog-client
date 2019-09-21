@@ -1,0 +1,19 @@
+
+div {
+    text-align: center;
+    padding-top: 35px;
+
+}
+/* .submit {
+    border: 1px solid red;
+    background-color: red;
+    color: white;
+    margin: 5px;
+} */
+/* 
+.main-container{
+    max-width: 100px;
+} */
+.container > * {
+    width: 100%;
+}
