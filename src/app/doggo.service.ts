@@ -1,3 +1,4 @@
+import { APIURL } from '../environments/environment.prod';
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHandler, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
@@ -8,33 +9,33 @@ import { FormsModule } from "@angular/forms";
 export class DoggoService {
   userDataInfo: any = [];
   userID: string = "";
-  userLoginURL: string = "http://localhost:3000/user/login";
-  userSignupURL: string = "http://localhost:3000/user/signup";
-  userUpdateURL: string = "http://localhost:3000/owner/address";
-  ownerAddingPetURL: string = "http://localhost:3000/owner/create";
-  getPetURL: string = `http://localhost:3000/owner/`;
-  deletePet: string = "http://localhost:3000/owner/delete/";
+  userLoginURL: string = `${APIURL}/user/login`;
+  userSignupURL: string = `${APIURL}/user/signup`;
+  userUpdateURL: string = `${APIURL}/owner/address`;
+  ownerAddingPetURL: string = `${APIURL}/owner/create`;
+  getPetURL: string = `${APIURL}/owner/`;
+  deletePet: string = `${APIURL}/owner/delete/`;
   ownerRecentRequestURL: string =
-    "http://localhost:3000/walker/owner-requests/";
-  walkerProfile: string = `http://localhost:3000/owner/`;
+    `${APIURL}/walker/owner-requests/`;
+  walkerProfile: string = `${APIURL}0/owner/`;
   serviceRequestCreateURL: string =
-    "http://localhost:3000/walker/create-request/";
+    `${APIURL}/walker/create-request/`;
 
-  userProfileURL: string = `http://localhost:3000/owner/userinfo`;
+  userProfileURL: string = `${APIURL}/owner/userinfo`;
 
-  addingReviewURL: string = "http://localhost:3000/walker/update-request/";
+  addingReviewURL: string = `${APIURL}/walker/update-request/`;
 
   walkerAcceptedRequestsURL: string =
-    "http://localhost:3000/walker/accepted-requests/";
+    `${APIURL}/walker/accepted-requests/`;
   walkerPendingRequestsURL: string =
-    "http://localhost:3000/walker/pending-requests/";
+    `${APIURL}/walker/pending-requests/`;
 
   walkerAcceptButtonURL: string =
-    "http://localhost:3000/walker/walker-update-request/";
+    `${APIURL}/walker/walker-update-request/`;
 
-  zipcodeServerURL: string = "http://localhost:3000/zipcode/check";
+  zipcodeServerURL: string = `${APIURL}/zipcode/check`;
 
-  ownerDeletesRequestURL: string = "http://localhost:3000/walker/delete/";
+  ownerDeletesRequestURL: string = `${APIURL}/walker/delete/`;
 
   constructor(private http: HttpClient) {}
 
