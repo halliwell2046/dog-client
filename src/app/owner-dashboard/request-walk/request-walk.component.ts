@@ -58,7 +58,7 @@ export class RequestWalkComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.dogs = this.pets.map(data => data.petName).join(" ");
+      this.dogs = this.pets.map(data => data.petName).join(", ");
 
       this.doggoService.updateRequestingWalkerData([
         {

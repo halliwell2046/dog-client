@@ -40,11 +40,36 @@ export class WalkerCardsComponent implements OnInit {
   ];
 
   constructor(public doggoService: DoggoService) {}
-  walkerAcceptedata: Object = [];
+  walkerAcceptedata: any = [];
   ngOnInit() {
     this.doggoService.walkerAcceptedSource.subscribe(data => {
       this.walkerAcceptedata = data;
       console.log(data);
+      this.reviewData = [];
+
+      this.walkerAcceptedata.forEach(filteringReviewsOnly => {
+        let picture = "";
+
+        if (filteringReviewsOnly.rating != null) {
+          this.doggoService
+            .walkerReviewDogPics(filteringReviewsOnly.userid)
+            .subscribe((result: any) => {
+              console.log(result);
+              picture = result.data.petPic;
+              let icons = "pets";
+              for (let x = 1; x < Number(filteringReviewsOnly.rating); x++) {
+                icons = icons + " pets";
+              }
+              console.log(icons);
+              Object.assign(filteringReviewsOnly, { petPic: picture });
+              Object.assign(filteringReviewsOnly, { petIcons: icons });
+              Object.assign(filteringReviewsOnly, { age: result.data.age });
+
+              this.reviewData.push(filteringReviewsOnly);
+            });
+          console.log(this.reviewData);
+        }
+      });
     });
   }
   filterCards() {

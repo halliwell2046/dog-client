@@ -363,7 +363,7 @@ export class DoggoService {
       Authorization: this.sessionTokenSource.value
     });
 
-    return this.http.get(`${this.dogPicURL}/${id}`);
+    return this.http.get(`${this.dogPicURL}/${id}`, { headers: reqHeaders });
   }
 
   checkZipcodes(zipcodeRequested: string) {
