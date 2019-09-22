@@ -20,6 +20,7 @@ export class DoggoService {
   serviceRequestCreateURL: string = `${APIURL}/walker/create-request/`;
 
   userProfileURL: string = `${APIURL}/owner/userinfo`;
+  dogPicURL: string = `${APIURL}/owner/petpicture`;
 
   addingReviewURL: string = `${APIURL}/walker/update-request/`;
 
@@ -187,7 +188,7 @@ export class DoggoService {
     const body = {
       data: {
         reviewTitle: data.reviewTitle,
-        // rating: data.rating,
+        rating: data.rating,
         review: data.review
       }
     };
@@ -353,6 +354,16 @@ export class DoggoService {
     return this.http.put(newURL, body, {
       headers: reqHeaders
     });
+  }
+
+  // WALKER REVIEW PICTURE OF DOGS
+  walkerReviewDogPics(id) {
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionTokenSource.value
+    });
+
+    return this.http.get(`${this.dogPicURL}/${id}`);
   }
 
   checkZipcodes(zipcodeRequested: string) {

@@ -18,7 +18,14 @@
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Rate your walker on a scale of 0 to 5, with 5 being outstanding.</ng-template>
       <mat-form-field>
-        <input matInput placeholder="Rate from 1 to 5" formControlName="rating" required>
+        <mat-select formControlName="rating" placeholder="Rating">
+          <mat-option value="5">5 🐶🐶🐶🐶🐶</mat-option>
+          <mat-option value="4">4 🐶🐶🐶🐶</mat-option>
+          <mat-option value="3">3 🐶🐶🐶</mat-option>
+          <mat-option value="2">2 🐶💩</mat-option>
+          <mat-option value="1">1 💩</mat-option>
+        </mat-select>
+
       </mat-form-field>
       <div>
         <button class="white-button-small" mat-button matStepperPrevious>back</button>

@@ -54,6 +54,9 @@ export class ReviewWalkerComponent implements OnInit {
       data => {
         console.log(data);
         this.reviewEvent.emit(this.continueReviewing);
+        this.doggoService.getOwnerRecentRequests().subscribe((data: any) => {
+          this.doggoService.updateOwnerPendingRequestData(data);
+        });
       },
       err => console.log(err.message)
     );
