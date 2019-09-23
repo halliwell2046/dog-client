@@ -1,6 +1,6 @@
 <div layout="row" layout-align="center center" class="container">
   <mat-toolbar>
-    <img class="logo" src="../../assets/doggo-logo.png">
+    <img class="logo" (click)="home()" src="../../assets/doggo-logo.png">
     <span class="fill-remain-space"></span>
     <div *ngIf="token">
       <span><button mat-stroked-button (click)='logOut()' color="secondary">logout</button></span>

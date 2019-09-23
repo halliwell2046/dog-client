@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DoggoService } from "../doggo.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-navbar",
@@ -8,7 +9,7 @@ import { DoggoService } from "../doggo.service";
 })
 export class NavbarComponent implements OnInit {
   token: string;
-  constructor(public doggoService: DoggoService) {}
+  constructor(public doggoService: DoggoService, public router: Router) {}
 
   ngOnInit() {
     this.doggoService.checkToken();
@@ -22,5 +23,8 @@ export class NavbarComponent implements OnInit {
   logOut() {
     sessionStorage.clear();
     this.doggoService.logOut();
+  }
+  home() {
+    this.router.navigate([""]);
   }
 }
