@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
     public doggoService: DoggoService
   ) {}
   ngOnInit() {}
-  login: any;
+  show: any;
   onSubmit() {
     this.doggoService
       .userLogin(this.service.loginForm.value)
