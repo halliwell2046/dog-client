@@ -87,7 +87,7 @@ export class RecentRequestsComponent implements OnInit {
       this.buttonReviewTitle = "Add Review";
     }
   }
-$events:boolean;
+  $events: boolean;
   cancelRequest(id) {
     console.log("ID >>>", id);
     this.doggoService.cancelRequest(id).subscribe(
@@ -101,6 +101,11 @@ $events:boolean;
       },
       err => console.log("1", err)
     );
+  }
+  refreshData() {
+    this.doggoService.getOwnerRecentRequests().subscribe((data: any) => {
+      this.doggoService.updateOwnerPendingRequestData(data);
+    });
   }
 
   determineStatus(requestArray: any) {
@@ -125,7 +130,6 @@ $events:boolean;
 
     return newRequestArray;
   }
-  $events: boolean;
   recieveMessages($events) {
     this.reviewToggle = $events;
   }

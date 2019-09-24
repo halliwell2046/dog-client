@@ -1,4 +1,5 @@
-<h2 class="gray-tab">your recent requests</h2><span><button class="refresh-button" mat-button (click)="addRequest()"><i class="material-icons">settings_backup_restore</i></button></span>
+<h2 class="gray-tab">your recent requests<button class="refresh-button" mat-button (click)="refreshData()"><i
+      class="material-icons">settings_backup_restore</i></button></h2>
 <table mat-table [dataSource]="recentRequest" class="mat-elevation-z0">
 
   <!-- Date Column -->
