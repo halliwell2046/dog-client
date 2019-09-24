@@ -31,7 +31,8 @@ export class WalkerOwnerReviewCardsComponent implements OnInit {
     console.log(this.id);
     this.doggoService.walkerReviewAcceptedSource.subscribe(data => {
       console.log(data);
-      this.reviewData = data;
+      this.reviewData = data.filter(result => result.review != null);
+      console.log("review data: ", this.reviewData);
       // this.walkerAcceptedata.forEach(filteringReviewsOnly => {
       //   let picture = "";
       //   if (filteringReviewsOnly.rating != null) {

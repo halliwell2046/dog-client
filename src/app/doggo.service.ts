@@ -433,12 +433,15 @@ export class DoggoService {
     this.http
       .get(`${this.walkerReviewUserAcceptedURL}${id}`, { headers: reqHeaders })
       .subscribe((data: any) => {
+        console.log("review Cards: ", data);
+        // let newArray = [];
         // if (data.length > 0) {
-        //   let newArray = data.filter(result => {
+        //   newArray = data.filter(result => {
         //     result.reviewTitle ? result.reviewTitle.length > 0 : console.log();
-        //     return result;
         //   });
         this.walkerReviewUpdateAcceptedData(data);
+        // }
       });
   }
+  //   });
 }
