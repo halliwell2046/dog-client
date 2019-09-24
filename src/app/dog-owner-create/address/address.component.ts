@@ -10,6 +10,7 @@ import { GoogleService } from "src/app/maps/google.service";
   styleUrls: ["./address.component.css"]
 })
 export class AddressComponent implements OnInit {
+  savedData: boolean = false;
   statesArray: Object = [
     "AL",
     "AK",
@@ -106,8 +107,13 @@ export class AddressComponent implements OnInit {
         this.doggoService
           .profileUpdate(this.service.form.value, this.ownerLat, this.ownerLng)
           .subscribe((addressData: any) => {});
+        this.toggleSavedData();
       });
 
     // console.warn(this.service.form.value);
+  }
+  toggleSavedData() {
+    this.savedData = !this.savedData;
+    setTimeout(() => (this.savedData = !this.savedData), 3000);
   }
 }
