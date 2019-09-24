@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, APP_ID } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -47,6 +47,13 @@ import { OwnerWalkerviewDogCardsComponent } from "./ownr-walkerview/owner-walker
 import { WalkerOwnerSidebarComponent } from "./dog-owner-create/wlkr-ownrview/walker-owner-sidebar/walker-owner-sidebar.component";
 import { WalkerOwnerReviewCardsComponent } from "./dog-owner-create/wlkr-ownrview/walker-owner-review-cards/walker-owner-review-cards.component";
 
+import { AuthGuardService } from "./auth-guard.service";
+import { JwtModule } from "@auth0/angular-jwt";
+import { AppPasswordDirective } from './app-password.directive';
+const APIURL = "http://localhost:4200";
+export function tokenGetter() {
+  return localStorage.getItem("token");
+ }
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,7 +88,9 @@ import { WalkerOwnerReviewCardsComponent } from "./dog-owner-create/wlkr-ownrvie
     OwnerWalkerviewSidebarComponent,
     OwnerWalkerviewDogCardsComponent,
     WalkerOwnerSidebarComponent,
-    WalkerOwnerReviewCardsComponent
+    WalkerOwnerReviewCardsComponent,
+    AppPasswordDirective,
+    
   ],
   imports: [
     BrowserModule,
@@ -92,10 +101,15 @@ import { WalkerOwnerReviewCardsComponent } from "./dog-owner-create/wlkr-ownrvie
     HttpClientModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: MAPAPIKEY
+      apiKey: MAPAPIKEY})
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: [APIURL]
+      }
     })
   ],
-  providers: [DogOwnerService],
+  providers: [DogOwnerService, AuthGuardService],
   bootstrap: [AppComponent],
   entryComponents: [DialogRequest]
 })

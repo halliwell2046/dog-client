@@ -7,15 +7,49 @@ import { WalkerNewRequestsComponent } from "./walker-new-requests/walker-new-req
 import { WalkerRecentRequestComponent } from "./walker-dashboard/walker-recent-request/walker-recent-request.component";
 import { WalkerDashboardComponent } from "./walker-dashboard/walker-dashboard.component";
 import { OwnerDashboardComponent } from "./owner-dashboard/owner-dashboard.component";
-import { OwnrWalkerviewComponent } from "./ownr-walkerview/ownr-walkerview.component";
-import { WlkrOwnrviewComponent } from "./dog-owner-create/wlkr-ownrview/wlkr-ownrview.component";
+import { AvailableWalkersComponent } from "./owner-dashboard/available-walkers/available-walkers.component";
+import { AuthGuardService as AuthGuard } from "./auth-guard.service";
 
 const routes: Routes = [
   { path: "", component: LisuTabsComponent },
-  { path: "user-profile", component: UserProfileComponent },
-  { path: "dashboard", component: DashboardComponent },
-  { path: "walker/:id", component: WlkrOwnrviewComponent },
-  { path: "user/:id", component: OwnrWalkerviewComponent }
+  {
+    path: "user-profile",
+    component: UserProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "dashboard",
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "newrequest",
+    component: WalkerNewRequestsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "walkerrecent",
+    component: WalkerRecentRequestComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "walkerdash",
+    component: WalkerDashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "ownerdash",
+    component: OwnerDashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "availwalker",
+    component: AvailableWalkersComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: "**", redirectTo: "" }
+  // { path: "walker", component: WalkerOwnerViewComponent, canActivate: [AuthGuard] },
+  // { path: "owner", component: OwnerViewComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

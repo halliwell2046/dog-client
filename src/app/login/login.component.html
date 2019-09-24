@@ -10,7 +10,7 @@
         />
       </mat-form-field>
       <mat-form-field>
-        <input formControlName="password" matInput placeholder="Password" />
+        <input [type]="show ? 'text' : 'password'" formControlName="password" matInput placeholder="Password" />
       </mat-form-field>
     </div>
     <button

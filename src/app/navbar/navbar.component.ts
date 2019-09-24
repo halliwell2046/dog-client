@@ -8,6 +8,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit {
+  // title: 'logout';
   token: string;
   constructor(public doggoService: DoggoService, public router: Router) {}
 
@@ -23,6 +24,11 @@ export class NavbarComponent implements OnInit {
   logOut() {
     sessionStorage.clear();
     this.doggoService.logOut();
+    this.router.navigate([""]);
+  }
+
+  home() {
+    this.router.navigate([""]);
   }
   home() {
     this.router.navigate([""]);

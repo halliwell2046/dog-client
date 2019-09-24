@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHandler, HttpHeaders } from "@angular/common/http";
 import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
 import { FormsModule } from "@angular/forms";
+
 @Injectable({
   providedIn: "root"
 })
@@ -36,6 +37,8 @@ export class DoggoService {
   walkerReviewUserAcceptedURL: string = `${APIURL}/walker/accepted-requests-review/`;
 
   constructor(public http: HttpClient) {}
+
+  
 
   // BEHAVIOR SUBJECTS
   petDataSource = new BehaviorSubject<any>([]);
@@ -101,6 +104,7 @@ export class DoggoService {
     this.requestingWalkSource.next(data);
   }
   //TOKEN ITEMS
+
   checkToken() {
     if (sessionStorage.getItem("token")) {
       this.sessionTokenSource.next(sessionStorage.getItem("token"));
