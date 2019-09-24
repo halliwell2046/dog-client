@@ -12,6 +12,8 @@ export class SignupComponent implements OnInit {
     public service: DogOwnerService,
     public doggoService: DoggoService
   ) {}
+
+  show: any;
   ngOnInit() {}
   onSubmit() {
     this.doggoService
