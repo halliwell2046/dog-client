@@ -30,7 +30,4 @@ export class NavbarComponent implements OnInit {
   home() {
     this.router.navigate([""]);
   }
-  home() {
-    this.router.navigate([""]);
-  }
 }

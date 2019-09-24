@@ -49,11 +49,11 @@ import { WalkerOwnerReviewCardsComponent } from "./dog-owner-create/wlkr-ownrvie
 
 import { AuthGuardService } from "./auth-guard.service";
 import { JwtModule } from "@auth0/angular-jwt";
-import { AppPasswordDirective } from './app-password.directive';
+import { AppPasswordDirective } from "./app-password.directive";
 const APIURL = "http://localhost:4200";
 export function tokenGetter() {
   return localStorage.getItem("token");
- }
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,8 +89,7 @@ export function tokenGetter() {
     OwnerWalkerviewDogCardsComponent,
     WalkerOwnerSidebarComponent,
     WalkerOwnerReviewCardsComponent,
-    AppPasswordDirective,
-    
+    AppPasswordDirective
   ],
   imports: [
     BrowserModule,
@@ -101,7 +100,8 @@ export function tokenGetter() {
     HttpClientModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: MAPAPIKEY})
+      apiKey: MAPAPIKEY
+    }),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
