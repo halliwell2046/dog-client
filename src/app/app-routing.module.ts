@@ -9,9 +9,21 @@ import { WalkerDashboardComponent } from "./walker-dashboard/walker-dashboard.co
 import { OwnerDashboardComponent } from "./owner-dashboard/owner-dashboard.component";
 import { AvailableWalkersComponent } from "./owner-dashboard/available-walkers/available-walkers.component";
 import { AuthGuardService as AuthGuard } from "./auth-guard.service";
+import { WlkrOwnrviewComponent } from "./dog-owner-create/wlkr-ownrview/wlkr-ownrview.component";
+import { OwnrWalkerviewComponent } from "./ownr-walkerview/ownr-walkerview.component";
 
 const routes: Routes = [
   { path: "", component: LisuTabsComponent },
+  {
+    path: "walker/:id",
+    component: WlkrOwnrviewComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "user/:id",
+    component: OwnrWalkerviewComponent,
+    canActivate: [AuthGuard]
+  },
   {
     path: "user-profile",
     component: UserProfileComponent,
