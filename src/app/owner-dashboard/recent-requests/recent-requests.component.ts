@@ -125,7 +125,7 @@ $events:boolean;
 
     return newRequestArray;
   }
-
+  $events: boolean;
   recieveMessages($events) {
     this.reviewToggle = $events;
   }

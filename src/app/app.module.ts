@@ -40,6 +40,12 @@ import { DashboardComponent } from "./containers/dashboard/dashboard.component";
 import { UserProfileComponent } from "./containers/user-profile/user-profile.component";
 import { WalkerRecentRequestComponent } from "./walker-dashboard/walker-recent-request/walker-recent-request.component";
 import { AgmCoreModule } from "@agm/core";
+import { MAPAPIKEY } from "src/environments/environment.prod";
+
+import { OwnerWalkerviewSidebarComponent } from "./ownr-walkerview/owner-walkerview-sidebar/owner-walkerview-sidebar.component";
+import { OwnerWalkerviewDogCardsComponent } from "./ownr-walkerview/owner-walkerview-dog-cards/owner-walkerview-dog-cards.component";
+import { WalkerOwnerSidebarComponent } from "./dog-owner-create/wlkr-ownrview/walker-owner-sidebar/walker-owner-sidebar.component";
+import { WalkerOwnerReviewCardsComponent } from "./dog-owner-create/wlkr-ownrview/walker-owner-review-cards/walker-owner-review-cards.component";
 
 @NgModule({
   declarations: [
@@ -71,7 +77,11 @@ import { AgmCoreModule } from "@agm/core";
     DashboardComponent,
     UserProfileComponent,
     WalkerRecentRequestComponent,
-    DialogRequest
+    DialogRequest,
+    OwnerWalkerviewSidebarComponent,
+    OwnerWalkerviewDogCardsComponent,
+    WalkerOwnerSidebarComponent,
+    WalkerOwnerReviewCardsComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +92,7 @@ import { AgmCoreModule } from "@agm/core";
     HttpClientModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyCWe1USFU9NpbwOkpKsE6X0mlouDBYc-W0"
+      apiKey: MAPAPIKEY
     })
   ],
   providers: [DogOwnerService],

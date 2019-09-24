@@ -48,6 +48,7 @@ export class WalkerProfileComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.walkerService.walkerForm.value);
     this.googleService
       .geoCoding(this.walkerService.walkerForm.value)
       .subscribe((data: any) => {
@@ -56,19 +57,18 @@ export class WalkerProfileComponent implements OnInit {
         this.walkerLng = data.results[0].geometry.location.lng;
         sessionStorage.setItem("lat", this.walkerLat.toString());
         sessionStorage.setItem("lng", this.walkerLng.toString());
+        this.doggoService
+          .profileUpdate(
+            this.walkerService.walkerForm.value,
+            this.walkerLat,
+            this.walkerLng
+          )
+          .subscribe(
+            (data: any) => {
+              console.log("itworked");
+            },
+            err => console.log(err)
+          );
       });
-    console.log(this.walkerService.walkerForm.value);
-    this.doggoService
-      .profileUpdate(
-        this.walkerService.walkerForm.value,
-        this.walkerLat,
-        this.walkerLng
-      )
-      .subscribe(
-        (data: any) => {
-          console.log("itworked");
-        },
-        err => console.log(err)
-      );
   }
 }

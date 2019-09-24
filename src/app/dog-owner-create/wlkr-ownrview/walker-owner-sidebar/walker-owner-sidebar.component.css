@@ -2,21 +2,22 @@
   background: #e6e7e8;
   align-content: flex-start;
 }
-.profile-pic{
+.profile-pic {
   margin-top: 30px;
   align-content: center;
-  width:100%;
+  width: 100%;
   text-align: center;
-  
 }
+
 .tab {
-  background-color: #ed1c24;
+  background-color: #0075be;
   text-align: center;
   color: white;
   font-size: 1.8rem;
   font-family: "Roboto";
   margin: 0;
   padding-bottom: 5px;
+  width: 200px;
 }
 .portrait {
   border-radius: 50%;
@@ -24,4 +25,13 @@
   max-width: 200px;
   width: 70%;
   padding-top: 0%;
+}
+
+.ptext {
+  padding: 10px;
+}
+
+.starrate {
+  font-family: '"Roboto"', sans-serif;
+  font-weight: 400;
 }

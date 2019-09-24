@@ -1,6 +1,6 @@
 .introh2 {
-  color:black;
-  font-family: Roboto, sans-serif;
+  color: black;
+  font-family: "Roboto", sans-serif;
   font-size: 2.2em;
   font-weight: 200;
   line-height: 1.2;
@@ -8,7 +8,7 @@
   margin: 0% 5% 5% 5%;
 }
 
-.grid{
+.grid {
   display: grid;
   grid-template-columns: 1fr 1.5fr 1fr;
   width: 100%;
@@ -16,21 +16,20 @@
 }
 
 .leftDog {
-grid-column: 1/2;
-margin-right:20%;
+  grid-column: 1/2;
+  margin-right: 20%;
 }
 
 .auth {
   grid-column: 2/3;
   max-width: 500px;
-  width:100%;
+  width: 100%;
   justify-self: center;
-  
 }
 
 .rightDog {
-grid-column: 3/4;
-margin-left:20%;
+  grid-column: 3/4;
+  margin-left: 20%;
 }
 
 img {
@@ -38,9 +37,9 @@ img {
   height: auto;
 }
 
-.mat-tab-label{
+.mat-tab-label {
   font-size: 14px !important;
-} 
+}
 
 /* .constrain {
   width: 300px;
@@ -49,20 +48,17 @@ img {
 .showing-dashboard {
   grid-column: 2/3;
   max-width: 500px;
-  width:100%;
+  width: 100%;
   justify-self: center;
   align-self: center;
-  
 }
-.center-content{
-  display:flex;
+.center-content {
+  display: flex;
   text-align: center;
-
 }
-.red-button{
+.red-button {
   width: 100%;
-  text-align:center;
+  text-align: center;
   padding: 5px 10px;
   font-size: 20px;
-
 }

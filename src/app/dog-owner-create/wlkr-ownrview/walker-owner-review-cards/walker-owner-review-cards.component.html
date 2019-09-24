@@ -1,5 +1,5 @@
 <div class="walkerCards">
-  <div *ngFor="let review of filterCards()">
+  <div *ngFor="let review of reviewData">
     <div>
       <mat-card class="example-card" style="width: 15rem;">
         <mat-card-header>
@@ -17,8 +17,8 @@
         </mat-card-content>
         <mat-card-actions>
           <!-- <div class="spacer">
-            <button mat-button class="white-blue-button" (click)='deleteDog(pet.id)'>remove</button>
-          </div> -->
+                  <button mat-button class="white-blue-button" (click)='deleteDog(pet.id)'>remove</button>
+                </div> -->
         </mat-card-actions>
       </mat-card>
     </div>

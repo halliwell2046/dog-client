@@ -20,6 +20,7 @@ export class DoggoService {
   serviceRequestCreateURL: string = `${APIURL}/walker/create-request/`;
 
   userProfileURL: string = `${APIURL}/owner/userinfo`;
+  dogPicURL: string = `${APIURL}/owner/petpicture`;
 
   addingReviewURL: string = `${APIURL}/walker/update-request/`;
 
@@ -31,6 +32,8 @@ export class DoggoService {
   zipcodeServerURL: string = `${APIURL}/zipcode/check`;
 
   ownerDeletesRequestURL: string = `${APIURL}/walker/delete/`;
+  walkerReviewUserInfoURL: string = `${APIURL}/owner/profile-review/`;
+  walkerReviewUserAcceptedURL: string = `${APIURL}/walker/accepted-requests-review/`;
 
   constructor(public http: HttpClient) {}
 
@@ -50,6 +53,34 @@ export class DoggoService {
   walkerAcceptedData = this.walkerAcceptedSource.asObservable();
   walkerUpdateAcceptedData(data: any) {
     this.walkerAcceptedSource.next(data);
+  }
+  //REVIEW PAGE from OWNER POINT OF VIEW
+  walkerReviewAcceptedSource = new BehaviorSubject<any>([]);
+  walkerReviewAcceptedData = this.walkerReviewAcceptedSource.asObservable();
+  walkerReviewUpdateAcceptedData(data: any) {
+    let walkerAcceptedData = data;
+    let reviewData = [];
+    walkerAcceptedData.forEach(filteringReviewsOnly => {
+      let picture = "";
+      if (filteringReviewsOnly.rating != null) {
+        this.walkerReviewDogPics(filteringReviewsOnly.userid).subscribe(
+          (result: any) => {
+            console.log(result);
+            picture = result.data.petPic;
+            let icons = "pets";
+            for (let x = 1; x < Number(filteringReviewsOnly.rating); x++) {
+              icons = icons + " pets";
+            }
+            console.log(icons);
+            Object.assign(filteringReviewsOnly, { petPic: picture });
+            Object.assign(filteringReviewsOnly, { petIcons: icons });
+            Object.assign(filteringReviewsOnly, { age: result.data.age });
+            reviewData.push(filteringReviewsOnly);
+          }
+        );
+        this.walkerReviewAcceptedSource.next(data);
+      }
+    });
   }
 
   walkerPendingSource = new BehaviorSubject<any>([]);
@@ -187,7 +218,7 @@ export class DoggoService {
     const body = {
       data: {
         reviewTitle: data.reviewTitle,
-        // rating: data.rating,
+        rating: data.rating,
         review: data.review
       }
     };
@@ -355,8 +386,18 @@ export class DoggoService {
     });
   }
 
+  // WALKER REVIEW PICTURE OF DOGS
+  walkerReviewDogPics(id) {
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionTokenSource.value
+    });
+
+    return this.http.get(`${this.dogPicURL}/${id}`, { headers: reqHeaders });
+  }
+
   checkZipcodes(zipcodeRequested: string) {
-    let api = `http://api.geonames.org/findNearbyPostalCodesJSON?postalcode=${zipcodeRequested}&country=US&radius=10&username=rvanar`;
+    let api = `https://secure.geonames.org/findNearbyPostalCodesJSON?postalcode=${zipcodeRequested}&country=US&radius=10&username=rvanar`;
     return this.http.get(api);
   }
 
@@ -369,5 +410,33 @@ export class DoggoService {
     return this.http.post(this.zipcodeServerURL, body, {
       headers: reqHeaders
     });
+  }
+
+  // REVIEW PAGE WALKER or OWNER INFO (SideBar Material)
+  reviewUserInfo(id) {
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionTokenSource.value
+    });
+    return this.http.get(`${this.walkerReviewUserInfoURL}${id}`, {
+      headers: reqHeaders
+    });
+  }
+
+  //REVIEW PAGE FOR WALKER REVIEW CARDS
+
+  getWalkerReviewCards(id) {
+    const reqHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      Authorization: this.sessionTokenSource.value
+    });
+    return this.http
+      .get(`${this.walkerReviewUserAcceptedURL}${id}`, {
+        headers: reqHeaders
+      })
+      .subscribe((data: any) => {
+        let newArray = data.filter(result => result.reviewTitle.length > 0);
+        this.walkerReviewUpdateAcceptedData(newArray);
+      });
   }
 }
