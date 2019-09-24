@@ -51,12 +51,13 @@ export class WalkerOwnerSidebarComponent implements OnInit {
         Object.assign(this.walkerData, { pic: requested.data.pic });
         this.picture = requested.data.pic;
       }
-      this.doggoService.userDataInfo = requested.data;
-    });
-    this.doggoService.walkerReviewAcceptedSource.subscribe(data => {
-      this.rating = (
-        data.reduce((a, b) => a + Number(b.rating), 0) / data.length
-      ).toString();
+
+      this.doggoService.walkerReviewAcceptedSource.subscribe(data => {
+        let rawNumber = data.reduce((a, b) => a + Number(b.rating), 0);
+        rawNumber = Math.floor((rawNumber * 10) / data.length) / 10;
+        this.rating = rawNumber.toString();
+        // this.doggoService.userDataInfo = requested.data;
+      });
     });
   }
 }

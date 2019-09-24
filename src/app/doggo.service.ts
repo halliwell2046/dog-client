@@ -430,13 +430,15 @@ export class DoggoService {
       "Content-Type": "application/json",
       Authorization: this.sessionTokenSource.value
     });
-    return this.http
-      .get(`${this.walkerReviewUserAcceptedURL}${id}`, {
-        headers: reqHeaders
-      })
+    this.http
+      .get(`${this.walkerReviewUserAcceptedURL}${id}`, { headers: reqHeaders })
       .subscribe((data: any) => {
-        let newArray = data.filter(result => result.reviewTitle.length > 0);
-        this.walkerReviewUpdateAcceptedData(newArray);
+        // if (data.length > 0) {
+        //   let newArray = data.filter(result => {
+        //     result.reviewTitle ? result.reviewTitle.length > 0 : console.log();
+        //     return result;
+        //   });
+        this.walkerReviewUpdateAcceptedData(data);
       });
   }
 }

@@ -90,4 +90,10 @@ export class WalkerNewRequestsComponent implements OnInit {
       this.doggoService.walkerUpdatePendingData(data);
     });
   }
+  refreshData() {
+    this.doggoService.getPendingWalkerRequest().subscribe(data => {
+      console.log(data);
+      this.doggoService.walkerUpdatePendingData(data);
+    });
+  }
 }
