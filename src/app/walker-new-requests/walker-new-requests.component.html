@@ -1,4 +1,5 @@
-<h2 class="blue-tab">your new requests</h2>
+<h2 class="blue-tab">your new requests<button class="refresh-button" mat-button (click)="refreshData()"><i
+  class="material-icons">settings_backup_restore</i></button></h2>
 <table mat-table [dataSource]="pendingRequestData" class="mat-elevation-z0">
 
   <!-- Date Column -->
