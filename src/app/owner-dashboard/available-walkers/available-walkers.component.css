@@ -60,6 +60,9 @@ h1 {
   color: #ed1c24;
   text-decoration: underline;
 }
+.links a:visited {
+  color: #ed1c24;
+}
 
 /* .book-button {
     background-color: red;

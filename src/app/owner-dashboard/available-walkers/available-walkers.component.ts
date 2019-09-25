@@ -13,7 +13,14 @@ export class AvailableWalkersComponent implements OnInit {
   @Input() displayWalkers: boolean;
   @Output() displayWalkerEvent = new EventEmitter<boolean>();
   iconOwner = "../../assets/dog-with-leash.png";
-  iconWalker = "../../assets/walker-marker.png";
+  iconWalker = [
+    "../../assets/walker-marker1.png",
+    "../../assets/walker-marker2.png",
+    "../../assets/walker-marker3.png",
+    "../../assets/walker-marker4.png",
+    "../../assets/walker-marker5.png"
+  ];
+
   displayedColumns: string[] = ["id", "walker", "rating", "request"];
   availableWalkers = [];
 
